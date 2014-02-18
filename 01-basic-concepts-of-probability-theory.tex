@@ -110,8 +110,8 @@
 функцией распределения величины \( X \). Эта функция обладает следующими
 свойствами:
 \begin{itemize}
-    \item для дискретной величины \( F(x) = \sum_{X_i \le x}P(x) \);
-    \item для непрерывной величины \( F(x) = \int_{-\infty}^x w(\xi)d\xi \);
+    \item для дискретной величины \( \ds F(x) = \sum_{X_i \le x}P(X_i) \);
+    \item для непрерывной величины \( \ds F(x) = \int_{-\infty}^x w(\xi)d\xi \);
     \item \( F(-\infty) = 0 \);
     \item \( F(+\infty) = 1 \);
     \item \( F(x) \) -- монотонно неубывающая функция;
@@ -125,7 +125,7 @@
 \]
 называется плотностью распределения. Она обладает рядом свойств:
 \begin{itemize}
-    \item \( \int_{-\infty}^{+\infty} w(\xi) d\xi = 1 \);
+    \item \( \ds \int_{-\infty}^{+\infty} w(\xi) d\xi = 1 \);
     \item \( \forall x\ w(x) \le 0 \);
     \item для дискретной величины
         \( w(x) = \sum_i P(X_i) \cdot \delta(x - X_i) \).
@@ -166,19 +166,19 @@
 \]
 Тогда
 \[
-    F(x, y) = \int_{-\infty}^x\int_{-\infty}^y w(x,y)dxdy,\quad
-    F_x(x) = \int_{-\infty}^x\int_{-\infty}^{+\infty} w(x,y)dxdy.
+    F(x, y) = \int_{-\infty}^x\int_{-\infty}^y w(\xi,\eta)d\xi d\eta,\quad
+    F_x(x) = \int_{-\infty}^x\int_{-\infty}^{+\infty} w(\xi,\eta)d\xi d\eta.
 \]
 
 Для независимых событий
 \( F(x,y) = F_x(x) \cdot F_y(y), w(x,y) = w_x(x) \cdot w_y(y) \).
 
 Для зависимых можно ввести условную функцию распределения
-\[
+\begin{gather*}
     F(y|x) = \lim_{\xi \to x} P(\xi < X \le x, Y \le y),\quad
-    w(y|x) = \pder{F(y|x)}{y} \ge 0,\quad
+    w(y|x) = \pder{F(y|x)}{y} \ge 0,\\
     w_y(y) = \int_{-\infty}^{+\infty} w(y|x) w_x(x) dx.
-\]
+\end{gather*}
 
 Смешанный момент
 \[
@@ -187,7 +187,7 @@
 центральный момент
 \[
     \mu_{kn} = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}
-        (x-\average{x})^k(y-\average{y})^nw(x,y)dxdy.
+        (x-\average{X})^k(y-\average{Y})^nw(x,y)dxdy.
 \]
 Очевидно, что
 \[
