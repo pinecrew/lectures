@@ -1,0 +1,405 @@
+\chapter{Характеристики колебательных контуров}
+    Рассмотрим последовательный и параллельный контуры \( RLC \), к которым
+    прикладывается синусоидальное напряжение \( u = U\sin\omega t \).
+    
+\section{Установившиеся синусоидальные колебания в последовательном контуре}
+    \subsection{Амплитудно- и фазо-частотные характеристики (АЧХ и ФЧХ)}
+        Этот раздел подробно рассмотрен в \href{http://google.com}{работе Ф310}.
+        Импеданс последовательного \( RLC \)-контура:
+        \begin{equation}
+            Z = R + \imone\left(\omega L - \frac{1}{\omega C}\right).
+            \label{eq18:1}
+        \end{equation}
+        Модуль импеданса:
+        \begin{equation}
+            |Z| = \sqrt{R^2 + \left(\omega L - \frac{1}{\omega C}\right)^2}.
+            \label{eq18:1a}
+        \end{equation}
+        Амплитуда тока в контуре:
+        \begin{equation}
+            I = \frac{U}{|Z|} = \frac{U}{\sqrt{R^2 + \left(\omega L -
+            \frac{1}{\omega C}\right)^2}}.
+            \label{eq18:2}
+        \end{equation}
+        Фазовый сдвиг:
+        \begin{equation}
+            \varphi = \mathrm{arctg}\frac{\omega L - \frac{1}{\omega C}}{R}.
+            \label{eq18:3}
+        \end{equation}
+        Таким образом, ток:
+        \[
+            i = I\sin(\omega t - \varphi),
+        \]
+        где \( I \) и \( \varphi \) выражаются формулами (\ref{eq18:2}) и
+        (\ref{eq18:3}). Из (\ref{eq18:2}) и (\ref{eq18:3}) видно, что амплитуда
+        тока \( I \) и фазовый сдвиг \( \varphi \) зависят от частоты:
+        \( I = I(\omega) \), \( \varphi = \varphi(\omega) \).
+        
+        \begin{definition}
+            Зависимость \( I(\omega) \), задаваемая формулой (\ref{eq18:2}),
+            называется \textit{амплитудно-частотной характеристикой} контура.
+        \end{definition}
+        
+        \begin{definition}
+            Зависимость \( \varphi(\omega) \), задаваемая формулой
+            (\ref{eq18:3}), называется \textit{фазо-частотной характеристикой}
+            контура.
+        \end{definition}
+
+        Исследуем вид функции (\ref{eq18:2}). Видно, что при \( \omega = 0 \)
+        \( I = 0 \) и при \( \omega \to \infty \) \( I \to 0 \). Максимум
+        функции \( I(\omega) \) наблюдается при \( R^2 + \left(\omega L -
+        \frac{1}{\omega C}\right) \to \mathrm{min} \). Очевидно, что
+        \( I \to \mathrm{max} = U/R = I_m \) при \( \omega L =
+        \frac{1}{\omega C} \), то есть при \( \omega = \frac{1}{\sqrt{LC}} =
+        \omega_0 \).
+        
+        % Графики при разных \( Q \) (то есть \( R \)), но при одинаковых
+        % \( \omega = \omega_0 \):
+
+        Теперь исследуем поведение функции \( \varphi(\omega) \), согласно
+        (\ref{eq18:3}). Крутизна ФЧХ при \( \omega = \omega_0 \)
+        \[
+            \frac{\dd\varphi}{\dd\omega} \sim Q.
+        \]
+        
+        \begin{proof}
+            \[
+                \left.\frac{\dd\varphi}{\dd\omega}\right|_{\omega = \omega_0} =
+                \frac{\dd\tg\varphi}{\dd\omega} =
+                \frac{\dd}{\dd\omega}\left(\frac{\omega L -
+                \frac{1}{\omega C}}{R}\right) = 
+                \left.\left(\frac{L}{R} + \frac{1}{\omega^2 RC}\right)
+                \right|_{\omega = \omega_0} = 2\frac{L}{R} =
+                2\frac{L}{R}\frac{\omega_0}{\omega_0} = 2\frac{Q}{\omega_0}.
+            \]
+        \end{proof}
+    %---------------------------------------------------------------------------    
+    \subsection{Ширина резонансной кривой}
+        \begin{definition}
+            \textbf{Шириной резонансной кривой} \( I(\omega) \) называется
+            величина \( \Delta\omega = \omega_2 - \omega_1 \), где
+            \( \omega_2 \) и \( \omega_1 \) -- граничные частоты, то есть
+            частоты, на которых
+            \[
+                P(\omega_1) = P(\omega_2) = \frac{1}{2}P(\omega_0) = P_{{max}}.
+            \]
+        \end{definition}
+        А так как \( P \sim I^2 \), то
+        \[
+            I(\omega_1) = I(\omega_2) = \frac{1}{\sqrt{2}}I(\omega_0).
+        \]
+        
+        Найдем \( \Delta\omega \) на основе (\ref{eq18:2}):
+        \[
+            R^2 + \left(\omega L -\frac{1}{\omega C}\right)^2 = 2R^2,
+        \]
+        \[
+            \omega L - \frac{1}{\omega C} = \pm R,
+        \]
+        \[
+            \frac{\omega^2}{\omega_0^2} - 1 = \pm\omega RC,
+        \]
+        \[
+            \omega^2 \pm \omega\omega_0^2RC - \omega_0^2 = 0.
+        \]
+        Мы получили уравнение для определения граничных частот \( \omega_1 \) и
+        \( \omega_2 \). Его решение:
+        \[
+            \omega = \frac{\pm\omega_0^2RC \pm
+            \sqrt{(\omega_0^2RC)^2 + 4\omega_0^2}}{2}
+        \]
+        А так как \( \omega_1 \) и \( \omega_2 \) больше нуля, то:
+        \[
+            \left[
+            \begin{array}{l}
+                \omega_1 = \frac{1}{2}\left(\sqrt{(\omega_0^2RC)^2 +
+                4\omega_0^2} - \omega_0^2RC\right), \\
+                \omega_2 = \frac{1}{2}\left(\sqrt{(\omega_0^2RC)^2 +
+                4\omega_0^2} + \omega_0^2RC\right),
+            \end{array}
+            \right.
+        \]
+        и тогда ширина кривой
+        \[
+            \Delta\omega = \omega_2 - \omega_1 = \omega_0^2RC =
+            \frac{RC\omega_0}{\sqrt{LC}} = \frac{\omega_0}{Q}.
+        \]
+        
+        \begin{remark}
+            Это выражение может быть принято за одно из определений добротности:
+            \[
+                Q = \frac{\omega_0}{\Delta\omega}.
+            \]
+            % графики
+        \end{remark}
+        
+        \begin{remark}
+            Есть задача: определить фазовый сдвиг \( \varphi \) между током
+            \( i(t) \) и \( u(t) \) на левой и правой границе.
+            \[
+                I_{12}U\cos\varphi = \frac{1}{2}I_{{max}}U\cos0.
+            \]
+             Тогда \( \cos\varphi = 1/\sqrt{2} \), а сам фазовый сдвиг
+             \( \varphi = \pi/4 \).
+        \end{remark}
+    
+    \subsection{Кривая напряжений на конденсаторе}
+
+        Амплитуда напряжений на конденсаторе:
+        \begin{equation}
+            U_C(\omega) = I(\omega)X_C(\omega) = I(\omega)\frac{1}{\omega C} =
+            \frac{U}{\omega C \sqrt{R^2 + \left(\omega L -
+            \frac{1}{\omega C}\right)^2}}.
+            \label{eq18:4}
+        \end{equation}
+        Исследуем вид (\ref{eq18:4}):
+        \begin{itemize}
+            \item при \( \omega \to 0 \) \( U_C \to U \);
+            \item при \( \omega \to \infty \) \( U_C \to 0 \).
+        \end{itemize}
+        
+        Для определения экстремумов \( U_C(\omega) \) исследуем поведение
+        знаменателя:
+        \[
+            \omega^2C^2\left(R^2 + \left(\omega L - \frac{1}{\omega C}\right)^2
+            \right) = f(\omega).
+        \]
+        \[
+            \frac{\dd f}{\dd\omega} = 0 = \frac{\dd}{\dd\omega}
+            \left(\omega^2C^2 R^2 + \left(\frac{\omega^2}{\omega_0^2} -
+            1\right)^2\right) = 2\omega R^2C^2 + 
+            2\left(\frac{\omega^2}{\omega_0^2} -
+            1\right)\frac{2\omega}{\omega_0^2} = 0,
+        \]
+        \[
+            \omega^2 R^2C^2 + \frac{2\omega^2}{\omega_0^2} - 2 = 0,
+        \]
+        \[
+            \frac{1}{2}\omega^2R^2C^2 + \frac{\omega^2}{\omega_0^2} - 1 = 0,
+        \]
+        \[
+            \omega = \omega_0\sqrt{1 - \frac{\omega_0^2R^2C^2}{2}} =
+            \omega_0\sqrt{1 - \frac{1}{2Q^2}},
+        \]
+        где
+        \[
+            \omega_0^2 = \frac{1}{LC},\ Q = \frac{1}{R}\sqrt{\frac{L}{R}}.
+        \]
+        
+        При \( Q \gg 1 \), разложив в ряд Тейлора, получим
+        \[
+            \omega = \omega_0\left(1 - \frac{1}{4Q^2}\right) = \omega_{{max}}.
+        \]
+        На этой частоте: \( U_C \to \mathrm{max} \), однако, практически,
+        \( \omega_{{max}} \approx \omega_0 \).
+
+    \subsection{Использование резонанса при радиоприеме}
+
+        Пусть в эфире есть много станций с различными несущими частотами.
+        Требуется выделить нужную станцию, например, станцию на частоте
+        \( \omega_3 \). Настраивая контур на \( \omega_3 \), то есть делая
+        \( \omega_0 = \omega_3 \), мы выделим нужную станцию.
+        
+        Эпюры напряжений (сигналов):
+
+    \subsection{Резонанс}
+
+        По определению, резонанс в контуре наступает, когда ток \( i(t) \) и
+        напряжение \( u(t) \) синфазны, то есть при \( \varphi = 0 \). Из этого
+        определения и предыдущих пунктов следуют такие особенности резонанса:
+        \begin{itemize}
+            \item Резонанс в последовательном контуре наступает при
+                \( \omega = \omega_0 \);
+            \item Ток при резонансе максимален:
+                \[
+                    \left.I\right|_{\omega = \omega_0} \to \mathrm{max} =
+                    \frac{U}{R};
+                \]
+            \item Импеданс \( Z \) становится чисто активным;
+            \item Полное сопротивление при резонансе минимально:
+                \[
+                    |Z| \to \mathrm{min} = R;
+                \]
+            \item Напряжения на емкости \( C \) и индуктивности \( L \) при
+                резонансе противофазны и в \( Q \) раз превышают приложенное
+                напряжение, а напряжение на активном сопротивлении \( R \)
+                равно приложенному.
+        
+                \begin{proof}
+                    Напряжение на индуктивности:
+                    \[
+                        \dot{U}_L = \dot{I}\imone\omega L =
+                        \frac{\dot{U}}{R}\imone\omega L = 
+                        \imone\dot{U}\frac{1}{R}\sqrt{\frac{L}{C}} =
+                        \imone Q\dot{U}.
+                    \]
+                    Напряжение на емкости:
+                    \[
+                        \dot{U}_C =
+                        \dot{I}\left(-\imone\frac{1}{\omega C}\right) =
+                        -\imone\dot{U}\frac{1}{R}\sqrt{\frac{L}{C}} =
+                        -\imone Q\dot{U}.
+                    \]
+                    Напряжение на активном сопротивлении:
+                    \[
+                        \dot{U}_R = \dot{I}R = \frac{\dot{U}}{R}R = \dot{U}.
+                    \]
+                \end{proof}
+        
+                Поэтому в последовательном контуре резонанс называют
+                \textbf{резонансом напряжений}.
+        \end{itemize}
+
+\section{Установившиеся колебания в параллельном контуре}
+    Будем считать, что сопротивление \( R \) невелико, то есть на частоте
+    \( \omega_0 \) \( R \ll \omega_0L \). Исследуем зависимость процессов в
+    контуре от частоты приложенного напряжения \( \omega \).
+
+    Импеданс:
+    \[
+        Z =  \frac{Z_1Z_2}{Z_1 + Z_2} =
+        \frac{\frac{1}{\imone\omega C}(R + \imone\omega L)}{R +
+        j\left(\omega L - \frac{1}{\omega C}\right)} \approx
+        \frac{\frac{L}{C}}{R + j\left(\omega L - \frac{1}{\omega C}\right)}.
+    \]
+    
+    Полное сопротивление:
+    \[
+        |Z| = \frac{L}{C}{\sqrt{R^2 + j\left(\omega L -
+        \frac{1}{\omega C}\right)^2}}.
+    \]
+    
+    Амплитуда тока:
+    \[
+        I = \frac{U}{|Z|}.
+    \]
+    
+    Видно, что максимальное полное сопротивление равно
+    \[
+        |Z|_{{max}} = \frac{L}{RC} =
+        R\left(\frac{1}{R}\sqrt{\frac{L}{C}}\right)^2 = Q^2R,
+    \]
+    следовательно, минимальный ток
+    \[
+        I_{{min}} = \frac{U}{Q^2R}.
+    \]
+    
+    Из вышеизложенного можно сделать следующие выводы:
+    \begin{itemize}
+        \item резонанс наступает при \( \omega = \omega_0 \);
+        \item полное сопротивление максимально при резонансе:
+            \[
+                |Z| \to \mathrm{max} = Q^2R,
+            \]
+            при \( R \to 0 \) \( |Z| \to \infty \);
+        \item ток минимален при резонансе:
+            \[
+                I \to \mathrm{min} = \frac{U}{Q^2R};
+            \]
+        \item токи в ветвях одинаковы, противофазны и в \( Q \) раз больше
+            подходящего:
+            \[
+                I_L = I_C = QI;
+            \]
+        
+            \begin{proof}
+                Ток на емкости:
+                \[
+                    \dot{I}_C = \frac{\dot{U}}{Z_C} =
+                    \imone\omega C\dot{U} =
+                    \imone\sqrt{\frac{C}{L}}\dot{U}.
+                \]
+                
+                Ток на индуктивности:
+                \[
+                    \dot{I}_L = \frac{\dot{U}}{Z_L} =
+                    -\imone\frac{\dot{U}}{\omega L} =
+                    -\imone\sqrt{\frac{C}{L}}\dot{U}.
+                \]
+                
+                Амплитуды токов:
+                \[
+                    |\dot{I}_C| = |\dot{I}_L| = \sqrt{\frac{C}{L}}U =
+                    \frac{R}{R}\sqrt{\frac{C}{L}}U = \frac{U}{QR} = QI.
+                \]
+            \end{proof}
+    \end{itemize}
+    
+\section{Поведение элементов \textit{R}, \textit{L} и \textit{C} на СВЧ}
+
+    При частотах \( f \gtrsim 300 \)МГц (\( \lambda = \frac{c}{f} = 1 \)м) для
+    настольных цепей перестает выполнятся условие квазистацинарности,
+    следовательно, к таким цепям нельзя применять правила Кирхгофа.
+    
+    При частотах \( f \gtrsim 10^8 \)Гц элементы \( R \), \( L \) и \( C \)
+    начинают вести себя как колебательные контуры, то есть у активного
+    сопротивления появляются свойства емкости и индуктивности, у индуктивности
+    -- емкости и активного сопротивления, у конденсатора -- индуктивности.
+    
+    \subsection{Элемент R}
+    
+        В активном сопротивлении появляется поле \( B \ne 0 \), следовательно,
+        на СВЧ у активного сопротивления появляются индуктивные свойства:
+        \[
+            L_R = \frac{q}{\mu_0 i^2}\iiint\limits_V B\dd V \ne 0,
+        \]
+        \[
+            X_L = \omega L_R.
+        \]
+        
+        Далее, так как \( U_R = iR \ne 0 \), то между торцами \( R \) есть поле
+        \[
+            E = \frac{U}{l} \ne 0.
+        \]
+        Следовательно, у активного сопротивления так же проявляются и емкостные
+        свойства:
+        \[
+            X_C = \frac{1}{\omega C}
+        \]
+        
+        Таким образом, общая эквивалентная схема активного сопротивления на СВЧ:
+        
+        А резонансная частота:
+        \[
+            \omega_{\textit{рез}} = \frac{1}{\sqrt{L_RC_R}} \Rightarrow 
+            f \sim 10^{10} \text{Гц}.
+        \]
+    
+    \subsection{Элемент L}
+    
+        На СВЧ начинают проявлятся межвитковые емкости индуктивности \( C_L \),
+        кроме того, из-за скин-эффекта, начинает расти активное сопротивление
+        витков \( R_L \).
+    
+        Таким образом, общая эквивалентная схема индуктивности на СВЧ:
+    
+    \subsection{Кусок провода}
+        На СВЧ увеличивается его активное сопротивление. Так как есть ток, то и
+        поле \( B \ne 0 \), следовательно, индуктивность \( L \ne 0 \). А так
+        как \( R \ne 0 \) и \( U \ne 0 \), то и \( E \ne 0 \), следовательно,
+        емкость \( C \ne 0 \).
+         
+        Провод ведет себя как колебательный контур (излучающая антенна):
+    
+    \subsection{Элемент C}
+    
+        Согласно уравнению Максвелла (\ref{eq19:4}), переменное поле
+        \( \vec{E}(t) \) вызывает появление магнитного поля \( \vec{B}(t) \):
+        \[
+            \oint\limits_C \vec{B}\cdot\dd\vec{l} =
+            \frac{1}{c^2}\iint\limits_S \frac{\partial \vec{E}}{\partial t}
+            \cdot\dd\vec{S}.
+        \]
+        
+        Следовательно, у емкости проявляются индуктивные свойства. Но, согласно
+        закону ЭМИ (\ref{eq11:3}), переменное магнитное поле вызывает вихревое
+        электрическое поле:
+        \[
+            \oint\limits_C \vec{E}_{\textit{вихр}}\cdot\dd\vec{l} =
+            -\iint\limits_S \frac{\partial \vec{B}}{\partial t}\cdot\dd\vec{S}.
+        \]
+        Оно, складываясь с полем \( \vec{E} \), даст результирующее поле 
+        \( \vec{E}_{\textit{рез}} \) в конденсаторе. При увеличении \( \omega \)
+        на краях конденсатора результирующее поле стремится к нулю
+        \( \vec{E}_{\textit{рез}} \to 0 \).

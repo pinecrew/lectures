@@ -1,0 +1,397 @@
+\chapter{Свободные колебания в контурах}
+
+	\begin{definition}
+        \textbf{Колебания} -- периодический процесс, в котором физическая
+        величина \( x(t) \) принимает примерно равные значения через равные
+        промежутки времени, называемые \textbf{периодом}:
+	    \[ x(t + T) \approx x(t) \]
+	\end{definition}
+	
+	Наиболее подробно рассматриваются следующие виды колебаний:
+	\begin{itemize}
+        \item синусоидальные незатухающие колебания,
+        \item синусоидальные затухающие колебания,
+        \item релаксационные колебания.
+	\end{itemize}
+	
+	Если колебания в системе происходят от первоначального запаса энергии
+    системы и без поступления энергии извне, то такие колебания называются
+    \textbf{свободными}. Если же они поддерживаются периодическим поступлением
+    энергии в систему, то такие колебания называются \textbf{вынужденными}.
+	
+	Свободные колебания реальных макроскопических \textit{всегда} затухающие:
+    первоначальный запас энергии в конце превращается в тепло. Однако, сначала
+    удобно рассмотреть идеализированную колебательную систему, где потерь
+    энергии нет и колебания незатухающие.
+	
+\section{Колебания в идеальном колебательном контуре}
+
+	Зарядим конденсатор до начального напряжения \( u \) и, в момент
+    \( t = 0 \), замкнём ключ \( K \). Конденсатор начнёт разряжаться через
+    катушку, по цепи пойдет ток \( i(t) \). Найдём \( i(t) \), \( q(t) \) и
+    \( u_C(t) \). Для этого запишем второе уравнение Кирхгофа:
+	\[
+        \sum \pm u_k = 0 \quad \text{или} \quad u_L - u_C = 0,
+    \]
+	\begin{equation}
+		L\frac{\dd i}{\dd t} - \frac{q}{C} = 0.
+        \label{eq14:1}
+	\end{equation}
+	
+	Продифференцируем (\ref{eq14:1}) по времени:
+	\[
+        L\frac{\dd ^2i}{\dd t^2} + i\frac{1}{C} = 0.
+    \]
+	Здесь ток \( i = -\frac{\dd q}{\dd t} \) -- \textbf{разрядный} ток.
+	Таким образом, мы получили дифференциальное урвнение, описывающее
+    колебательный процесс в системе:
+	\begin{equation}
+		\frac{\dd ^2i}{\dd t^2} + \omega^2i = 0, 
+        \label{eq14:2}
+	\end{equation}
+	где величина
+    \[
+        \omega = \frac{1}{\sqrt{LC}}
+    \] 
+     называется собственной частотой колебательного контура.
+	
+	Общее решение дифференциального уравнения (\ref{eq14:2}) выглядит следующим
+    образом:
+	\begin{equation}
+		i(t) = A\sin\omega t + B\cos\omega t.
+        \label{eq14:3}
+	\end{equation}
+	Коэффициенты \( A \) и \( B \) определяем из начальных условий \( i(t_0) \)
+    и 
+    \[
+        \left. \frac{\dd i}{\dd t}\right|_{t=0}:
+    \]
+	
+	\( i(+0) = i(-0) = 0 \) -- ток \( i \) сразу после замыкания ключа \( K \),
+    где \( i(-0) \) -- ток до замыкания ключа. Покажем, что \( i(+0) = i(-0) \).
+	
+	Действительно, ток \( i \) через \( L \) \textit{скачком измениться не
+    может}, так как в уравнении (\ref{eq14:1}) величина \( q \) \textit{всегда
+    конечна}. Поэтому \( i(+0) = i(-0) \). Это даёт из (\ref{eq14:3}):
+	\[
+        0 = A\sin0 + B\cos0 \Rightarrow B = 0.
+    \]
+	 
+	Таким образом,
+	\begin{equation}
+		i = A\sin\omega t \label{eq14:4}
+	\end{equation}
+	Из (\ref{eq14:1}):
+	\[
+        \frac{\dd i}{\dd t} = \frac{q}{LC} = \frac{Cu}{LC} =
+        \left.\frac{u}{L}\right|_{t = 0} = \frac{U}{L}.
+    \]
+	Из (\ref{eq14:4}):
+	\[
+        \left.\frac{\dd i}{\dd t}\right|_{t = 0} = A\omega\cos0  = \frac{U}{L}
+    \]
+	Отсюда получаем, что \( A = \frac{U}{\omega L} \). Тогда ток в цепи меняется
+    по закону
+	\begin{equation}
+		i = I\sin\omega t,
+        \label{eq14:5}
+	\end{equation}
+	где
+    \[
+        I = \frac{U}{\omega L} = U\sqrt{\frac{C}{L}}\text{ -- амплитуда тока}
+    \]
+	% к рисунку: T = \frac{2\pi}{\omega} = 2\pi\sqrt{CL}
+	
+	Выражения для \( q(t) \) и \( u_C(t) \) можно получить аналогично из
+    (\ref{eq14:1}):
+	\[
+        L\ddot{q} + \frac{1}{C}q = 0,
+    \]
+	\begin{equation}
+		\ddot{q} + \omega^2q = 0
+	\end{equation}
+	А так как \( q = Cu_C \), то для \( u_C(t) \) получаем:
+	\begin{equation}
+		\ddot{u}_C + \omega^2u_C = 0
+	\end{equation}
+	
+	Выражение для \( u(t) \) удобно взять из подстановки (\ref{eq14:5}) в
+    (\ref{eq14:1}):
+	\begin{equation}
+		u_C(t) = U\cos\omega t
+	\end{equation}
+	
+	Преобразования энергии при колебаниях в контуре:
+	\[
+        \underbrace{W_C}_{\frac{Cu^2}{2}} \to \underbrace{W_L}_{\frac{Li^2}{2}}
+        \to W_C \to W_L \to \ldots
+    \]
+	
+	Покажем, что в любой момент времени \( W_C(t) + W_L(t) = \const \):
+	\begin{align*}
+        & \frac{Cu^2}{2} + \frac{Li^2}{2} = \frac{CU^2}{2}\cos^2\omega t +
+        \frac{LI^2}{2}\sin^2\omega t = \frac{CU^2}{2}\cos^2\omega t + \\
+        & + \frac{L\cdot\left(U\sqrt{\frac{C}{L}}\right)^2}{2}\sin^2\omega t =
+        \frac{CU^2}{2}\cos^2\omega t + \frac{CU^2}{2}\sin^2\omega t =
+        \frac{CU^2}{2} = W_0 = \const,
+	\end{align*}
+	где \( W_0 = W_C \) -- начальный запас энергии в контуре.
+	
+\section{Свободные колебания в реальном контуре}
+
+	Этот раздел подробно рассмотрен в \href{http://dl.dropbox.com/u/41185505/University/Physics/Electricity/%D0%A4309.pdf}{работе Ф309}. Пусть в момент времени \(  t = 0 \)
+    замыкается ключ \( K \). Пойдет разрядный ток
+    \[
+        i = -\frac{\dd q}{\dd t}.
+    \]
+	По второму правилу Кирхгофа:
+	\begin{equation}
+		L\frac{\dd i}{\dd t} + Ri - \frac{q}{C} = 0.
+        \label{eq14:n1}
+	\end{equation}
+	Продифференцируем уравнение (\ref{eq14:n1}) по \( t \):
+	\[
+        L\frac{\dd^2 i}{\dd t^2} + R\frac{\dd i}{\dd t} + \frac{1}{C}i = 0,
+    \]
+	\begin{equation}
+		\frac{\dd^2 i}{\dd t^2} + 2\beta\frac{\dd i}{\dd t} + \omega_0^2 i = 0,
+        \label{eq14:n2}
+	\end{equation}
+	где \( \beta = \frac{R}{2L} \) -- коэффициент затухания,
+    \( \omega_0 = \frac{1}{\sqrt{LC}} \) -- собственная частота контура.
+	
+	Уравнение (\ref{eq14:n2}) -- уравнение свободных затухающих колебаний в
+    каноническом виде.
+	
+	Произведем в (\ref{eq14:n2}) замену
+	\begin{equation}
+		i(t) = x(t)e^{-\beta t}
+        \label{eq14:n3}
+	\end{equation}
+	и получим
+	\begin{equation}
+		\ddot{x} + (\omega_0^2 - \beta^2)x = 0.
+        \label{eq14:n4}
+	\end{equation}
+	
+	Так как \( \omega_0^2 - \beta^2 \) может быть больше нуля, равно нулю или
+    меньше нуля, то уравнение (\ref{eq14:n4}) имеет три решения:
+	\begin{enumerate}
+        \item \( \omega_0 > \beta \) -- докритический режим.
+
+            Обозначим \( \sqrt{\omega_0^2 - \beta^2} \) за \( \omega \) --
+            частоту свободных колебаний. Тогда решение уравнения (\ref{eq14:n4})
+            \[
+                x(t) = A\sin\omega t + B\cos\omega t,
+            \]
+            а решение уравнения (\ref{eq14:n2}) с учетом (\ref{eq14:n3}):
+            \begin{equation}
+                i(t) = e^{-\beta t}(A\sin\omega t + B\cos\omega t).
+                \label{eq14:n5}
+            \end{equation}
+        
+            Коэффициенты \( A \) и \( B \)  определяются из начальных условий:
+            \begin{enumerate}
+                \item \( i(+0) = i(-0) = 0: \)
+                \[
+                    0 = e^0(A\sin0 + B\cos0) \Rightarrow B = 0.
+                \]
+                Таким образом,
+                \begin{equation}
+                    i(t) = Ae^{-\beta t}\sin\omega t;
+                    \label{eq14:n6}
+                \end{equation}
+                
+                \item
+                    \[
+                        L\left.\frac{\dd i}{\dd t}\right|_{t = 0} =
+                        \left.(U_C - Ri)\right|_{t = 0} = U_0,
+                    \]
+                где \( U_0 \) -- начальное напряжение на конденсаторе.
+                \[
+                    \left.\frac{\dd i}{\dd t}\right|_{t = 0} = \frac{U_0}{L}.
+                \]
+                Подставляя в (\ref{eq14:n6}):
+                \[
+                    \frac{U_0}{L} = \left.A(-\beta e^{-\beta t}\sin\omega t +
+                    \omega e^{-\beta t}\cos\omega t)\right|_{t = 0} =
+                    A\omega \Rightarrow A = \frac{U_0}{\omega L}.
+                \]
+                Тогда
+                \begin{equation}
+                    i(t) = I_0e^{-\beta t}\sin\omega t,
+                    \label{eq14:n7}
+                \end{equation}
+                где
+                \[
+                    I_0 = \frac{U_0}{\omega L}
+                    \text{ -- начальная амплитуда тока}
+                \]
+            \end{enumerate}
+        
+            Уравнение (\ref{eq14:n7}), являющееся решением уравнения
+            (\ref{eq14:n1}), описывает затухающие колебания, а выражение
+            \( I_0e^{-\beta t} = I(t) \) является их амплитудой.
+        
+            \begin{definition}
+                Время \( \tau \), за которое амплитуда \( I \) уменьшается в
+                \( e \) раз, называется \textbf{временем релаксации}:
+                \[
+                    \frac{I(t)}{I(t + \tau)} = 
+                    \frac{I_0e^{-\beta t}}{I_0e^{-\beta t}e^{-\beta\tau}} =
+                    e^{\beta\tau} = e.
+                \]
+        
+                Следовательно,
+                \[
+                    \tau = \frac{1}{\beta} = \frac{2L}{R}.
+                \]
+            \end{definition}
+        
+            \begin{definition}
+                Натуральный логарифм отношения двух соседних амплитуд
+                \[
+                    \delta = \ln\frac{I_k}{I_{k + 1}}
+                \]
+                называется \textbf{логарифмическим декрементом затухания}.
+            \end{definition}
+        
+            \[
+                \ln\frac{I_k}{I_{k + 1}} =
+                \frac{I_0e^{-\beta t}}{I_0e^{-\beta t}e^{-\beta T}} =
+                \ln e^{\beta T} = \beta T.
+            \]
+        
+            Таким образом, \( \delta = \beta T \). Выразим его через параметры
+            контура:
+            \[
+                \delta = \frac{R}{2L}\cdot\frac{2\pi}{\omega} =
+                \frac{R\pi}{\omega L}.
+            \]
+            
+            Если затухание \textbf{слабое}, то есть если
+            \( \beta \ll \omega_0 \), то \( \delta \ll 1 \) и
+            \( \omega \approx \omega_0 \).
+            
+            \begin{remark}
+                Если измерены амплитуды \( I_k \) и \( I_{k + N} \), то
+                логарифмический декремент затухания:
+                \[ \delta = \frac{1}{N}\ln\frac{I_k}{I_{k + N}} \]
+            \end{remark}
+            \begin{proof}
+                \[
+                    \ln\frac{I_k}{I_{k + N}} =
+                    \frac{I_0e^{-\beta t}}{I_0e^{-\beta t}e^{-\beta NT}} =
+                    \ln e^{\beta NT} = \beta NT.
+                \]
+                А так как логарифмический декремент затухания
+                \( \delta = \beta T \), то:
+                \[
+                    \delta = \frac{1}{N}\ln\frac{I_k}{I_{k + N}}.
+                \]
+            \end{proof}
+            
+            Важной характеристикой всякой колебательной системы является
+            \textbf{добротность} \( Q \):
+            \begin{equation}
+                Q = \frac{\pi}{\delta}.
+                \label{eq14:17}
+            \end{equation}
+            
+            Для слабозатухающих колебаний:
+            \[
+                Q = \frac{\pi}{\delta} = \frac{\pi}{\frac{R\pi}{\omega_0 L}} =
+                \frac{\omega_0 L}{R} = \frac{1}{R}\sqrt{\frac{L}{C}}.
+            \]
+            Таким образом,
+            \[
+                Q = \frac{\pi}{\delta} = \frac{1}{R}\sqrt{\frac{L}{C}}.
+            \]
+            Для радиоконтуров \( Q \sim 10 \ldots 100 \). Для СВЧ-контуров:
+            \( Q \sim 10^4 \ldots 10^5 \).
+            
+            Другое полезное определение добротности:
+            \[
+                Q = 2\pi\frac{W}{\Delta W_T},
+            \]
+            где \( W \) -- энергия контура в данный момент, \( \Delta W_T \) --
+            потери энергии за текущий период. Покажем, что это определение
+            эквивалентно (\ref{eq14:17}).
+            \[
+                W(t) = \frac{LI^2(t)}{2} = \frac{LI_0^2}{2}e^{-2\beta t} =
+                W_0e^{-2\beta t}
+            \]
+            
+            Тогда убыль энергии за период:
+            \[
+                -\Delta W = \left. \frac{\partial W}{\partial t}
+                \Delta t\right|_{\Delta t = T} = 2\beta W_0e^{-2\beta t}\cdot T.
+            \]
+            Тогда добротность:
+            \[
+                Q = 2\pi\frac{W}{\Delta W_T} =
+                2\pi\frac{W_0e^{-2\beta t}\cdot\omega_0}{2\beta W_0e^{-2\beta t}
+                \cdot 2\pi} = \frac{\omega_0}{2\beta} = 
+                \frac{\frac{1}{\sqrt{LC}}}{2\frac{R}{2L}} =
+                \frac{1}{R}\sqrt{\frac{L}{C}} = \frac{\pi}{\delta}.
+            \]
+            
+            Так как \( \Delta W_T = PT \), где \( P \) -- мощность потерь
+            колебаний, то добротность:
+            \[
+                Q = \omega_0\frac{W}{P}.
+            \]
+        
+        % -----------------------------------------------------------------------------
+        
+        \item \( \beta = \omega_0 \) -- критический режим.
+            В этом случае уравнение (\ref{eq14:n4}) имеет вид:
+            \[ \ddot{x} = 0 \]
+            Его решение: \( x = At + B \). А ток тогда:
+            \[
+                i = xe^{-\beta t} = e^{-\beta t}(At + B).
+            \]
+            
+            Коэффициенты \( A \) и \( B \) определяются из начальных условий:
+            \begin{enumerate}
+                \item \( i(+0) = i(-0) = 0: \)
+                    \[
+                        0 = A\cdot0 + B \Rightarrow B = 0.
+                    \]
+            
+                \item
+                    \[
+                        \left.\frac{\dd i}{\dd t}\right|_0 =
+                        \left.(-\beta e^{-\beta t}At + Ae^{-\beta t})\right|_0 =
+                        \frac{U_0}{L} \Rightarrow A = \frac{U_0}{\omega L}.
+                    \]
+                    Тогда ток \( i \):
+                    \begin{equation}
+                        i = \frac{U_0}{\omega L}te^{-\beta t} \label{eq14:25}
+                    \end{equation}
+            \end{enumerate}
+            
+            Процесс (\ref{eq14:25}) является \textit{апериодическим}, а
+            сопротивление \( R \), соответствующее варианту
+            \( \beta = \omega_0 \), называется \textit{критическим}:
+            \[
+                \frac{1}{\sqrt{LC}} = \frac{R_{\textit{кр}}}{2L},
+            \]
+            \begin{equation}
+                R_{\textit{кр}} = 2\sqrt{\frac{L}{C}}
+            \end{equation}
+        
+        % -----------------------------------------------------------------------------
+        
+        \item \( \beta > \omega_0 \) -- закритический режим.
+            Тогда решением (\ref{eq14:n4}) будет функция:
+            \[
+                x = Ae^{-\alpha t} + Be^{\alpha t},
+            \]
+            где \( \alpha = \sqrt{\beta^2 - \omega_0^2} \).
+            Тогда
+            \[
+                i = xe^{-\beta t} = Ae^{-(\alpha + \beta) t} +
+                Be^{(\alpha - \beta) t}.
+            \]
+    \end{enumerate}
