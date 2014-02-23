@@ -1,0 +1,33 @@
+\documentclass[12pt,chapters,notitlepage,pscyr]{hedwork}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{fourier-orns}
+\usepackage[root,derivative]{hedmaths}
+
+\makeatletter
+  \renewcommand{\@chapapp}{Лекция}
+\makeatother
+
+\let\labelitemi\labelitemii
+\let\labelitemii\textbullet
+
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=Blue]{hyperref}
+
+\begin{document}
+  \begin{titlepage}
+    \vspace*{\fill}
+    \center
+    \Large
+    \rule[.5ex]{8em}{.5pt} \decothreeleft \rule{1em}{0pt}
+    \decosix \rule{1em}{0pt}
+    \decothreeright\ \rule[.5ex]{8em}{.5pt} \\[2ex]
+    
+    Конспект лекций по основам моделирования \\[1.5ex]
+    
+    \rule{22.2em}{.5pt}
+    \vspace*{\fill}
+  \end{titlepage}
+  
+  \input{01}
+\end{document}
