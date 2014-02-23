@@ -68,3 +68,43 @@
         \mu_2 = \sigma^2 = npq.
     \]
 
+\subsection{Распределение Пуассона}
+
+    Пусть число испытаний увеличивается, а вероятность \( P(A) \) уменьшается
+    так, что среднее число событий остаётся постоянным.
+
+    Воспользуемся биномиальным распределением и устремим \( n \) к
+    бесконечности:
+    \begin{gather*}
+        P_n(m) = \frac{n\cdot\ldots\cdot(n-m+1)}{m!}
+        \left(\frac{\average{m}}{n}\right)^m\cdot
+        \left(1 - \frac{\average{m}}{n}\right)^{n-m} =\\
+        =\frac{\average{m}^m}{m!}\left(1 - \frac{\average{m}}{n}\right)^n
+        \left(1 - \frac{\average{m}}{n}\right)^{-m} \cdot 1 \cdot
+        \left(1 - \frac{1}{n}\right)\cdot\ldots\cdot
+        \left(1 - \frac{m-1}{n}\right) \xrightarrow[n\to\infty]{}\\
+        \xrightarrow[n\to\infty]{} \frac{\average{m}^m}{m!}e^{-\average{m}}.
+    \end{gather*}
+    Полученное распределение называется распределением Пуассона.
+
+    Определим его моменты:
+    \[
+        m_1 = \sum_{k=0}^\infty k\frac{\average{m}^k}{k!}e^{-\average{m}} =
+        \sum_{k=0}^\infty \frac{\average{m}^k+1}{k!}e^{-\average{m}} =
+        \average{m},
+    \]
+    \[
+        m_2 = \sum_{k=0}^\infty k^2\frac{\average{m}^k}{k!}e^{-\average{m}} =
+        \sum_{k=0}^\infty k(k-1)\frac{\average{m}^k}{k!}e^{-\average{m}} +
+        \sum_{k=0}^\infty k\frac{\average{m}^k}{k!}e^{-\average{m}} +
+        = \average{m}^2 + \average{m},
+    \]
+    \[
+        \mu_2 = \sigma^2 = m_2 - m_1^2 = \average{m}.
+    \]
+
+    Вероятность того, что событие произойдёт не более \( m \) раз равна
+    \[
+        P(\le m) = \sum_{k=0}^m \frac{\average{m}^k}{k!}e^{-\average{m}} =
+        1 - \frac{\Gamma(m+1, \average{m})}{\Gamma(m+1)}.
+    \]
