@@ -1,0 +1,730 @@
+\section{Теория гамма-функций}
+
+\subsection{Определение и основное свойство гамма-функций}
+
+\emph{Гамма-функцией} или \emph{эйлеровским интегралом второго рода} называется
+функция \( \Gamma(s) \) вида (\ref{eq:gamma_int_def})
+\begin{equation}
+    \Gamma(s) = \int\lni e^{-x}x^{s-1}\,dx.
+    \label{eq:gamma_int_def}
+\end{equation}
+
+Это определение пригодно только если интеграл в правой части имеет смысл, то
+есть только если \( \Re s > 0 \).
+
+Гамма-функция относится к разряду аналитических функций, то есть имеет
+производную, которую можно найти применяя к (\ref{eq:gamma_int_def}) правило
+дифференцирования по параметру:
+\begin{equation}
+    \Gamma'(s) = \int\lni e^{-x}x^{s-1}\ln(x)\,dx.
+    \label{eq:gamma_derivation}
+\end{equation}
+
+К \( \Gamma \)-функции приводятся многие интегралы; один из которых можно
+получить из (\ref{eq:gamma_int_def}) путем замены переменной:
+\[ 
+    x = nt,\text{ где } n = const, \Rightarrow dx = n\,dt,
+    x^{s-1} = n^{s-1}t^{s-1}.
+\]
+Тогда (\ref{eq:gamma_int_def}) принимает вид:
+\[
+    \Gamma(s) = \int\lni e^{-nt}n^{s-1}t^{s-1}n\,dt =
+    n^s\int\lni e^{-nt}t^{s-1}\,dt.
+\]
+
+Разделив последнее выражение на \( n^s \), получим:
+\begin{equation}
+    \frac{\Gamma(s)}{n^s} = \int\lni e^{-nt}t^{s-1}\,dt.
+    \label{eq:gamma_for_applications}
+\end{equation}
+ 
+На выражении (\ref{eq:gamma_for_applications}) основаны многие приложения
+\( \Gamma \)-функции.
+
+Получим из (\ref{eq:gamma_for_applications})  основное свойство
+\( \Gamma \)-функции. Для этого возьмем производную по параметру \( n \) от
+обеих частей уравнения. В результате получим выражение
+\[
+    \frac{s\Gamma(s)}{n^{s+1}} = \int\lni e^{-nt}t^s\,dt.
+\]
+Считая, что \( n = 1 \), получим:
+\[
+    s\Gamma(s) = \int\lni e^{-t}t^s\,dt.
+\]
+Сделаем замену переменной \( t \) на \( x \):
+\[
+    s\Gamma(s) = \int\lni e^{-x}x^s\,dx = \int\lni e^{-x}x^{(s+1)-1}\,dx.
+\]
+Сравнивая полученные выражения с (\ref{eq:gamma_int_def}), видим, что правая
+часть последнего выражения представляет собой \( \Gamma \)-функцию от аргумента
+\( s + 1 \). Это свойство называется основным свойством \( \Gamma \)-функций:
+\begin{equation}
+    s\Gamma(s) = \Gamma(s+1).
+    \label{eq:gamma_main_property}
+\end{equation}
+Из него следует, что:
+\[
+    \Gamma(1) = 1;\ \Gamma(2) = 1;\ \Gamma(3) = 1\cdot2; \ 
+    \Gamma(4) = 1\cdot2\cdot3;\ \ldots;\ \Gamma(n) = (n - 1)!.
+\]
+Эти соотношения справедливы для целого, вещественного и положительного аргумента.
+
+Для полуцелого аргумента можно найти значение \( \Gamma \)-функции с помощью
+интеграла Эйлера-Пуассона:
+\[
+    \int\lni e^{-x^2}\,dx = \sqrt{\pi}/2.
+\]
+Считая \( x = t^{1/2} \) и умножая на 2:
+\[
+    \int\lni e^{-t}t^{1/2-1}\,dt = \sqrt{\pi}.
+\]
+Учитывая определение \( \Gamma \)-функции (\ref{eq:gamma_int_def}):
+\[
+    \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}.
+\]
+Используя последнее выражение и (\ref{eq:gamma_main_property}) можно найти
+значение \( \Gamma \)-функции для любого полуцелого аргумента.
+
+В общем случае справедливо равенство (\ref{eq:gamma_for_half_integer}):
+\begin{equation}
+    \Gamma\left(n + \frac{1}{2}\right) =
+    \frac{1\cdot3\cdot\ldots\cdot(2n - 1)}{2^n}\sqrt{\pi}.
+    \label{eq:gamma_for_half_integer}
+\end{equation}
+
+\begin{remark}
+Формула (\ref{eq:gamma_main_property}) является функциональным уравнением
+\( \Gamma \)-функции. Получим из него еще одно важное следствие: возьмем
+натуральный логарифм от обеих частей (\ref{eq:gamma_main_property}) и
+продифференцируем полученное выражение:
+\[
+    \ln{s} + \ln{\Gamma(s)} = \ln{\Gamma(s+1)},
+\]
+\begin{equation}
+    \frac{\Gamma'(s+1)}{\Gamma(s+1)} =
+    \frac{\Gamma'(s)}{\Gamma(s)} + \frac{1}{s}.
+    \label{eq:gamma_main_property_ln_derivation}
+\end{equation}
+Придавая \( s \) ряд значений: 1, 2, \ldots, \( n \), найдем значения
+(\ref{eq:gamma_main_property_ln_derivation}):
+\[
+    \frac{\Gamma'(2)}{\Gamma(2)} = \frac{\Gamma'{1}}{\Gamma(1)} + 1;\ 
+    \frac{\Gamma'(3)}{\Gamma(3)} = \frac{\Gamma'{2}}{\Gamma(2)} + \frac{1}{2};\ 
+    \ldots;\ 
+    \frac{\Gamma'(n+1)}{\Gamma(n+1)} =
+    \frac{\Gamma'{n}}{\Gamma(n)} + \frac{1}{n}.
+\]
+Складывая, получим выражение (\ref{eq:gamma_ln_derivation_series}):
+\begin{equation}
+    \frac{\Gamma'(n)}{\Gamma(n)} =
+    \frac{\Gamma'{1}}{\Gamma(1)} + 1 + \frac{1}{2} + \ldots + \frac{1}{n-1}.
+    \label{eq:gamma_ln_derivation_series}
+\end{equation}
+\end{remark}
+
+\subsection{Бета-функция}
+
+Через \( \Gamma \)-функцию выражаются многие определенные интегралы. Один из
+простейших называется \( B \)-функцией:
+\begin{equation}
+    B(p, q) = \int\limits_0^1 x^{p -1} (1-x)^{q-1}\,dx,
+    \label{eq:beta_int_def}
+\end{equation}
+в которой если \( p \), \( q \) -- вещественные,  то \( p > 0 \), а \( q < 0 \);
+а если \( p \) и \( q \) -- комплексные, то вещественная часть обоих чисел
+больше нуля: \( \Re(p) > 0 \), \( \Re(q) > 0 \).
+
+Выразим \( B \)-функцию через \( \Gamma \)-функции. Для этого рассмотрим две
+\( \Gamma \)-функции:
+\begin{align*}
+    &  \Gamma(p) = \int\lni e^{-x}x^{p-1}\,dx; \\
+    &  \Gamma(q) = \int\lni e^{-y}y^{q-1}\,dy.
+\end{align*}
+Выполним замену переменных: \( x = \zeta^2 \), \( y = \eta^2 \). Тогда:
+\begin{align*}
+    &  \Gamma(p) = \int\lni e^{-\zeta^2}\zeta^{2p-1}\,dx; \\
+    &  \Gamma(q) = \int\lni e^{-\eta^2}\eta^{2q-1}\,dy.
+\end{align*}
+Перемножим эти равенства:
+\[
+    \Gamma(p)\Gamma(q) = 4\int\lni e^{-\zeta^2}\zeta^{2p-1}\ d\zeta
+    \int\lni e^{-\eta^2}\eta^{2q-1}\ d\eta.
+\]
+Заменим произведение интегралов на двойной интеграл:
+\[
+    \Gamma(p)\Gamma(q) = 4\int\lni\int\lni e^{-(\zeta^2 + \eta^2)}
+    \zeta^{2p-1}\eta^{2q-1}\ d\zeta\ d\eta.
+\]
+Введем полярные координаты
+\[
+    \zeta = r\cos\phi,\ \eta = r\sin\phi,\ \zeta^2 + \eta^2 = r^2,
+\]
+и, используя их, получим:
+\begin{equation}
+    \Gamma(p)\Gamma(q) = 4\int\limits_0^{\pi/2}\int\lni e^{-r^2} r^{2p+2q-1}
+    \cos^{2p-1}\phi\sin^{2q-1}\phi\,dr\ d\phi.
+    \label{eq:gamma_multiplication_to_beta}
+\end{equation}
+Вычислим сначала интеграл по \( r \)
+\[
+    \int\lni e^{-r^2}r^{2p+2q-1}\,dr.
+\]
+Сделаем замену переменной: \( r = u^{1/2} \). Тогда интеграл будет \( \Gamma \)-
+функцией от суммы \( p \) и \( q \):
+\[
+    \frac{1}{2} \int\lni e^{-u}u^{p+q-1}\,du = \frac{1}{2}\Gamma(p + q),
+\]
+и (\ref{eq:gamma_multiplication_to_beta}) принимает вид:
+\[
+    \Gamma(p)\Gamma(q) = 2\Gamma(p + q)\int\limits_0^{\pi/2}
+    \cos^{2p-1}\phi\sin^{2q-1}\phi\ d\phi.
+\]
+
+Обозначим \( \cos\phi = x^{1/2} \) и \( \sin\phi = (1-x)^{1/2} \). Тогда:
+\[
+    \Gamma(p)\Gamma(q) = 2\Gamma(p + q)\int\limits_0^1 x^{p-1/2} (1-x)^{q-1/2}
+    \frac{\frac{1}{2}x^{1/2-1}\,dx}{(1-x)^{1/2}}.
+\]
+
+Из этой формулы получим выражение:
+\[
+    \int\limits_0^1 x^{p-1}(1-x)^{q-1}\,dx =
+    \frac{\Gamma(p)\Gamma(q)}{\Gamma(p + q)},
+\]
+то есть эйлеровский интеграл первого рода или \( B \)-функция выражается через
+\( \Gamma \)-функцию или эйлеровский интеграл второго рода по формуле
+(\ref{eq:beta_by_gamma}):
+\begin{equation}
+    B(p, q) = \frac{\Gamma(p)\Gamma(q)}{\Gamma(p + q)}.
+    \label{eq:beta_by_gamma}
+\end{equation}
+
+\subsection{Значение гамма-функции при любом комплексном значении аргумента}
+
+Значение \( \Gamma \)-функции в плоскости комплексной переменной должно быть
+найдено путём аналитического продолжения функции, определённой на вещественной
+оси.  Чтобы  получить  это  продолжение,  заметим предварительно, что если
+выполнить интегрирование по частям:
+\[
+    \Gamma(z) = \left.\frac{1}{z}e^{-t}t^z\right|_0^\infty +
+    \frac{1}{z}\int\lni e^{-t}t^z\,dt = \frac{1}{z}\int\lni e^{-t}t^z\,dt,
+\]
+то отсюда следует функциональное соотношение:
+\[
+    \Gamma(z) = \frac{\Gamma(z+1)}{z} = \frac{\Gamma(z+2)}{z(z+1)} =
+    \frac{\Gamma(z+n+1)}{z(z+1)\cdot\ldots\cdot(z+n)},
+\]
+в предположении, что \( \Re(z) > 0 \).
+
+Рассмотрим теперь функцию комплексной переменной \( f(z) \), которая для любых
+значений \( z \), принадлежащих области \( \Re(z) > -(n + 1) \),
+\( z \ne 0, -1, -2, \ldots \), определяется при помощи равенства:
+\[
+    f(z) = \frac{\Gamma(z+n+1)}{z(z+1)\cdot\ldots\cdot(z+n)},
+\]
+где \( \Gamma(z) \) обозначает \( \Gamma \)-функцию, представляемую интегралом
+\( \int\lni e^{-t}t^{z-1}\,dt \).
+
+Функция \( f(z) \) регулярна в рассматриваемой области и ее значение при
+\( \Re(z) > 0 \) совпадает с \( \Gamma(z) \). Поэтому \( f(z) \) есть искомое
+аналитическое продолжение \( \Gamma(z) \) в область
+\( -(n + 1) < \Re(z) \leq 0 \), \( z \ne 0, -1, -2, \ldots \)  и  мы  можем
+определить \( \Gamma \)-функцию в этой области посредством формулы:
+\begin{equation}
+   \Gamma(z) \equiv f(z) = \frac{\Gamma(z+n+1)}{z(z+1)\cdot\ldots\cdot(z+n)}.
+   \label{eq:gamma_on_complex_plane}
+\end{equation}
+
+Так как число \( n \) может быть выбрано произвольно большим, то
+\( \Gamma \)-функция  определена  на  всей  плоскости  комплексной  переменной,
+ исключая точки  \( z = 0, -1, -2, \ldots \). Последние  точки  являются
+ полюсами  рассматриваемой функции.  Действительно,  в  окрестности  точки
+ \( z = -n \) \( \Gamma(z) \) определяется формулой
+ (\ref{eq:gamma_on_complex_plane}), откуда следует, что:
+\[
+    \lim_{z\to -n} \Gamma(z)(z+n) = (-1)^n\frac{\Gamma(1)}{n!} =
+    \frac{(-1)^n}{n!}.
+\]
+
+Таким образом, \( \Gamma(z) \) есть мероморфная функция комплексной переменной
+(определена на всей комплексной плоскости и не имеет в конечной части плоскости
+особых точек, отличных от полюсов) с простыми полюсами (изолированная точка
+\( z_0 \)  называется полюсом \( f(z) \), если в разложении этой функции в ряд
+Лорана в проколотой окрестности точки \( z_0 \)  главная часть содержит конечное
+число отличных от нуля членов) в точках \( z = 0, -1, -2, \ldots \).
+
+\subsection{Представление \( \Gamma \)-функции в виде бесконечного произведения}
+
+Эйлер дал представление \( \Gamma(s) \) в виде предела произведения бесконечно
+возрастающего числа множителей. Это представление может быть получено исходя из
+прежнего определения \( \Gamma \)-функции:
+\begin{equation}
+    \Gamma(s) = \int\lni e^{-x}x^{s-1}\,dx = 
+    \limni\int\limits_0^n e^{-x}x^{s-1}\,dx.
+    \label{eq1.4.1}
+\end{equation}
+
+С помощью известного равенства
+\[
+    e^{-x} = \limni\left(1-\frac{x}{n}\right)^n
+\]
+перепишем (\ref{eq1.4.1}) в виде (\ref{eq1.4.2}):
+\begin{equation}
+    \Gamma(s) = \limni\int\limits_0^n\left(1-\frac{x}{n}\right)^n
+    x^{s-1}\,dx.
+    \label{eq1.4.2}
+\end{equation}
+ 
+Интегрируя по частям, обозначая \( \left(1-\frac{x}{n}\right)^n = u \),
+\( x^{s-1}\,dx = dv \), получим:
+\[
+    \left.\left(1 - \frac{x}{n}\right)^n\frac{x^s}{s}\right|_0^n +
+    \frac{n}{sn}\int\limits_0^n \left(1 - \frac{x}{n}\right)^{n-1}x^s\,dx =
+    \frac{n}{sn}\int\limits_0^n \left(1-\frac{x}{n}\right)^{n-1} x^s\,dx.
+\]
+ \[
+    \int\limits_0^n \left(1 - \frac{x}{n}\right)^nx^{s-1}\,dx =
+    \frac{n}{sn}\int\limits_0^n \left(1 - \frac{x}{n}\right)^{n-1}x^s\,dx =
+    \frac{n(n-1)}{s(s+1)n^2} \int\limits_0^n \left(1 - \frac{x}{n}\right)^{n-2}
+    x^{s+1}\,dx,
+\]
+ 
+интегрируя \( n \) раз, получим выражение (\ref{eq1.4.3}):
+ \begin{equation}
+    \frac{1\cdot2\cdot3\cdot\ldots\cdot n}{s(s+1)\cdot\ldots\cdot(s+n-1)}
+    \cdot\frac{1}{n^n}\cdot\frac{n^{s+n}}{s+n} =
+    \frac{n!n^s}{s(s+1)\cdot\ldots\cdot(s+n)}.
+    \label{eq1.4.3}
+\end{equation}
+
+Выражение (\ref{eq1.4.3}) является бесконечным произведением Эйлера.
+
+Вейерштрасс придал этому выражению иной вид, исходя из следующего равенства:
+\[
+    1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n-1} = \ln{n} + c +
+    \frac{1}{2n} + \frac{B_1}{2n^2} + (-1)^{k-1}\frac{B_k}{2k}\frac{1}{n^{2k}},
+\]
+преобразуя которое он получил следующее:
+\[
+    \limni\left(1+\frac{1}{2}+\frac{1}{3}+\ldots+ \frac{1}{n-1} + \frac{1}{n} -
+    \ln{n}\right) = c.
+\]
+
+Отсюда можно записать (\ref{eq1.4.4}):
+\begin{equation}
+    e^{cs} = \limni e^{s + \frac{s}{2} + \frac{s}{3} + \ldots + \frac{s}{n} -
+    s\ln{n}} = \limni e^s e^\frac{s}{2} e^\frac{s}{3}\ldots e^\frac{s}{n}n^{-s}.
+    \label{eq1.4.4}
+\end{equation}
+
+Перемножая (\ref{eq1.4.3}) и (\ref{eq1.4.4}) получим:
+\[
+    e^{cs}\Gamma(s) = \limni \frac{1}{s}\frac{1\cdot e^s}{s+1}
+    \frac{2\cdot e^\frac{s}{2}}{s+2}\cdot\ldots\cdot\frac{ne^\frac{s}{n}}{s+n}.
+\]
+
+Тогда:
+\[
+    e^{cs}\limni s(s+1)e^{-s} \left(1+\frac{s}{2}\right)e^{-s}{2}
+    \left(1+\frac{s}{3}\right)e^{-s}{3}\cdot\ldots\cdot
+    \left(1+\frac{s}{n}\right)e^{-s}{n}.
+\]
+
+Применяя для однотипных множителей символ \( \prod \) из последнего равенства
+получаем бесконечное произведение для всех \( \Gamma \)-функций в форме
+Вейерштрасса:
+\begin{equation}
+    \frac{1}{\Gamma(s)} =
+    se^{cs}\prod\limits_{k=1}^\infty\left(1+\frac{s}{k}\right)e^{-\frac{s}{k}}.
+    \label{eq1.4.5}
+\end{equation}
+
+Формулы (\ref{eq1.4.3}) и (\ref{eq1.4.5}) имеют смысл при любых значениях
+\( s \) -- как при вещественных, так и комплексных. Они дают для \( \Gamma(s) \)
+определенное конечное значение всегда, когда \( s \ne 0,\ -1,\ -2,\ \ldots \).
+Если \( s \) равно одному из этих чисел, то \( \Gamma(s) = \infty \).
+
+Формула (\ref{eq1.4.5}) показывает, что функция \( 1/\Gamma(s) \) является
+трансцендентной функцией, подобной \( e^x,\ \cos x,\ \sin x \).
+
+Единственные корни этой функции -- \( 0 \), \( -1 \), \( -2 \), \ldots. Функция
+\( \Gamma(s) \) корней не имеет.
+
+Взяв логарифмическую производную от формулы (\ref{eq1.4.5}) и изменив знаки на
+противоположные, получим (\ref{eq1.4.6}):
+\begin{equation}
+   \frac{\Gamma'(s)}{\Gamma(s)} = -\frac{1}{s} - c + \sum\limits_{k=1}^\infty
+   \left(\frac{1}{k} - \frac{1}{s+k}\right).
+   \label{eq1.4.6}
+\end{equation}
+
+Считая \( s = 1\):
+\[
+    \frac{\Gamma'(1)}{\Gamma(1)} = -1 - c + \left(1 - \frac{1}{2}\right) +
+    \left(\frac{1}{2} - \frac{1}{3}\right) + \ldots = -c.
+\]
+
+\subsection{Второе свойство \( \Gamma \)-функций}\
+
+Из формулы (\ref{eq1.4.4}) получим:
+\[
+    \frac{\Gamma'(s)}{\Gamma(s)} = -\frac{1}{s} - C + \sum\limits_{n=1}^\infty
+    \left(\frac{1}{n} - \frac{1}{n+s}\right),
+\]
+\[
+    \frac{\Gamma'(-s)}{\Gamma(-s)} = \frac{1}{s} - C + \sum\limits_{n=1}^\infty
+    \left(\frac{1}{n} - \frac{1}{n-s}\right).
+\]
+Вычтем первое равенство из второго:
+\[
+    \frac{\Gamma'(-s)}{\Gamma(-s)} - \frac{\Gamma'(s)}{\Gamma(s)} =
+    \frac{2}{s} + \sum\limits_{n=1}^\infty \left(\frac{1}{n+s} -
+    \frac{1}{n-s}\right) = 
+    \frac{2}{s} + \sum\limits_{n=1}^\infty \frac{2s}{s^2 - n^2}.
+\]
+
+Используя разложение \( \ctg x \) на простейшие дроби
+\[
+    \ctg x = \frac{1}{x} + \sum\limits_{n=1}^\infty \frac{2x}{x^2 - \pi^2n^2},
+\]
+получаем
+\[
+    \frac{\Gamma'(-s)}{\Gamma(-s)} - \frac{\Gamma'(s)}{\Gamma(s)} =
+    \frac{1}{s} + \pi\ctg\pi s.
+\]
+Интегрируя это выражение, получим
+\[
+    -\ln\Gamma(s) - \ln\Gamma(-s) = \ln s + \ln\sin(\pi s) - \ln C.
+\]
+
+Используя основное свойство \( \Gamma \)-функции для аргумента \( -s \)
+\[
+    -s\Gamma(-s) = \Gamma(1-s),
+\]
+получим
+\[
+    \Gamma(s)\Gamma(1-s) = \frac{C}{\sin(\pi s)}.
+\]
+Определим константу \( C \), считая \( s = 1/2 \):
+\[
+    C = \Gamma^2\left(\frac{1}{2}\right) = \pi.
+\]
+
+Таким образом, второе свойство \( \Gamma \)-функций:
+\begin{equation}
+   \Gamma(s)\Gamma(1-s) = \frac{\pi}{\sin(\pi s)}.
+   \label{eq1.5.1}
+\end{equation}
+
+\subsection{Третье свойство \( \Gamma \)-функций}
+
+Исходя из формулы (\ref{eq1.6.1})
+\begin{equation}
+    \Gamma(s) =
+    \limni\frac{1\cdot2\cdot3\cdot\ldots\cdot n}{s(s+1)\ldots(s+n)} n^s
+    \label{eq1.6.1}
+\end{equation}
+получим еще одно свойство \( \Gamma \)-функций, заменяя в этой формуле \( s \)
+на \( s + 1/2 \):
+\begin{equation}
+    \Gamma\left(s+\frac{1}{2}\right) =
+    \limni\frac{1\cdot2\cdot3\cdot\ldots\cdot n}{
+    \left(s + \frac{1}{2}\right) \left(s + \frac{3}{2}\right) \ldots
+    \left(s + n + \frac{1}{2}\right)} n^{s+\frac{1}{2}}.
+    \label{eq1.6.2}
+\end{equation}
+
+Заменяя в (\ref{eq1.6.1}) \( s \) на \( 2s \), \( n \) на \( 2n \), получим
+(\ref{eq1.6.3}):
+\begin{equation}
+    \Gamma(2s) =
+    \limni\frac{1\cdot2\cdot\ldots\cdot2n}{2s(2s+1)\ldots(2s+2n)}(2n)^{2s}.
+    \label{eq1.6.3}
+\end{equation}
+
+Перемножая (\ref{eq1.6.1}) и (\ref{eq1.6.2}) и деля их на (\ref{eq1.6.3}),
+получим следующее выражение:
+\[
+    \frac{\Gamma(s)\Gamma(s+1/2)}{\Gamma(2s)} = \limni\left[
+    \frac{(1\cdot2\cdot3\cdot\ldots\cdot n)^2}{1\cdot2\cdot3\cdot\ldots\cdot2n} 
+    \frac{\sqrt{n}}{2^{2s}}
+    \frac{2s(2s+1)\ldots(2s+2n)}{s(s+1/2)(s+1)\ldots(s+n)(s+n+1/2)}\right].
+\]
+
+Умножим обе части на \( 2^{2s} \) и, сокращая, получим:
+\[
+    \frac{\Gamma(s)\Gamma(s+1/2)}{\Gamma(2s)}2^{2s} = 
+    \limni\frac{(1\cdot2\cdot3\cdot\ldots\cdot n)^2 \sqrt{n}}
+    {1\cdot2\cdot3\cdot\ldots\cdot2n}\cdot\frac{2^{2n+1}}{s+n+1/2}.
+\]
+
+Сделав замену \( \sqrt{n}/(s+n+1/2) = 1/\sqrt{n} \), получим (\ref{eq1.6.4}):
+\begin{equation}
+    \frac{\Gamma(s)\Gamma(s+1/2)}{\Gamma(2s)} 2^{2s} =
+    \limni\frac{(1\cdot2\cdot\ldots\cdot n)^2}{1\cdot2\cdot3\cdot\ldots\cdot2n} 
+    \frac{2^{2n+1}}{\sqrt{n}}.
+    \label{eq1.6.4}
+\end{equation}
+
+Считая \( s = 1/2 \), получим: \( \Gamma(s) = \sqrt{\pi} \),
+\( \Gamma(s + 1/2) = \Gamma(1) = 1 \), \( \Gamma(2s) = 1 \). Тогда:
+\begin{equation}
+    2\sqrt{\pi} = \limni\frac{(1\cdot2\cdot3\cdot\ldots\cdot n)^2}
+    {1\cdot2\cdot3\cdot\ldots\cdot2n}\cdot\frac{2^{2n+1}}{\sqrt{n}}.
+    \label{eq1.6.5}
+\end{equation}
+
+Сравнивания (\ref{eq1.6.4}) и (\ref{eq1.6.5}) находим, что левая часть
+(\ref{eq1.6.4}) равна \( 2\sqrt{\pi} \):
+\[
+    \frac{\Gamma(s)\Gamma(s+1/2)}{\Gamma(2s)}2^{2s} = 2\sqrt{\pi}.
+\]
+
+Отсюда получим (\ref{eq1.6.6}):
+\begin{equation}
+    \Gamma(s)\Gamma(s+1/2) = 2^{1-2s}\sqrt{\pi}\Gamma(2s).
+    \label{eq1.6.6}
+\end{equation}
+
+Выражение (\ref{eq1.6.6}) определяет третье основное свойство
+\( \Gamma \)-функций. Эта формула была получена Лежандром. Она представляет
+частный случай формулы, полученной впоследствие Гауссом:
+\begin{equation}
+    \Gamma(s)\Gamma(s+1/2)\cdot\ldots\cdot\Gamma\left(s + \frac{n-1}{n}\right) =
+    n^{1/2-ns}\cdot(2\pi)^{1/2\cdot(n-1)}\Gamma(ns).
+    \label{eq1.6.7}
+\end{equation}
+
+Формула (\ref{eq1.6.7}) получается аналогично (\ref{eq1.6.6}).
+
+\subsection{Представление логарифма гамма-функции в виде определенного интеграла}
+
+Выражение (\ref{eq1.4.6}) можно записать в виде (\ref{eq1.7.1}):
+\begin{equation}
+    \frac{\Gamma'(s)}{\Gamma(s)} = -C +
+    \sum\limits_{k=1}^\infty\left(\frac{1}{k} - \frac{1}{s+k-1}\right).
+    \label{eq1.7.1}
+\end{equation}
+
+Формула (\ref{eq1.7.1}) может быть представлена в виде (\ref{eq1.7.2}):
+\begin{equation}
+    \frac{\Gamma'(s)}{\Gamma(s)} = -C +
+    \limni\sum\limits_{k=1}^n \left(\frac{1}{k} - \frac{1}{s+k-1}\right).
+    \label{eq1.7.2}
+\end{equation}
+
+Величины \( C \), \( \frac{1}{k} \) и \( \frac{1}{s+k-1} \) можно выразить
+через определенные интегралы:
+\[
+    \frac{1}{k} = \int\lni e^{-k\tau}\ d\tau;\ 
+    \frac{1}{s+k-1} = \int\lni e^{-(s+k-1)\tau}\ d\tau;\ 
+    C =
+    \int\lni e^{-\tau}\left(\frac{1}{1-e^{-\tau}}-\frac{1}{\tau}\right)\ d\tau.
+\]
+
+Будем считать, что \( \Re(s) > 0 \), тогда интеграл \( \frac{1}{s+k-1} \) будет
+сходящимся при всех \( k \), равных положительному целому числу.
+
+Подставляя это в (\ref{eq1.7.2}), получим:
+\[
+    \frac{\Gamma'(s)}{\Gamma(s)} =
+    -\int\lni e^{-\tau}\left(\frac{1}{1-e^{-\tau}} -
+    \frac{1}{\tau}\right)\ d\tau + \limni\sum\limits_{k=1}^n \int\lni
+    \left[ e^{-k\tau} - e^{-(s+k-1)\tau} \right]\ d\tau.
+\]
+
+Меняя местами знаки суммы и интеграла, получим:
+\begin{align*}
+    & \frac{\Gamma'(s)}{\Gamma(s)} =
+    -\int\lni e^{-\tau}\left(\frac{1}{1-e^{-\tau}} -
+    \frac{1}{\tau}\right)\ d\tau +
+    \limni\int\lni \left[ \frac{e^{-\tau} - e^{-(n+1)\tau}}{1-e^{-\tau}} -
+    \frac{e^{-s\tau} - e^{-(n+s)\tau}}{1-e^{-\tau}} \right]\ d\tau = \\
+    & = -\int\lni e^{-\tau}\left(\frac{1}{1-e^{-\tau}} -
+    \frac{1}{\tau}\right)\ d\tau +
+    \int\lni\frac{e^{-\tau} - e^{-s\tau}}{1-e^{-\tau}}\ d\tau +
+    \limni\int\limits_0^ne^{-n\tau}
+    \frac{e^{-\tau}-e^{-s\tau}}{1-e^{-\tau}}\ d\tau.
+\end{align*}
+
+Третье слагаемое стремится к нулю. Приведя подобные в первых двух интегралах,
+получим (\ref{eq1.7.3}):
+\begin{equation}
+    \frac{\Gamma'(s)}{\Gamma(s)} = \int\lni \left(\frac{e^{-\tau}}{\tau} -
+    \frac{e^{-s\tau}}{1-e^{-\tau}}\right)\ d\tau.
+    \label{eq1.7.3}
+\end{equation}
+
+Прибавим к (\ref{eq1.7.3}) почленно два равенства (\ref{eq1.7.4}) и
+(\ref{eq1.7.5})\\
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \begin{equation}
+        -\ln s = -\int\lni\left(\frac{e^{-\tau}-e^{-s\tau}}{\tau}\right)\ d\tau,
+        \label{eq1.7.4}
+    \end{equation}        
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \begin{equation}
+        \frac{1}{2s} = \int\lni \frac{e^{-s\tau}}{2}\ d\tau.
+        \label{eq1.7.5}
+    \end{equation}        
+\end{minipage}
+
+Получим (\ref{eq1.7.6}).
+\begin{equation}
+    \frac{\Gamma'(s)}{\Gamma(s)} - \ln s + \frac{1}{2s} = -\int\lni e^{-s\tau}
+    \left(\frac{1}{1-e^{-\tau}} - \frac{1}{\tau} - \frac{1}{2}\right)\ d\tau.
+    \label{eq1.7.6}
+\end{equation}
+
+Перенесем слагаемое \( -\ln s + 1/(2s) \) в правую часть и проинтегрируем обе
+части по \( s \) в пределах \( [0, s] \). Получим (\ref{eq1.7.7}):
+\begin{equation}
+    \ln \Gamma(s) = s\ln s - s - \frac{1}{2}\ln s + A + \int\lni e^{-s\tau}
+    \left(\frac{1}{1-e^{-\tau}} - \frac{1}{\tau} - \frac{1}{2}\right)\ 
+    \frac{d\tau}{\tau},
+    \label{eq1.7.7}
+\end{equation}
+\[
+    \text{где } A = \int\lni e^{-\tau} \left(\frac{1}{1-e^{-\tau}} -
+    \frac{1}{\tau} - \frac{1}{2}\right)\ \frac{d\tau}{\tau} = \ln\sqrt{2\pi}.
+\]
+
+\subsection{Формула Стирлинга}
+
+Формула (\ref{eq1.7.7}) дает возможность получить формулу Стирлинга, важную для
+вычисления \( \ln\Gamma(s) \) и \( \Gamma(s) \). Формула Стирлинга полезна,
+когда \( \Re(s) > 0 \), а \( s \) достаточно велико по абсолютному значению.
+Кроме того, данная формула полезна и в остальных случаях, так как соотношение
+\( \Gamma(s) = \Gamma(s+1)/s \) позволяет сводить вычисление \( \Gamma(s) \) к
+вычислению \( \Gamma(s+n) \), где \( n \) -- целое число, настолько больше, что
+можно использовать формулу Стирлинга для \( \ln \Gamma(s+n) \).
+
+Формула Стирлинга имеет вид:
+\begin{align*}
+    & \ln\Gamma(s) = s\ln s - s - \frac{1}{2}\ln s + \ln\sqrt{2\pi} + 
+    \frac{B_1}{1\cdot2\cdot s} - \frac{B_2}{3\cdot4\cdot s^3} + \ldots \\
+    & \ldots + (-1)^{n-2}\frac{B_{n-1}}{(2n-3)(2n-2)s^{2n-3}} + (-1)^{n-1}
+    \theta\frac{B_n}{(2n-1)2n\xi^{2n-1}}.
+\end{align*}
+
+Если \( s > 0 \), то \( \xi = s \). Коэффициенты \( B_1, B_2, \ldots, B_n \) --
+некоторые константы. \( \theta \) -- некоторая функция \( \tau \). Получить ее
+точное значение невозможно, но можно оценить ее из выражения:
+\[
+    \left| \int\lni e^{-s\tau}\tau^{2n-2}\theta\ d\tau \right| \le
+    \int\lni e^{-\xi\tau}\tau^{2n-2}\ d\tau = \frac{(2n-2)!}{\xi^{2n-1}}.
+\]
+
+Формула Стирлинга, в отличие от сходящихся рядов, не дает возможность вычислить
+\( \ln\Gamma(s) \) со сколь угодно большой точностью, а только с точностью до
+величины последнего члена из числа взятых слагаемых.
+
+\emph{Пример:}
+\[
+    \ln99! = 100\ln100 - 100 - \frac{1}{2}\ln100 + \ln\sqrt{2\pi} +
+    \frac{B_1}{1\cdot2\cdot100} - \frac{B_2}{3\cdot4\cdot100^3} +
+    \theta\frac{B_3}{4\cdot5\cdot100^5},
+\]
+где \( s = 100 \), \( n = 3 \).
+
+Величина последнего слагаемого точно не известна. Но \( 0 < \theta < 1 \),
+поэтому последнее слагаемое по абсолютной величине меньше, чем
+\[
+    \theta\frac{B_3}{4\cdot5\cdot100^5} < \frac{1}{84\cdot10^{11}}.
+\]
+
+???
+
+\[
+    S_k = \sum\limits_{n=1}^\infty \frac{1}{\pi^{2k}n^{2k}}; B_k =
+    \frac{(2k)!}{2^{2k-1}\pi^{2k}}\sum\limits_{n=1}^\infty\frac{1}{n^{2k}}.
+\]
+
+Отсюда: \( B_1 = S_1 \), \( B_2 = \ldots \), \( B_3 = \ldots \),
+\( B_n/((n+1)(n+2)100^{2n-1}) \), где \( B_n \) -- числа Бернулли.
+
+???
+
+\subsection{Интеграл Римана-Ханкеля. Интеграл Эйлера}
+
+Интеграл Эйлера (\ref{eq:gamma_int_def}) представляет собой \( \Gamma \)-функцию
+только при условии \( \Re(s) > 0 \). Риману принадлежит обобщение формулы
+Эйлера, дающее интегральное представление для всех значений \( s \).
+
+Для его получения рассмотрим интеграл от функции \( e^{-x}x^{s-1} \), взятый
+по контуру \( ABCDEFA \) (рис. \ref{pic1.9.1}). Т.к. функция \( e^{-x}x^{s-1} \)
+может иметь особую точку лишь в начале координат, то внутри контура она
+регулярна. Поэтому в силу теоремы Коши интеграл равен нулю.
+Запишем это математически:
+\begin{equation}
+    \int\limits_{ABC} e^{-x}x^{s-1}\,dx = \int\limits_{FED} e^{-x}x^{s-1}\,dx -
+    \int\limits_{CD} e^{-x}x^{s-1}\,dx - \int\limits_{FA} e^{-x}x^{s-1}\,dx.
+    \label{eq1.9.2}
+\end{equation}
+Интегралы по контурам \( CD \) и \( FA \) будут стремиться к нулю, т. к. длина
+пути интегрирования ограничена. Тогда равенство (\ref{eq1.9.2}) принимает вид
+\begin{equation}
+    \int\limits_{\gamma_1} e^{-x}x^{s-1}\,dx =
+    \int\limits_\gamma e^{-x}x^{s-1}\,dx,
+    \label{eq1.9.3}
+\end{equation}
+где \( \gamma_1 \), \( \gamma \) -- означают контуры, имеющие подобно линии
+\( АВС \) форму петли, охватывающей начало координат и уходящую концами в
+бесконечность вдоль положительного направления оси абсцисс.
+
+Равенство (\ref{eq1.9.3}) показывает, что для любых контуров величина интеграла
+\( e^{-x}x^{s-1} \) постоянна.
+
+Предположим, что \( s \) положительное, нецелое число. В качестве контура
+\( \gamma_1 \), возьмем петлю, состоящую из двух горизонталей сверху и снизу,
+отстоящих от оси абсцисс на величину \( h \). Эти горизонтали соединены дугой
+круга радиусом \( \rho \), \( |x| = \rho \), причем \( \rho > h \). Петля
+берется так, чтобы она охватывала начало координат. При \( x = re^{i\phi} \),
+будем считать, что \( x^{s-1} = r^{s-1}e^{i\phi(s-1)} \). Будем считать, что
+\( \phi = \pi \) при \( x < 0 \). Этими данными задается положение центра
+окружности относительно начала координат.
+
+Рассмотрим интеграл, взятый по дуге круга; получим, что его абсолютное значение
+не превосходит \( 2\pi\rho\rho^{s-1}e^\rho \). Последнее выражение стремится к
+нулю при \( \rho \) стремящимся к нулю. Интеграл по верхней горизонтали при
+\( h \) стремящимся к нулю, \( \rho \) стремящимся к нулю и отношении
+\( h/\rho \) стремящимся к нулю, превращается в интеграл Эйлера, т.е. в
+\( \Gamma \)-функцию.
+
+При этом, в интеграле по нижней горизонтали угол \( \phi \) может быть сколь
+угодно близким к \( 2\pi \), т.е. \( \phi\to2\pi \) при \( h\to0 \),
+\( \rho\to0\) и \(h/\rho \to 0 \). При этом интеграл по нижней горизонтали будет
+стремиться к величине
+\[
+    -e^{2\pi i(s-1)} \int\lni e^{-x}x^{s-1}\,dx.
+\]
+
+Сопоставляя записанные выражения, получим равенство (\ref{eq1.9.4})
+\begin{equation}
+    \left(1-e^{i\pi s}\right)\int\lni e^{-x}x^{s-1}\,dx =
+    \int\limits_\gamma e^{-x}x^{s-1}\,dx.
+    \label{eq1.9.4}
+\end{equation}
+
+Формула (\ref{eq1.9.4}) является предельным случаем формулы (\ref{eq1.9.3}),
+т.к. \( h\to0 \), \( \rho\to0\) и \(h/\rho \to 0 \). Контур \( \gamma \) в
+правой части может иметь любой вид, форму и размер. Тогда равенство
+(\ref{eq1.9.4}) переходит в (\ref{eq1.9.5}):
+\begin{equation}
+    \Gamma(s) = \frac{1}{1-e^{2\pi is}} \int\limits_\gamma e^{-x}x^{s-1}\,dx.
+    \label{eq1.9.5}
+\end{equation}
+
+Интеграл в правой части (\ref{eq1.9.5}) представляет собой аналитическую функцию
+аргумента \( s \), голоморфную на всей плоскости переменной \( s \).
+Следовательно, (\ref{eq1.9.5}) даёт интегральное представление 
+\( \Gamma \)-функции в виде частного двух функций, голоморфных на всей
+плоскости. Это представление действительно для всех значений \( s \) и даёт 
+аналитическое продолжение \( \Gamma \)-функции на всю плоскость. Отметим, что
+при \( s \) равном целому положительному числу, правая часть (\ref{eq1.9.5})
+принимает неопределённый вид. Эту неопределённость можно раскрыть по правилу
+Лопиталя.
