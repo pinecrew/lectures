@@ -1,0 +1,382 @@
+\section{Криволинейные ортогональные координаты}
+
+\subsection{Понятие о криволинейных координатах}
+
+	Положение любой точки в трехмерном пространстве можно задать любой тройкой чисел \( a_1, a_2, a_3 \), выбирая ее по какому-либо правилу.
+	
+	Эта тройка -- координаты точки в пространстве.
+	
+	Если эти три числа -- расстояние от точки до плоскостей \( xOy \), \( yOz \) и \( xOz \), то мы имеем прямоугольную декартову систему координат.
+	
+	Однако, симметрия многих задач требует выбора других систем координат, более рационально описывающих объект. Чаще всего используются \textit{цилиндрические} и \textit{сферические} системы координат.
+	
+	\begin{enumerate}
+	\item \textbf{Цилиндрическая система координат}
+	
+	В ней координаты точки выбираются следующим образом:
+	
+	\( q_1 = \rho \) -- расстояние от точки до оси \( Oz \) (\( \rho \ge 0 \)).
+	
+	\( q_2 = \varphi \) -- угол между полуплоскостями (\( \rho Oz \)) и осью \( Ox \) (\( 0\le \varphi \le 2\pi \)).
+	
+	\( q_3 = z \).
+	
+	Из рисунка видна связь между декартовой и цилиндрической системой коодинат:
+	\[ \left\{ \begin{array}{l}
+		x = \rho\cos\varphi; \\
+		y = \rho\sin\varphi; \\
+		z = z.
+	\end{array} \right. \]
+	
+	\item \textbf{Сферическая система координат}
+	
+	В ней координаты точки выбираются следующим образом:
+	
+	\( q_1 = r \) -- расстояние от точки до начала координат (\( r \ge 0 \)).
+	
+	\( q_2 = \theta \) -- угол между \( r \) и осью \( Oz \) (\( 0\le \theta \le \pi \)) -- полярный угол.
+	
+	\( q_3 = \varphi \) -- угол между полуплоскостями (\( rOz \)) и осью \( Ox \) (\( 0\le \varphi \le 2\pi \)) -- азимутальный угол.
+	
+	Из рисунка видна связь между декартовой и сферической системой коодинат:
+	\[ \left\{ \begin{array}{l}
+		x = r\sin\theta\cos\varphi; \\
+		y = r\sin\theta\sin\varphi; \\
+		z = r\cos\theta.
+	\end{array} \right. \]
+	\end{enumerate}
+
+	Так же сущесвует множество других систем координат.
+	
+	\begin{definition}
+	Тройка чисел (\( q_1, q_2, q_3 \)), выбираемая по какому-либо правилу, называется \textbf{криволинейными} (обощенными) \textbf{координатами}, если она удовлетворяет двум условиям:
+	\begin{enumerate}
+	\item каждой точке пространства соответствует вполне определенная тройка чисел (\( q_1, q_2, q_3 \));
+	\item кажой тройке чисел (\( q_1, q_2, q_3 \)) из их области определения соответствует единственная точка в трехмерном пространстве.
+	\end{enumerate}
+	\end{definition}
+	
+	Так как любой точке \( M(x, y, z) \) в декартовых координатах соответствует радиус-вектор \( \vec{r} = \{ x, y, z \} \), то каждая обобщенная координата должна быть функцией трех переменных:
+	\[ \left\{ \begin{array}{l}
+		q_1 = q_1(x, y, z); \\
+		q_2 = q_2(x, y, z); \\
+		q_3 = q_3(x, y, z). \\
+	\end{array} \right. \]
+	
+	И наоборот, каждая декартовая координата должна быть функцией трех обобщенных:
+	\[ \left\{ \begin{array}{l}
+		x = x(q_1, q_2, q_3); \\
+		y = y(q_1, q_2, q_3); \\
+		z = z(q_1, q_2, q_3).
+	\end{array} \right. \]
+
+	\begin{definition}
+	Поверхности в трехмерном пространстве, на которых обобщенные координаты постоянны, называются \textbf{поверхностями криволинейных координат}.
+	\end{definition}
+	
+	\begin{definition}
+	Линии пересечения каждой пары координатных поверхностей называются \textit{координатными линиями}.
+	
+	Точка пересечения трех координатных поверхностей дает \textbf{начало криволинейной системы координат}.
+	\end{definition}
+
+	Построим в точке \( M \) правый базис (\( \vec{e}_1, \vec{e}_2, \vec{e}_3 \)), где \( \vec{e}_\mathrm{n} \) -- единичный вектор, касательный к \( q_\mathrm{n} \) в точке \( M \) (орт).
+	
+	Такой базис является \textit{подвижным}, то есть орты меняются по напраавлению от точки к точке.
+	
+	\begin{definition}
+	Система криволинейных координат называется \textbf{ортогональной}, если в любой точке \( M \) базисные орты взаимно перпендикулярны.
+	\end{definition}
+	
+	В ортогональной системе все координатные линии и координатные плоскости попарно перпендикулярны.
+	
+	Сферическая и цилиндрическая системы координат являются ортогональными.
+	
+	Далее, все системы координат будем предполагать ортогональными.
+
+\subsection{Коэффициенты Ламэ}
+
+	Основной характеристикой всякой криволинейной системы координат являются \textit{коэффициенты Ламэ}. Они входят во все операции векторного анализа в криволинейных координатах.
+	
+	Пусть нам известны выражения декартовых координат через криволинейные:
+	\[ \left\{ \begin{array}{l}
+		x = x(q_1, q_2, q_3); \\
+		y = y(q_1, q_2, q_3); \\
+		z = z(q_1, q_2, q_3).
+	\end{array} \right. \]
+	
+	Составим приращение радиус-вектора в криволинейных координатах.
+	
+	Так как \( \vec{r} = \vec{r}(q_1, q_2, q_3) \), то
+	\begin{equation}
+		\,d\vec{r} = \pder{\vec{r}}{q_1}\,d q_1 + \pder{\vec{r}}{q_2}\,d q_2 + \pder{\vec{r}}{q_3}\,d q_3. \label{eq8:1}
+	\end{equation}
+	
+	Величина \( \pder{\vec{r}}{q_i} \) направлена по касательной к линии \( q_i \) в точке \( M \).
+	
+	Следовательно, она может быть представлена в виде \( H_i\vec{e}_i \), где \( H_i = \left|\pder{\vec{r}}{q_i}\right| \). А так как \( \vec{r} = \{ x, y, z \} \), то:
+	\begin{equation}
+		H_i = \left|\pder{\vec{r}}{q_i}\right| = \left|\left\{\pder{x}{q_i}, \pder{y}{q_i}, \pder{z}{q_i}\right\}\right| = \sqrt{\left(\pder{x}{q_i}\right)^2 + \left(\pder{y}{q_i}\right)^2 + \left(\pder{z}{q_i}\right)^2}. \label{eq8:2}
+	\end{equation}
+	
+	Тогда уравнение (\ref{eq8:1}) примет вид:
+	\begin{equation}
+	\,d\vec{r} = H_1\,d q_1\vec{e}_1 + H_2\,d q_2\vec{e}_2 + H_3\,d q_3\vec{e}_3. \label{eq8:3}
+	\end{equation}
+	
+	\begin{definition}
+	Числа \( H_1 \), \( H_2 \) и \( H_3 \), определяемые формулой (\ref{eq8:2}) и входящие в уравнение (\ref{eq8:3}), называются \textbf{коэффициентами Ламэ} данной криволинейной системы.
+	\end{definition}
+	
+	Величины \( H_i\,d q_i = \,d l_i \) -- элементы длин дуг координатных линий \( q_i \).
+	
+	\begin{remark}
+	Сами криволинейные координаты необязательно имеют размерность длины (например, углы), однако элементы длин дуг всегда имеют размерность длины.
+	\end{remark}
+	
+	Так как мы полагаем, что криволинейная система координат -- ортогональная, то:
+	\begin{enumerate}
+	\item элементы длин дуг:
+	\[ \,d l_i = H_i\,d q_i; \]
+	\item элементы площадей:
+	\[ \,d S_i = \,d l_j\,d l_k = H_jH_k\,d q_j\,d q_k, \]
+	где \( j \), \( k \ne i \) и \( j \ne k \) (например, для \( i = 1\): \( \,d S_1 = \,d l_2\,d l_3 \));
+	\item элемент объема:
+	\[ \,d V = \,d l_1\,d l_2\,d l_3 = H_1H_2H_3\,d q_1\,d q_2\,d q_3. \]
+	\end{enumerate}
+	
+	Вычислим коэффициенты Ламэ и элементы \( \,d l_i \), \( \,d S_i \), \( \,d V \) сферической и цилиндрической систем координат.
+
+	\textbf{Цилиндрическая система координат}
+	
+	Связь с  декартовой:
+	\[ \left\{ \begin{array}{l}
+		x = \rho\cos\varphi; \\
+		y = \rho\sin\varphi; \\
+		z = z.
+	\end{array}\right. \]
+	
+	Коэффициенты Ламэ:
+	\[ \left\{ \begin{array}{l}
+	H_1 = \sqrt{\left(\pder{x}{\rho}\right)^2 + \left(\pder{y}{\rho}\right)^2 + \left(\pder{z}{\rho}\right)^2} = \sqrt{\cos^2\varphi + \sin^2\varphi} = 1; \\
+	H_2 = \sqrt{\left(\pder{x}{\varphi}\right)^2 + \left(\pder{y}{\varphi}\right)^2 + \left(\pder{z}{\varphi}\right)^2} = \rho\sqrt{(-\cos\varphi)^2 + \cos^2\varphi} = \rho; \\
+	H_3 = \sqrt{\left(\pder{x}{z}\right)^2 + \left(\pder{y}{z}\right)^2 + \left(\pder{z}{z}\right)^2} = \sqrt{1} = 1.
+	\end{array} \right. \]
+	
+	Элементы длин дуг:
+	\[ \left\{ \begin{array}{l}
+	\,d l_\rho = H_1\,d\rho = \,d\rho; \\
+	\,d l_\varphi = H_2\,d\varphi = \rho\,d\varphi; \\
+	\,d l_z = H_3\,d z = \,d z.
+	\end{array} \right. \]
+	
+	Элементы площадей:
+	\[ \left\{ \begin{array}{l}
+	\,d S_\rho = H_2H_3\,d\varphi\,d z = \rho\,d\varphi\,d z; \\
+	\,d S_\varphi = H_1H_3\,d\rho\,d z = \,d\rho\,d z; \\
+	\,d S_z = H_1H_2\,d\rho\,d\varphi = \rho\,d\rho\,d\varphi.
+	\end{array} \right. \]
+	
+	Элемент объема:
+	\[ \,d V = H_1H_2H_3\,d\rho\,d\varphi\,d z = \rho\,d\rho\,d\varphi\,d z. \]
+
+	\textbf{Сферическая система координат}
+	
+	Связь с  декартовой:
+	\[ \left\{ \begin{array}{l}
+		x = r\cos\varphi\sin\theta; \\
+		y = r\sin\varphi\sin\theta; \\
+		z = r\cos\theta.
+	\end{array}\right. \]
+	
+	Коэффициенты Ламэ:
+	\[ \left\{ \begin{array}{l}
+	H_1 = \sqrt{\cos^2\varphi\sin^2\theta + \sin^2\varphi\sin^2\theta + \cos^2\theta} = 1; \\
+	H_2 = r\sqrt{\cos^2\varphi\cos^2\theta + \sin^2\varphi\cos^2\theta + \sin^2\theta} = r; \\
+	H_3 = r\sin\theta\sqrt{\sin^2\varphi + \cos^2\varphi + 0} = r\sin\theta.
+	\end{array} \right. \]
+	
+	Элементы длин дуг:
+	\[ \left\{ \begin{array}{l}
+	\,d l_r = H_1\,d r = \,d r; \\
+	\,d l_\theta = H_2\,d\theta = r\,d\theta; \\
+	\,d l_\varphi = H_3\,d\varphi = r\sin\theta\,d\varphi.
+	\end{array} \right. \]
+	
+	Элементы площадей:
+	\[ \left\{ \begin{array}{l}
+	\,d S_r = H_2H_3\,d\theta\,d\varphi = r^2\sin\theta\,d\theta\,d\varphi; \\
+	\,d S_\theta = H_1H_3\,d r\,d\varphi = r\sin\theta\,d r\,d\varphi; \\
+	\,d S_\varphi = H_1H_2\,d r\,d\theta = r\,d r\,d\theta.
+	\end{array} \right. \]
+	
+	Элемент объема:
+	\[ \,d V = H_1H_2H_3\,d r\,d\theta\,d\varphi = r^2\sin\theta\,d r\,d\theta\,d\varphi. \]
+
+\subsection{Преобразования базиса}
+
+	Часто возникает задача преобразовать векторное поле \( \vec{a}(x, y, z) \) из декартовой системы координат в цилиндрическую или сферическую и наоборот.
+	
+	Так как формулы преобразования координат известны, то остается найти закон преобразования базисных орт.
+	
+	Его можно получить из формулы (\ref{eq8:3}):
+	\begin{equation}
+		\vec{e}_i = \pder{\vec{r}}{q_i}\frac{1}{H_i} = \frac{1}{H_i}\left(\pder{x}{q_i}\vec{e}_x + \pder{y}{q_i}\vec{e}_y + \pder{z}{q_i}\vec{e}_z\right). \label{eq8:4}
+	\end{equation}
+	
+	В цилиндрической системе координат:
+	\[ \left\{ \begin{array}{l}
+	\vec{e}_\rho = \frac{1}{1}(\cos\varphi \vec{e}_x + \sin\varphi \vec{e}_y + 0\vec{e}_z) = \cos\varphi\vec{e}_x + \sin\varphi\vec{e}_y; \\
+	\vec{e}_\varphi = -\sin\varphi\vec{e}_x + \cos\varphi\vec{e}_y; \\
+	\vec{e}_z = \vec{e}_z.
+	\end{array} \right. \]
+	
+	Обратные преобразования:
+	\[ \left\{ \begin{array}{l}
+	\vec{e}_x = \cos\varphi\vec{e}_\rho - \sin\varphi\vec{e}_\varphi; \\
+	\vec{e}_y = \sin\varphi\vec{e}_\rho + \cos\varphi\vec{e}_\varphi; \\
+	\vec{e}_z = \vec{e}_z.
+	\end{array} \right. \]
+
+\subsection{Операции в криволинейных координатах}
+
+\subsubsection{Уравнения векторных линий}
+
+	Уравнения векторных линий определяются из условия коллинеарности векторов \( \,d\vec{r} = H_1\,d q_1\vec{e}_1 + H_2\,d q_2\vec{e}_2 + H_3\,d q_3\vec{e}_3 \) и \( \vec{a}(q_1, q_2, q_3) \):
+	\[ \vec{a}\times\,d\vec{r} = 0 \]
+	или:
+	\[ \begin{vmatrix}
+	\vec{e}_1 & \vec{e}_2 & \vec{e}_3 \\
+	H_1\,d q_1 & H_2\,d q_2 & H_3\,d q_3 \\
+	a_1 & a_2 & a_3
+	\end{vmatrix} = 0 \Rightarrow H_i\,d q_ia_j = H_j\,d q_ja_i \]
+	или:
+	\begin{equation}
+		\frac{H_1}{a_1}\,d q_1 = \frac{H_2}{a_2}\,d q_2 = \frac{H_3}{a_3}\,d q_3 \label{eq8.1:1}
+	\end{equation}
+	
+	Уравнения (\ref{eq8.1:1}) и есть уравнения векторных линий.
+	
+	\begin{example}
+	Найти векторные линии поля \( \vec{a} = \vec{e}_\rho + \varphi\vec{e}_\varphi \) в цилиндрических координатах.
+	\end{example}
+	\begin{solution}
+	
+	В силу уравнений (\ref{eq8.1:1}):
+	\[ \frac{\,d\rho}{\rho} = \frac{\,d\varphi}{\varphi} = \frac{\,d z}{0}. \]
+	
+	Получаем, что \( z = \const \).
+	
+	Интегрируя \( \frac{\,d\rho}{\rho} = \frac{\,d\varphi}{\varphi} \), получим:
+	\[ \ln\rho = \ln C\varphi, \]
+	где \( C = \const \), или:
+	\[ \rho = C\varphi \] -- семейство спиралей Архимеда.
+	\end{solution}
+
+\subsubsection{Градиент}
+
+	Градиент в криволинейных координатах определяется так же, как и в декартовых:
+	
+	вектор, компоненты которого показывают скорость роста скалярного поля \( u(q_1, q_2, q_3) \) вдоль координатных линий \( q_i \):
+	\[ \gradient{u} = \nabla u = \left\{ \pder{u}{l_1}, \pder{u}{l_2}, \pder{u}{l_3} \right\}. \]
+	
+	Таким образом:
+	\begin{equation}
+		\nabla u = \left\{ \frac{1}{H_1}\pder{u}{q_1}, \frac{1}{H_2}\pder{u}{q_2}, \frac{1}{H_3}\pder{u}{q_3} \right\} \label{eq8.1:2}
+	\end{equation}
+
+\subsubsection{Дивергенция}
+
+	Дивергенция в криволинейных координатах строится на основе ее инвариантного определения (\ref{eq4:n2}), которое можно записать в виде:
+	\begin{equation}
+		\divergence{a} = \lim_{\Delta V\to0} \frac{\Delta\Phi}{\Delta V} \label{eq8.1:3}
+	\end{equation}
+	
+	Выделим в криволинейных координатах вблизи точки \( M \) малый элемент объема в виде кубика объемом \( \Delta V = \Delta q_1\Delta q_2\Delta q_3H_1H_2H_3 \).
+	
+	Вычислим поток \( \Delta\Phi_\Sigma \) поля \( \vec{a} \) через все шесть граней кубика для его подстановки в (\ref{eq8.1:3}).
+	
+	Для этого вычислим сначала поток \( \Delta\Phi_1 \) через одну пару граней:
+	
+	через заднюю грань \( \Delta S_1^- \):
+	\[ \Delta\Phi_1^- = -a_1\Delta S_1^- = -H_2H_3\Delta q_2\Delta q_3 a_1; \]
+	
+	через переднюю грань \( \Delta S_1^+ \):
+	\[ \Delta\Phi_1^+ = H_2H_3\Delta q_2\Delta q_3a_1 + \pder{}{q_1}(a_1H_2H_3)\Delta q_2\Delta q_3. \]
+	
+	Тогда общий поток через пару граней:
+	\[ \Delta\Phi_1 = \Delta\Phi_1^- + \Delta\Phi_1^+ = \pder{}{q_1}(a_1H_2H_3)\Delta q_2\Delta q_3. \]
+	
+	После аналогичных вычислений получим поток через все шесть граней:
+	\[ \Delta\Phi_\Sigma = \left[\pder{(a_1H_2H_3)}{q_1} + \pder{(a_2H_1H_3)}{q_2} + \pder{(a_3H_1H_2)}{q_3}\right]\Delta q_1\Delta q_2\Delta q_3 \]
+	
+	Тогда, в соответствии с (\ref{eq8.1:3}):
+	\begin{equation}
+		\divergence{a} = \frac{1}{H_1H_2H_3}\left[ \pder{(a_1H_2H_3)}{q_1} + \pder{(a_2H_1H_3)}{q_2} + \pder{(a_3H_1H_2)}{q_3} \right] \label{eq8.1:33}
+	\end{equation}
+	
+	\begin{example}
+	Вычислить поток поля \( \vec{a} = \rho\vec{e}_\rho + z\vec{e}_\varphi \) через замкнутую поверхность \( S \), ограничивающую объем \( V \).
+	\end{example}
+	\begin{solution}
+	
+	По теореме Остроградского:
+	\[ \oiint\limits_S \vec{a}\cdot\,d\vec{S} = \iiint\limits_V \divergence{a}\,d V \]
+	
+	Дивергенция в цилиндрических координатах:
+	\[ \divergence{a} = \frac{a_\rho}{\rho} + \pder{a_\rho}{\rho} + \frac{1}{\rho} \pder{a_\varphi}{\varphi} + \pder{a_z}{z} = 1 + 1 + 0 + 0 = 2. \]
+	
+	Следовательно поток:
+	\[ \Phi = \iiint\limits_V 2\,d V = 2V. \]
+	\end{solution}
+
+\subsubsection{Ротор}
+
+	Выражение для ротора в криволинейных координатах так же строится на основе его инвариантного определения (\ref{eq7:7}).
+	
+	Вычисляя циркуляции по малым контурам \( \Delta C \), получаем:
+	\begin{equation}
+		\rotor{a} = \begin{vmatrix}
+		\frac{\vec{e}_1}{H_2H_3} & \frac{\vec{e}_2}{H_1H_3} & \frac{\vec{e}_3}{H_1H_2} \\[0.2cm]
+		\pder{}{q_1} & \pder{}{q_2} & \pder{}{q_3} \\[0.2cm]
+		a_1H_1 & a_2H_2 & a_3H_3
+		\end{vmatrix}
+	\end{equation}
+
+\subsubsection{Лапласиан}
+
+	Как и в декартовых, выражение для оператора Лапласа строится как \( \divergence\gradient{u} \).
+	
+	Так как в криволинейных координатах градиент выражается формулой (\ref{eq8.1:2}), а дивергенция формулой (\ref{eq8.1:33}), то получим выражение для лапласиана:
+	\begin{equation}
+	\begin{array}{r}
+		\Delta u = \frac{1}{H_1H_2H_3}\left[ \pder{}{q_1}\left(\frac{H_2H_3}{H_1}\pder{u}{q_1}\right) + \pder{}{q_2}\left(\frac{H_1H_3}{H_2}\pder{u}{q_2}\right) +\right. \\[0.2cm]
+		\left. + \pder{}{q_3}\left(\frac{H_1H_2}{H_3}\pder{u}{q_3}\right)\right].
+	\end{array}
+	\end{equation}
+
+\subsection{Центральные и осевые поля}
+
+	\begin{definition}
+	Скалярное поле \( u(x, y, z) \) называется \textbf{центральным} (сферическим), если оно зависит только от расстояния до начала координат:
+	\[ u = u(r). \]
+	\end{definition}
+
+	\begin{definition}
+	Скалярное поле \( u(x, y, z) \) называется \textbf{осевым} (цилиндрическим), если оно зависит только от расстояния до оси \( z \):
+	\[ u = u(\rho). \]
+	\end{definition}
+
+	\begin{example}
+	Стационарное поле распределения температур от точечного источника тепла \( T = T(r) \) является сферическим.
+	
+	А поле нагретой нити -- цилиндрическим \( T = T(\rho) \).
+	\end{example}
+	
+	Для этих классов полей операции \( \nabla \) и \( \Delta \) становятся особенно простыми, так как содержат только радиальную часть:
+	\[ \begin{array}{l}
+	\nabla u(\rho) = \left\{ \pder{u}{\rho} \right\}; \\
+	\nabla u(r) = \left\{ \pder{u}{r} \right\}; \\
+	\Delta u(\rho) = \Delta_\rho u = \frac{1}{\rho}\pder{}{\rho}\left( \rho\pder{u}{\rho} \right); \\
+	\Delta u(r) = \Delta_r u = \frac{1}{r^2}\pder{}{r}\left( r^2\pder{u}{r} \right).
+	\end{array} \]

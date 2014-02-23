@@ -1,0 +1,239 @@
+\section{Векторное поле}
+
+\subsection{Определение векторного поля}
+
+	\begin{definition}
+	Если в каждой точке \( M(x, y, z) \) некоторой области пространства определена векторная функция \( \vec{a} (x, y, z) \), то говорят, что в этой области задано \textbf{векторное поле} \( \vec{a} (x, y, z) \).
+	\end{definition}
+	
+	Задание векторного поля эквивалентно заданию трех скалярных полей:
+	\begin{align}
+		\vec{a}(x, y, z) = & \{a_x(x, y, z), a_y(x, y, z), a_z(x, y, z)\} = \nonumber \\
+		= & a_x(x, y, z)\vec{e_x} + a_y(x, y, z)\vec{e_y} + a_z(x, y, z)\vec{e_z} \nonumber
+	\end{align}
+	
+	Примеры векторных полей:
+	\begin{enumerate}
+	\item
+		Поле скоростей частиц \( \vec{v}(x, y, z) \) в потоке.
+	\item
+		Гравитационное поле системы масс \( \vec{F}(x, y, z) \).
+	\item
+		Электрическое поле \( \vec{E}(x, y, z) \).
+	\end{enumerate}
+	
+	Если вектор \( \vec{a} \) не зависит от времени, то векторное поле \( \vec{a} \) -- \textbf{стационарное}, иначе, когда \( \vec{a} = \vec{a}(x, y, z, t) \), поле \( \vec{a} \) -- \textbf{нестационарное}.
+	
+\subsection{Векторные линии}
+
+	Геометрическим представлением векторного поля являются \textit{векторные линии}.
+	
+	\begin{definition}
+	\textbf{Векторная линия} -- это ориентированная кривая в пространстве, в каждой точке которой вектор \( \vec{a} \) направлен по касательной к ней.
+	\end{definition}
+	
+	Примеры векторных линий:
+	\begin{enumerate}
+	\item
+		Линии поля скоростей частиц в потоке \( \vec{v}(x, y, z) \) -- это их траектории.
+	\item
+		Линии поля скоростей частиц вращающегося твердого тела -- это концентрические окружности.
+	\item
+		Линии поля \( \vec{E} \) точечного заряда \( q \) -- это радиальные лучи.
+	\end{enumerate}
+	
+	\begin{remark}
+	Так как \( \vec{a}(x, y, z) \) предполагается однозначной, то векторные линии \textit{нигде} не пересекаются.
+	\end{remark}
+	
+	\begin{remark}
+	Если в точке \( M(x, y, z) \) вектор \( \vec{a} = \vec{0} \), то такая точка \( M \) называется \textbf{стационарной}, в ней \( a_x = a_y = a_z = 0 \).
+	\end{remark}
+	
+	\begin{remark}
+	Если \( \vec{a} (x, y, z) = \const \) в некоторой области пространства, то поле \( \vec{a} \) называется \textbf{однородным} в этой области.
+	\end{remark}
+	
+\subsection{Уравнение векторных линий}
+
+	Так как по определению векторной линии, вектор \( \vec{a} \) касателен к ней в каждой точке, то, так как \( \vec{dl} \uparrow\uparrow \vec{a} \):
+	\begin{equation}
+		\vec{dl} \times \vec{a} = 0 \label{eq3:1}
+	\end{equation}
+	Или:
+	\[ \begin{vmatrix}
+		\vec{e_x}	& \vec{e_y}	& \vec{e_z} \\
+		dx 			& dy 			& dz \\
+		a_x 		& a_y 			& a_z
+	\end{vmatrix} = 0 \]
+	Или, расписывая по компонентам:
+	\[ \begin{vmatrix}
+			dy		& dz   \\
+			a_y 	& a_z
+		\end{vmatrix} = 0 \]
+	\[ \begin{vmatrix}
+			dx		& dz   \\
+			a_x 	& a_z
+		\end{vmatrix} = 0 \]
+	\[ \begin{vmatrix}
+			dx		& dy   \\
+			a_x 	& a_y
+		\end{vmatrix} = 0 \]
+	Раскрывая все определители, получим:
+	\begin{align}
+		\frac{dy}{a_y} & = \frac{dz}{a_z} \nonumber \\
+		\frac{dx}{a_x} & = \frac{dz}{a_z} \nonumber \\
+		\frac{dx}{a_x} & = \frac{dy}{a_y} \nonumber
+	\end{align}
+	Или:
+	\begin{equation}
+		\frac{dx}{a_x} = \frac{dy}{a_y} = \frac{dz}{a_z} \label{eq3:2} 
+	\end{equation}
+	
+	Любые два из трех уравнений (\ref{eq3:2}) и дают уравнение векторной линии в дифференциальном виде. Их интегрирование даст уравнение семейства векторных линий.
+	
+	Если поле \( \vec{a} \) -- однородно, то система (\ref{eq3:2}) приобретает вид:
+	\begin{equation}
+		\frac{x-x_0}{a_x} = \frac{y-y_0}{a_y} = \frac{z-z_0}{a_z} \nonumber
+	\end{equation}
+	Это уравнение прямой, проходящей через точку \( M_0 (x_0, y_0, z_0) \)  и имеющей направляющий вектор \( \vec{a} = \{ a_x, a_y, a_z \} = \const \).
+	
+	\begin{example}
+	Найти векторные линии поля скоростей \( \vec{v} \) частиц твердого тела, вращающегося вокруг оси \( z \) со скоростью \( \omega \).
+	\end{example}
+	
+	\begin{solution}
+	Так как \( \vec{v} = \vec{\omega} \times \vec{r} \), то:
+	\begin{equation}
+		\vec{v} = \begin{vmatrix}
+			\vec{e_x}	& \vec{e_y}	& \vec{e_z} \\
+			0			& 0				& \omega	 \\
+			x 			& y 			& z
+		\end{vmatrix} = \omega\{-y, x, 0\} \nonumber
+	\end{equation}
+	
+	Тогда уравнение (\ref{eq3:2}) примет вид:
+	\[ \frac{dx}{-y} = \frac{dy}{x} = \frac{dz}{0} \]
+	
+	Из него следует, что \( z = \const \) -- уравнение семейства плоскостей, перпендикулярных оси \( Oz \).
+	
+	Рассмотрим первое уравнение.
+	\begin{align}
+		xdx = & -ydy \nonumber \\
+		\int xdx = & -\int ydy  \nonumber \\
+		x^2 = & -y^2 + C  \nonumber \\
+		x^2 + y^2 = C  \nonumber
+	\end{align}
+	
+	Это уравнение коаксиальных цилиндров, параллельных оси \( Oz \).
+	
+	Таким образом, пересечения цилиндров и плоскостей и дают семейство линий поля скоростей -- окружности.
+	\end{solution}
+	
+	\begin{example}
+	Построить линии векторного поля \( \vec{a} = \vec{r} = \{ x, y, z \} \).
+	\end{example}
+	
+	\begin{solution}
+	Для этого поля уравнения (\ref{eq3:2}) принимают вид:
+	\[ \frac{dx}{x} = \frac{dy}{y} = \frac{dz}{z} \].
+	
+	Рассмотрим первое уравнение.
+	\begin{align}
+		\frac{dx}{x} = & \frac{dy}{y} \nonumber \\
+		\int \frac{dx}{x} = & \int \frac{dy}{y} \nonumber \\
+		\ln x = & \ln y - \ln C_1 \nonumber \\
+		y = & C_1x  \nonumber
+	\end{align}
+	
+	Аналогично:
+	\begin{align}
+		z = C_2x \nonumber \\
+		z = C_3y  \nonumber
+	\end{align}
+	
+	Это уравнения прямых, проходящих через точку (\( 0, 0, 0 \)).
+	\end{solution}
+	
+\subsection{Производная векторного поля по направлению}
+
+	Производная скалярного поля по направлению: \( \frac{\partial u}{\partial l} = \vec{l}\cdot\nabla u = (\vec{l}\cdot\nabla)u \).
+	
+	Получим аналогичное выражение для векторного поля.
+	
+	Пусть задано векторное поле \( \vec{a} \). Выберем в нём точку \( M \) и зададим \textit{единичный} направляющий вектор \( \vec{l} \). Выберем на нём близкую к \( M \) точку \( M’ \).
+	
+	Составим отношение:
+	\begin{equation}
+		\frac{\vec{a}(M’) - \vec{a}(M)}{MM’} \label{eq3:n1}
+	\end{equation}
+	
+	\begin{definition}
+	Предел отношения (\ref{eq3:n1}), если он существует, называется производной векторного поля \( \vec{a} \) по направлению \( l \):
+	\begin{equation}
+		\frac{\partial \vec{a}}{\partial l} = \lim_{M’ \to M} \frac{\vec{a}(M’) - \vec{a}(M)}{MM’} \label{eq3:n2}
+	\end{equation}
+	\end{definition}
+	
+	Распишем (\ref{eq3:n2}):
+	\[ \frac{\partial \vec{a}}{\partial l} = \frac{\partial \vec{a}}{\partial x}\frac{\partial x}{\partial l} + \frac{\partial \vec{a}}{\partial y}\frac{\partial y}{\partial l} + \frac{\partial \vec{a}}{\partial z}\frac{\partial z}{\partial l} = l_x\frac{\partial \vec{a}}{\partial x} + l_y\frac{\partial \vec{a}}{\partial y} + l_z\frac{\partial \vec{a}}{\partial z} = (\vec{l}\cdot\nabla)\vec{a} \]
+	
+	Итак,
+	\begin{equation}
+		\frac{\partial \vec{a}}{\partial l} = (\vec{l}\cdot\nabla)\vec{a} \label{eq3:n3}
+	\end{equation}
+	
+	\begin{comment}
+	Записывать \( \vec{l}\cdot\nabla\vec{a} \) -- нельзя, так как операция \( \nabla\vec{a} = \gradient{\vec{a}} \) -- градиент векторного поля -- не определена в векторном анализе, а определена только операция \( \nabla u = \gradient{u} = \{ \frac{\partial u}{\partial x}, \frac{\partial u}{\partial y}, \frac{\partial u}{\partial z} \} \).
+	\end{comment}
+	
+	Компоненты вектора \( \frac{\partial \vec{a}}{\partial l} \):
+	\begin{align}
+		\left(\frac{\partial \vec{a}}{\partial l}\right)_x = (\vec{l}\cdot\nabla)a_x = l_x\frac{\partial a_x}{\partial x} + l_y\frac{\partial a_x}{\partial y} + l_z\frac{\partial a_x}{\partial z} \nonumber \\
+		\left(\frac{\partial \vec{a}}{\partial l}\right)_y = (\vec{l}\cdot\nabla)a_y = l_x\frac{\partial a_y}{\partial x} + l_y\frac{\partial a_y}{\partial y} + l_z\frac{\partial a_y}{\partial z} \nonumber \\
+		\left(\frac{\partial \vec{a}}{\partial l}\right)_z = (\vec{l}\cdot\nabla)a_z = l_x\frac{\partial a_z}{\partial x} + l_y\frac{\partial a_z}{\partial y} + l_z\frac{\partial a_z}{\partial z} \nonumber
+	\end{align}
+	
+	\begin{example}
+	Определить производную векторного поля \( \vec{r} \) по направлению \( \vec{l} \).
+	\end{example}
+	
+	\begin{solution}
+	Компоненты вектора \( \frac{\partial \vec{r}}{\partial l} \):
+	\begin{align}
+		\left(\frac{\partial \vec{r}}{\partial l}\right)_x = (\vec{l}\cdot\nabla)x = l_x\frac{\partial x}{\partial x} + l_y\frac{\partial x}{\partial y} + l_z\frac{\partial x}{\partial z} = l_x \nonumber \\
+		\left(\frac{\partial \vec{r}}{\partial l}\right)_y = l_y \nonumber \\
+		\left(\frac{\partial \vec{r}}{\partial l}\right)_z = l_z \nonumber
+	\end{align}
+	Таким образом, \( \frac{\partial \vec{r}}{\partial l} = \{ l_x, l_y, l_z \} = \vec{l} = \const \).
+	\end{solution}
+	
+\subsection{Производные в потоке жидкости}
+
+	Рассмотрим поток жидкости. Пусть в нём задано нестационарное векторное поле скоростей частиц \( \vec{v}(x, y, z, t) \). Пусть так же задано скалярное поле \( T(x, y, z, t) \) -- поле температур в потоке.
+	
+	\textbf{Задача:} найти скорость изменения температуры \( T \) со временем.
+	
+	При заданном поле \( T = T(x, y, z, t) \) задача кажется тривиальной (просто продифференцировать по \( t \)), однако, задача имеет двойной смысл:
+	\begin{enumerate}
+	\item
+		можно искать скорость изменения температуры в данном месте потока, тогда мы имеем дело с частной (\textit{локальной}) производной \( \frac{\partial T}{\partial t} \) при фиксированной точке \( M_0 \). (Измеряем температуру с моста)
+	\item
+		можно искать скорость изменения температуры данной частицы жидкости. Здесь надо вычислить полную производную \( \frac{dT}{dt} \). (Измеряем температуру с лодки)
+	\end{enumerate}
+	
+	Чтобы связать \( \frac{\partial T}{\partial t} \) и \( \frac{dT}{dt} \), надо представить координаты как функции времени: \( x = x(t), y = y(t), z = z(t) \), тогда:
+	\[ \frac{dT}{dt} = \frac{\partial T}{\partial t} + (\frac{\partial T}{\partial x}\frac{dx}{dt} + \frac{\partial T}{\partial y}\frac{dy}{dt} + \frac{\partial T}{\partial z}\frac{dz}{dt}) = \]
+	\[ = \frac{\partial T}{\partial t} + (v_x\frac{\partial}{\partial x} + v_y\frac{\partial}{\partial y} + v_z\frac{\partial}{\partial z})T = \]
+	\[ = \frac{\partial T}{\partial t} + (\vec{v}\cdot\nabla)T = \frac{\partial T}{\partial t} + \vec{v}\cdot\nabla T \].
+	
+	Последнее слагаемое \( \vec{v}\cdot\nabla T \) -- это производная \( T \) по направлению \( \vec{v} \) (здесь, правда, \( \vec{v} \) пока не нормирован).
+	
+	Аналогично, получаем связь частной и полной производных \( \frac{\partial\vec{v}}{\partial t} \) и \( \frac{d\vec{v}}{dt} \) для векторного поля скоростей:
+	\[ \frac{d\vec{v}}{dt} \equiv \vec{a} = \frac{\partial\vec{v}}{\partial t} + (v_x\frac{\partial}{\partial x} + v_y\frac{\partial}{\partial y} + v_z\frac{\partial}{\partial z})\vec{v} = \frac{\partial\vec{v}}{\partial t} + (\vec{v}\cdot\nabla)\vec{v} \]
+	
+	Здесь последнее слагаемое \( \vec{v}\cdot\nabla)\vec{v} \) -- это производная по своему же направлению.
+	
+	\begin{remark}
+	Производные \( \frac{\partial T}{\partial t} \) и \( \frac{\partial\vec{v}}{\partial t} \) называются \textit{локальными} вкладами в полную производную, а величины \( \vec{v}\cdot\nabla T \) и \( (\vec{v}\cdot\nabla)\vec{v} \) -- \textit{конвективными}, так как они проявляются только в движущихся средах, то есть связаны с конвекцией или переносом частиц.
+	\end{remark}

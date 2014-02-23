@@ -1,0 +1,120 @@
+\section{Использование оператора Гамильтона}
+
+	Оператор Гамильтона:
+	\[ \nabla = \left\{ \pder{}{x}, \pder{}{y}, \pder{}{z} \right\} \]
+
+\subsection{Векторные свойства оператора Гамильтона}
+
+	\[ \left\{ \begin{array}{l}
+		\nabla\varphi = \gradient{\varphi}; \\
+		\nabla\cdot\vec{a} = \divergence{a}; \\
+		\nabla\times\vec{a} = \rotor{a}.
+	\end{array} \right. \]
+	
+	Если к этим выражениям применить \( \nabla \) повторно, то получим операции второго порядка, в которых проявляются векторные свойства оператора Гамильтона:
+	\[ \begin{array}{l}
+		\divergence\gradient{\varphi} = \nabla\cdot\nabla\varphi = \Delta\varphi; \\
+		\rotor\gradient{\varphi} = \underbrace{\nabla\times\nabla}_{ = 0}\varphi = 0; \\
+		\divergence\rotor{a} = \nabla\cdot\nabla\times\vec{a} = 0; \\
+		\rotor\rotor{a} = \nabla\times\nabla\times\vec{a} = \nabla(\nabla\cdot\vec{a}) - (\nabla\cdot\nabla)\vec{a} = \gradient\divergence{a} - \Delta{a}.
+	\end{array} \]
+
+\subsection{Дифференциальные свойства оператора Гамильтона}
+
+	\( \nabla \) обладает дифференциальными свойствами, то есть действуя на сумму или произведение нескольких величин, действие происходит по правилам дифференцирования:
+	\begin{enumerate}
+	\item \( \nabla(uv) = u\nabla v + v\nabla u \);
+	\item \( \divergence(\varphi\vec{a}) = \nabla\cdot\varphi\vec{a} = \varphi\divergence\vec{a} + \vec{a}\gradient{\varphi} \);
+	\item \( \rotor(\varphi\vec{a}) = \nabla\times\varphi\vec{a} = \varphi\nabla\times\vec{a} + \nabla\varphi\times\vec{a} = \varphi\rotor{a} - \vec{a}\times\gradient{\varphi} \).
+	\end{enumerate}
+	
+	При использовании оператора Гамильтона должны выполняться правила работы с ним:
+	\begin{enumerate}
+	\item При действии оператора на сложные выражения сначала используются его дифференциальные свойства, затем векторные.
+	\item Если оператор действует на какую-либо величину в сложном выражении, то она ставиться индексом у \( \nabla \):
+	\[ \nabla(uv) = \nabla_u(uv) + \nabla_v(uv) = v\nabla u + u\nabla v. \]
+	\item В конечном выражении все, на что оператор не действует, ставится перед ним, а индекс с оператора снимается.
+	\end{enumerate}
+	
+	\begin{example}
+	\[ \begin{array}{r}
+	\divergence(\vec{a}\times\vec{b}) = \nabla\times(\vec{a}\times\vec{b}) = [\text{дифференциальные свойства}] = \\
+	\nabla_a(\vec{a}\times\vec{b}) + \nabla_b(\vec{a}\times\vec{b}) = [\text{по правилам смешанного произведения}] = \\
+	= (\nabla_a\times\vec{a})\cdot\vec{b} - (\nabla_b\times\vec{b})\cdot\vec{a} = \\
+	= \vec{b}\cdot(\nabla\times\vec{a}) - \vec{a}\cdot(\nabla\times\vec{b}) = \vec{b}\cdot\rotor{a} - \vec{a}\cdot\rotor{b}.
+	\end{array} \]
+	\end{example}
+
+\subsection{Интегральные аналоги теоремы Остроградского}
+
+	Теорема Остроградского:
+	\begin{equation}
+		\oiint\limits_S (\vec{a}\cdot\vec{n})\,d S = \iiint\limits_V \nabla\cdot\vec{a}\,d V. \label{eq7:1}
+	\end{equation}
+	
+	Если в качестве вектора \( \vec{a} \) взять вектор \( \vec{a} = \vec{C}\varphi(x, y, z) \), где \( \vec{C} = \const \), \( \varphi \) -- произвольная скалярная функция, и подставить его в (\ref{eq7:1}), то получим:
+	\[ \oiint\limits_S (\vec{C}\cdot\vec{n})\varphi\,d S = \iiint\limits_V \divergence(\vec{C}\varphi) \,d V. \]
+	
+	Дивергенция вектора \( \vec{a} \) равна:
+	\[ \divergence(\vec{C}\varphi) = \varphi\divergence{C} + \vec{C}\gradient{\varphi}. \]
+	
+	Так как \( \divergence{C} = 0 \), то дивергенция:
+	\[ \divergence(\vec{C}\varphi) = \vec{C}\gradient{\varphi}, \]
+	а уравнение примет вид:
+	\[ \vec{C}\cdot\left[ \oiint\limits_S \vec{n}\varphi\,d S - \iiint\limits_V \nabla\varphi\,d V \right] = 0, \]
+	а так как вектор \( \vec{C} \) -- произвольный, то
+	\begin{equation}
+		\oiint\limits_S \vec{n}\varphi\,d S = \iiint\limits_V \nabla\varphi\,d V. \label{eq7:2}
+	\end{equation}
+	
+	Уравнение (\ref{eq7:2}) -- первый аналог теоремы Остроградского.
+	
+	Далее, возьмем в качестве \( \vec{a} \) вектор \( \vec{a} = \vec{b}\times\vec{C} \), где \( \vec{C} = \const \), тогда (\ref{eq7:1}):
+	\[ \oiint\limits_S \vec{n}\cdot\vec{b}\times\vec{C}\,d S = \iiint\limits_V \divergence(\vec{b}\times\vec{C})\,d V. \]
+	
+	Дивергенция равна:
+	\[ \divergence(\vec{b}\times\vec{C}) = \vec{C}\cdot\rotor{b} - \vec{b}\cdot\rotor{C} = \vec{C}\cdot\rotor{b} = \vec{C}\cdot\times\vec{b}. \]
+	
+	Тогда, так как \( \vec{n}\cdot\vec{b}\times\vec{C} = \vec{C}\cdot\vec{n}\times\vec{b} \), уравнение (\ref{eq7:1}):
+	\[ \vec{C}\cdot\left[ \oiint\limits_S \vec{n}\times\vec{b}\,d S - \iiint\limits_V \nabla\times\vec{b}\,d V \right] = 0, \]
+	в силу произовльности \( \vec{C} \):
+	\begin{equation}
+		\oiint\limits_S (\vec{n}\times\vec{b})\,d S = \iiint\limits_V (\nabla\times\vec{b})\,d V \label{eq7:3}
+	\end{equation}
+	
+	Уравнение (\ref{eq7:3}) -- второй аналог теоремы Остроградского.
+	
+	Из сравнения (\ref{eq7:1}), (\ref{eq7:2}) и (\ref{eq7:3}) можно записать общее выражение для теоремы Остроградского:
+	\begin{equation}
+		\oiint\limits_S \vec{n}(\ldots)\,d S = \iiint\limits_V \nabla(\ldots)\,d V, \label{eq7:4}
+	\end{equation}
+	где “\( (\ldots) \)” -- любая скалярная или векторная функция и любая векторная операция.
+
+\subsection{Инвариантные определения операций векторного анализа}
+
+	По определению дивергенции (\ref{eq4:n2}), она является инвариантом относительно преобразований базиса.
+	
+	Применим формулу (\ref{eq7:2}) к малому \( \Delta V\to0 \), тогда:
+	\begin{equation}
+		\nabla\varphi = \lim_{\Delta V\to0} \frac{1}{\Delta V}\oiint\vec{n}\varphi\,d S. \label{eq7:6}
+	\end{equation}
+	Формула (\ref{eq7:6}) -- инвариантное определение градиента.
+	
+	Применим формулу (\ref{eq7:3}) к малому \( \Delta V\to0 \), тогда:
+	\begin{equation}
+		\nabla\times\vec{b} = \lim_{\Delta V\to0} \frac{1}{\Delta V}\oiint\vec{n}\times\vec{b}\,d S. \label{eq7:7}
+	\end{equation}
+	
+	Формула (\ref{eq7:7}) -- инвариантное определение ротора, она эквивалентна формуле (\ref{eq5:2}).
+	
+	Из сравнения формул (\ref{eq4:n2}), (\ref{eq7:6}) и (\ref{eq7:7}) получим инвариантное определение самого оператора \( \nabla \):
+	\begin{equation}
+		\nabla(\ldots) = \lim_{\Delta V\to0} \frac{1}{\Delta V} \oiint\vec{n}(\ldots)\,d S, \label{eq7:8}
+	\end{equation}
+	где “\( (\ldots) \)” -- любая скалярная или векторная функция и любая векторная операция.
+	
+	Если поле \( \vec{a} \) -- потенциально, то из (\ref{eq7:5}) получаем инвариантное определение лапласиана:
+	\[ \Delta\varphi = \lim_{\Delta V\to0}\frac{1}{\Delta V} \oiint\pder{\varphi}{n}\,d S. \]
+	
+	Если функция \( \varphi \) -- гармоническая, то инвариантное уравнение Лапласа:
+	\[ \oiint\limits_S \pder{\varphi}{n}\,d S = 0. \]

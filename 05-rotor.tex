@@ -1,0 +1,318 @@
+\section{Работа векторного поля. Ротор}
+
+\subsection{Определение работы}
+
+	Пусть в векторном поле \( \vec{a} \) находится гладкая ориентированная кривая \( L \). Разобьем кривую \( L \) на малые участки \( \Delta \vec{l}_\mathrm{k} \), которые можно считать малыми векторами, и пусть на очередном \( \Delta \vec{l}_\mathrm{k} \) поле \( \vec{a} \) принимает значение \( \vec{a}_\mathrm{k} \).
+	
+	\begin{definition}
+	Скалярная величина \( \Delta A_\mathrm{k} = \vec{a}_\mathrm{k}\cdot\Delta\vec{l}_\mathrm{k} = |\vec{a}_\mathrm{k}| |\Delta\vec{l}_\mathrm{k}|\cos\alpha_\mathrm{k} \), где \( \alpha_\mathrm{k} \) -- угол между \( \vec{a}_\mathrm{k} \) и \( \Delta\vec{l}_\mathrm{k} \), называется \textbf{элементарной работой} поля \( \vec{a} \) на участке \( \Delta\vec{l}_\mathrm{k} \) кривой \( L \).
+	\end{definition}
+	
+	\begin{definition}
+	Предельная сумма всех элементарных работ (криволинейный интеграл) называется\ \textbf{работой} векторного поля \( \vec{a} \) на участке \( 1\to2 \):
+	\[  A_{1\to2} = \int\limits_1^2 \vec{a}\cdot\,d\vec{l} \]
+	\end{definition}
+	
+	Если кривая \( 1 \to 2 \)  замкнута и образует контур \( C \), то работа по этому контуру называется \textbf{циркуляцией} по контуру \( C \):
+	\[ \Gamma = \oint\limits_C \vec{a}\cdot\,d\vec{l}. \]
+	
+	\begin{remark}
+	Так как \( \vec{a} = \{ a_\mathrm{x}, a_\mathrm{y}, a_\mathrm{z} \} \), то
+	\[ \int\limits_1^2 \vec{a}\cdot\,d\vec{l} = \int\limits_1^2 a_\mathrm{x}\,d x + a_\mathrm{y}\,d y + a_\mathrm{z}\,d z \]
+	\end{remark}
+	
+\subsection{Свойства работы}
+
+	\begin{enumerate}
+	\item Работа является \textit{скалярной алгебраической} величиной.
+	\item \textit{Линейность}: если \( \vec{a} \) и \( \vec{b} \) -- два поля, то
+	\[ \int\limits_1^2 (p_1\vec{a} + p_2\vec{b})\cdot\,d\vec{l} = p_1\int\limits_1^2 \vec{a}\cdot\,d\vec{l} + p_2\int\limits_1^2 \vec{b}\cdot\,d\vec{l}. \]
+	\item \textit{Аддитивность}: если кривая \( L \) состоит из \( N \) гладких фрагментов \( l_\mathrm{k} \), то \( \int\limits_L \vec{a}\cdot\,d\vec{l} = \sum\limits_1^N \int\limits_{l_\mathrm{k}} \vec{a}\cdot\,d\vec{l} \).
+	\item При смене ориентации \( L \) работа \( A \) \textit{меняет знак}: \( A_{1\to2} = -A_{2\to1} \).
+	\end{enumerate}
+
+\subsection{Вычисление работы}
+
+	Для вычисления работы необходимо кривую, соединяющую точки 1 и 2, представить в виде функции единственного аргумента.
+	
+	Рассмотрим два способа такого представления кривой.
+	
+	\begin{enumerate}
+	\item Пусть кривая задана параметрически:
+	\[ \left\{ \begin{array}{l}
+		x = x(t); \\
+		y = y(t); \\
+		z = z(t).
+	\end{array} \right. \]
+	
+	Используя
+	\[ \left\{ \begin{array}{l}
+		\,d x = x’\,d t; \\
+		\,d y = y’\,d t; \\
+		\,d z = z’\,d t,
+	\end{array} \right. \]
+	
+	можно перейти от криволинейного интеграла к обыкновенному:
+	\[ A = \int\limits_1^2 (a_\mathrm{x}(t)x’ + a_\mathrm{y}(t)y’ a_\mathrm{z}(t)z’)\,d t \]
+	
+	\begin{example}
+	Вычислить работу поля \( \vec{r} \) вдоль правой верхней четверти эллипса \( \left(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\right) \).
+	\end{example}
+	
+	\begin{solution}
+	Параметрическое уравнение эллипса:
+	\[ \left\{ \begin{array}{l}
+		x = a\cos t; \\
+		y = b\sin t; \\
+		\,d x = -a\sin t\,d t; \\
+		\,d y = b\cos t\,d t.
+	\end{array} \right. \]
+	
+	Тогда работа:
+	\[ \int\limits_1^2 \vec{r}\cdot\,d\vec{l} = \int\limits_1^2 x\,d x + y\,d y = \int\limits_\frac{\pi}{2}^0 [-a^2\sin t\cos t + b^2\sin t\cos t]\,d t = \frac{a^2 - b^2}{2}. \]
+	\end{solution}	
+
+	\item Если для предыдущего случая \( t = x \), то система имеет вид
+	\[ \left\{ \begin{array}{l}
+		y = y(x); \\
+		z = z(x).
+	\end{array} \right. \]
+	
+	Для нее мы получаем:
+	\[ A = \int\limits_1^2 (a_\mathrm{x}(x) + a_\mathrm{y}(x) + a_\mathrm{z}(x))\,d x \]
+	
+	\item Если подынтегральное выражение удается свести к полному дифференциалу \( \,d(U) \), то работа будет равна:
+	\[ A = U(2) - U(1). \]
+	
+	Но такая операция возможна только для потенциальных полей, причем в них работа не зависит от пути и является функцией координат начальной и конечной точек.
+	
+	\begin{example}
+	Найти работу центральносимметричного поля \( \vec{a} = f(r)\vec{r} \), где \( f(r) \) -- произвольная функция расстояния до начала координат.
+	\end{example}
+	
+	\begin{solution}
+	
+	Так как всякое центральносимметричное поле потенциально, то работа не зависит от пути интегрирования, а сам интеграл \( \int\limits_1^2 \vec{a}\cdot\,d\vec{l} \) сводится к полному дифференциалу:
+	\[ \begin{array}{r}
+	\int\limits_1^2 \vec{a}\cdot\,d\vec{l} =  \int\limits_1^2 f(r)(x\,d x + y\,d y + z\,d z) = \frac{1}{2}\int\limits_1^2 f(r)\,d (x^2 + y^2 + z^2) = \\
+	= \frac{1}{2}\int\limits_{r_1}^{r_2} f(r)\,d r^2 = \int\limits_{r_1}^{r_2} f(r)r\,d r. \end{array} \]
+	\end{solution}
+	\end{enumerate}
+
+\subsection{Свойство циркуляции}
+
+	Пусть в векторном поле \( \vec{a} \) имеется контур \( C \). Натянем на контур поверхность \( S \) и ее положительную ориентацию, задаваемую нормалью \( \vec{n} \), выберем правой относительно обхода контура.
+	
+	Запишем циркуляцию поля \( \vec{a} \) по контуру \( C \)
+	\[ \Gamma = \oint\limits_C \vec{a}\cdot\,d\vec{l} \]
+	
+	Разобьем поверхность \( S \) на несколько частей, например, четыре, и вычислим циркуляцию поля \( \vec{a} \) по каждому из контуров \( C_\mathrm{k} \) по правому винту, затем вычислим их сумму.
+	
+	Так как каждый внутренний участок проходится дважды в противоположных направлениях, то они не делают вклад в сумму циркуляций, остаются лишь работы на участках, образующих внешний контур \( C \):
+	\[ \sum\limits_1^4 \Gamma_\mathrm{k} = \sum\limits_1^4 \oint\limits_{C_\mathrm{k}} \vec{a}\cdot\,d\vec{l} = \oint\limits_C \vec{a}\cdot\,d\vec{l} = \Gamma. \]
+	
+	Таким образом, \( \Gamma = \sum\limits_1^N \Gamma_\mathrm{k} \), но \( S = \sum\limits_1^N S_\mathrm{k} \). При \( S_\mathrm{k}\to 0 \) и \( N\to\infty \): \( \Gamma_\mathrm{k}\to0 \).
+	
+	В связи с этим может оказаться имеющим смысл предельное отношение
+	\begin{equation}
+		\lim_{\Delta S\to 0_\mathrm{M}} \frac{1}{\Delta S} \oint\limits_{\Delta C} \vec{a}\cdot\,d\vec{l} \label{eq5:1}
+	\end{equation}
+	
+	Уравнение (\ref{eq5:1}) -- это удельная циркуляция поля \( \vec{a} \) вблизи точки \( M \).
+	
+\subsection{Ротор векторного поля}
+
+	Если выражение (\ref{eq5:1}) не равно нулю, то это означает, что поле \( \vec{a} \) может совершать работу, не равную нулю, по малому контуру вблизи точки \( M \), следовательно, поле \( \vec{a} \) носит \textit{вихревой} характер.
+	
+	Это означает, что оно имеет примерно такую структуру, которая может быть наложена на другую:
+
+	Подобно тому, как дивергенция поля может быть представлена некоторым точечным объектом, “вихрь” поля может быть представлен плоским объектом -- плоскостью вихря, которая задается ее нормалью. Эта нормаль называется \textbf{ротором} поля, она ориентирована по правому винту относительно обхода вихря.
+	
+	Однако, выражение (\ref{eq5:1}) зависит не только от поля \( \vec{a} \), но и от ориентации площадки \( \Delta S \) в этом поле:
+	\begin{enumerate}
+	\item Если \( \vec{n} \uparrow\uparrow \rotor{a} \), то \( \lim(\ref{eq5:1}) \to \max > 0 \);
+	\item Если \( \vec{n} \perp \rotor{a} \), то \( \lim(\ref{eq5:1}) = 0 \);
+	\item Если \( \vec{n} \uparrow\downarrow \rotor{a} \), то \( \lim(\ref{eq5:1}) \to \min < 0 \).
+	\end{enumerate}
+	
+	Эти варианты в общем случае могут быть записаны в виде:
+	\begin{equation}
+		\lim_{\Delta S\to 0_\mathrm{M}} \frac{1}{\Delta S} \oint\limits_{\Delta C} \vec{a}\cdot\,d\vec{l} = (\rotor{a})\cdot\vec{n} = (\rotor{a})_\mathrm{n} \label{eq5:2}
+	\end{equation}
+	
+	Формально, уравнение (\ref{eq5:2}) и определяет искомый вектор \( \rotor{a} \).
+	
+	Выбирая в качестве нормали поочередно орты \( \vec{e}_\mathrm{x} \), \( \vec{e}_\mathrm{y} \) и \( \vec{e}_\mathrm{z} \), получим компоненты вектора \( \rotor{a} \):
+	\[ \left\{ \begin{array}{l}
+	(\rotor{a})\cdot\vec{e}_\mathrm{x} = (\rotor{a})_\mathrm{x} = \lim\frac{1}{\Delta S_\mathrm{x}}\oint\limits_{\Delta S_\mathrm{x}} \vec{a}\cdot\,d\vec{l}; \\
+	(\rotor{a})\cdot\vec{e}_\mathrm{y} = (\rotor{a})_\mathrm{y} = \lim\frac{1}{\Delta S_\mathrm{y}}\oint\limits_{\Delta S_\mathrm{y}} \vec{a}\cdot\,d\vec{l}; \\
+	(\rotor{a})\cdot\vec{e}_\mathrm{z} = (\rotor{a})_\mathrm{z} = \lim\frac{1}{\Delta S_\mathrm{z}}\oint\limits_{\Delta S_\mathrm{z}} \vec{a}\cdot\,d\vec{l}
+	\end{array} \right. \]
+	
+	\begin{remark}
+	Уравнение (\ref{eq5:2}), являясь определением ротора, показывает физический смысл этого понятия:
+	
+	как надо повернуть площадку \( \Delta S \), чтобы удельная циркуляция \( \Gamma \) поля \( \vec{a} \) была максимальна:
+	\[ \frac{\Delta \Gamma}{\Delta S} = \frac{1}{\Delta S}\oint\limits_{\Delta C} \vec{a}\cdot\,d\vec{l} = |\rotor{a}||\vec{n}| = |\rotor{a}| \]
+	\end{remark}
+	
+	\begin{remark}
+	Если во всей области определения ротор поля равен нулю, то поле называется \textbf{безвихревым}, если не равен нулю -- \textbf{вихревым}.
+	\end{remark}
+
+\subsection{Вычисление ротора в декартовых координатах}
+
+	Пусть задано поле \( \vec{a}(x, y, z) \).
+	
+	Вычислим его ротор в декартовых координатах.
+	
+	Выберем площадки в виде малых квадратов: \( \Delta S_\mathrm{i} = \Box \) (\( i = x, y, z \)), их нормали ориентированы перпендикулярно осям \( x \), \( y \) и \( z \).	
+	
+	Вычислим циркуляцию поля по контурам малых квадратов.
+	
+	Рассотрим \( \Delta S_\mathrm{z} = \Delta x\Delta y \).
+	
+	Циркуляция по такому контуру:
+	\[ \oint\limits_{\Delta C_\mathrm{z}} \vec{a}\cdot\,d\vec{l} = (a_1 - a_3)\Delta x + (a_2 - a_4)\Delta y. \]
+	
+	\begin{comment}
+	Работа на сторонах 3 и 4 идет со знаками “\( - \)”, так как на них \( \Delta x\Delta y < 0 \).
+	\end{comment}
+	
+	Однако, \( a_3 = a_1 + \pder{a_\mathrm{x}}{y}\Delta y \); аналогично \( a_4 = a_2 + \pder{a_\mathrm{y}}{x}\Delta x \).
+	
+	Тогда циркуляция:
+	\[ \oint\limits_{\Delta C_\mathrm{z}} \vec{a}\cdot\,d\vec{l} = \left(\pder{a_\mathrm{y}}{x} - \pder{a_\mathrm{x}}{y}\right) \underbrace{\Delta x\Delta y}_{\Delta S_\mathrm{z}}. \]
+	
+	Таким образом, \( z \)-компонента ротора \( \rotor{a} \):
+	\[ (\rotor{a})_\mathrm{z} = \frac{1}{\Delta S_\mathrm{z}}\oint\limits_{\Delta C_\mathrm{z}} \vec{a}\cdot\,d\vec{l} = \pder{a_\mathrm{y}}{x} - \pder{a_\mathrm{x}}{y}. \]
+	
+	Аналогично, \( x \)- и \( y \)-компоненты:
+	\[ \begin{array}{l}
+		(\rotor{a})_\mathrm{x} = \pder{a_\mathrm{z}}{y} - \pder{a_\mathrm{y}}{z}; \\[0.2cm]
+		(\rotor{a})_\mathrm{y} = \pder{a_\mathrm{x}}{z} - \pder{a_\mathrm{z}}{x}.
+	\end{array} \]
+	
+	Вектор \( \rotor{a} \) с такими компонентами удобно записывать в виде определителя:
+	\begin{equation} \rotor{a} = \begin{vmatrix}
+	\vec{e}_\mathrm{x} & \vec{e}_\mathrm{y} & \vec{e}_\mathrm{z} \\
+	\pder{}{x} & \pder{}{y} & \pder{}{z} \\
+	a_\mathrm{x} & a_\mathrm{y} & a_\mathrm{z}
+	\end{vmatrix} = \nabla\times\vec{a}. \label{eq5:3} \end{equation}
+	
+	Операция ротора дает из векторного поля \( \vec{a} \) новое векторное поле \( \vec{b} = \rotor{a} \).
+	
+	С этим полем можно повторно выполнять операции ротора (\( \rotor\rotor{a} \)) и дивергенции:
+	\[ \divergence\rotor{a} =
+	\pder{}{x}\left(\pder{a_\mathrm{z}}{y} - \pder{a_\mathrm{y}}{z}\right) -
+	\pder{}{y}\left(\pder{a_\mathrm{x}}{z} - \pder{a_\mathrm{z}}{x}\right) -
+	\pder{}{z}\left(\pder{a_\mathrm{y}}{x} - \pder{a_\mathrm{x}}{y}\right)
+	\equiv 0. \]
+	
+	Это выражение называется \textbf{первым замечательным тождеством векторного анализа}:
+	\[ \divergence\rotor{a} \equiv 0. \]
+	
+	Оно показывает, что поле \( \rotor{a} \) -- соленоидально, то есть не имеет источников.
+	
+	Итак, три основных операции векторного анализа:
+	\begin{enumerate}
+	\item \( \vec{a} = \gradient{u} = \nabla u \) -- из скалярного поля \( u \) образует векторное поле \( \vec{a} \).  Градиент показывает направление и максимальную скорость роста скалярного поля \( u \);
+	\item \( u = \divergence{a} = \nabla\cdot\vec{a} \) -- из векторного поля \( \vec{a} \) образует скалярное поле \( u \).  Дивергенция показывает наличие источников векторного поля \( \vec{a} \);
+	\item \( \vec{b} = \rotor{a} = \nabla\times\vec{a} \) -- из векторного поля \( \vec{a} \) образует другое векторное поле \( \vec{b} \).  Ротор показывает наличие вихрей векторного поля \( \vec{a} \);
+	\end{enumerate}
+
+	\begin{example}
+	Вычислить ротор \( \rotor{v} \) поля \( \vec{v} = \omega\{-y, x, 0\} \)скоростей точек твердого тела, вращающегося вокруг оси \( Oz \).
+	\end{example}
+	
+	\begin{solution}
+	
+	\[ \rotor{v} = \omega \begin{vmatrix}
+	\vec{e}_\mathrm{x} & \vec{e}_\mathrm{y} & \vec{e}_\mathrm{z} \\
+	\pder{}{x} & \pder{}{y} & \pder{}{z} \\
+	-y & x & 0
+	\end{vmatrix} = \omega(0\vec{e}_\mathrm{x} + 0\vec{e}_\mathrm{y} + 2\vec{e}_\mathrm{z}) = 2\vec{\omega}. \]
+	\end{solution}
+	
+	\begin{example}
+	Вычислить ротор поля \( \vec{v} = \{v_\mathrm{x}, 0, 0\} \) скоростей частиц в реке глубиной \( h \), причем возле поверхности их скорость максимальна и равна \( v_\mathrm{max} \).
+	\end{example}
+	
+	\begin{solution}
+	
+	Распределение скорости частиц:
+	\[ v_\mathrm{x}(z) = v_\mathrm{max} \frac{z}{h}. \]
+	
+	Тогда ротор:
+	\[ \rotor{v} = \frac{v_\mathrm{max}}{h} \begin{vmatrix}
+	\vec{e}_\mathrm{x} & \vec{e}_\mathrm{y} & \vec{e}_\mathrm{z} \\
+	\pder{}{x} & \pder{}{y} & \pder{}{z} \\
+	z & 0 & 0
+	\end{vmatrix} = \{ 0, \frac{v_\mathrm{max}}{h}, 0 \}. \]
+	\end{solution}
+
+\subsection{Теорема Стокса}
+
+	Теорема Стокса является одной из центральных теорем векторного анализа наряду с теоремой Остроградского.
+	
+	Она позволяет преобразовывать контурный интеграл в поверхностный.
+	
+	Итак, пусть в векторном поле \( \vec{a} \) находится контур \( C \). Натянем на контур произвольную поверхность \( S \), ориентированную по правому винту относительно обхода контура.
+	
+	\begin{theorem}
+	Циркуляция поля \( \vec{a} \) по контуру \( C \) равна потоку поля \( \rotor{a} \) через произвольную поверхность \( S \),  ограниченную этим контуром:
+	\[ \oint\limits_C \vec{a}\cdot\,d\vec{l} = \iint\limits_S \rotor{a}\cdot\,d\vec{S}. \]
+	\end{theorem}	
+	Причем должно выполняться \textit{одно условие}: поле \( \vec{a} \) должно иметь непрерывные частные производные на всей поверхности \( S \).
+	
+	\begin{proof}
+	
+	Разобьем поверхность \( S \) на малые участки \( \Delta S_\mathrm{k} \). В силу свойства циркуляции:
+	\[ \begin{array}{r}
+	\Gamma_\mathrm{C} = \sum\limits_k \Gamma_\mathrm{k} = \left.\sum\limits_k \frac{1}{\Delta S_\mathrm{k}} \oint\limits_{\Delta C_\mathrm{k}} \vec{a}\cdot\,d\vec{l}\,\right|_{\Delta S_\mathrm{k}\to0} = \left.\sum\limits_k (\rotor{a}\cdot\vec{n})\Delta S_\mathrm{k}\,\right|_{\Delta S_\mathrm{k}\to0} = \\[0.2cm]
+	= \iint\limits_S (\rotor{a}\cdot\vec{n})\,d S = \iint\limits_S \rotor{a}\cdot\,d\vec{S}. \end{array} \]
+	\end{proof}
+	
+	Если где-либо на \( S \) или \( C \) условие теоремы Стокса не выполнена, то эта теорема, вообще говоря, неверна.
+	
+	\begin{example}
+	Вычислить циркуляцию магнитного поля прямого тока \( i \): \( \vec{B} = \frac{k}{\rho^2}\{ -y, x, 0 \} \), где \( \rho = \sqrt{x^2 + y^2} \).
+	\end{example}
+	
+	\begin{solution}
+	
+	\begin{enumerate}
+	\item Непосредственно:
+	
+	Выберем контур \( C \) в виде окружности радиуса \( \rho \), которая имеет параметрические уравнения:
+	\[ \begin{array}{l}
+		x = \rho\cos\varphi; \\
+		y = \rho\sin\varphi; \\
+		\,d x = -\rho\sin\varphi\,d\varphi; \\
+		\,d x = \rho\cos\varphi\,d\varphi.
+	\end{array} \]
+	
+	Тогда циркуляция:
+	\[ \Gamma = \oint\limits_{2\pi\rho} B_\mathrm{x}\,d x + B_\mathrm{y}\,d y = \oint\limits_{2\pi\rho} \left(\frac{\rho^2\sin^2\varphi}{\rho^2} + \frac{\rho^2\cos^2\varphi}{\rho^2}\right)\,d\varphi = 2\pi.  \]
+	
+	\item По теореме Стокса:
+	
+	\[ \oint\limits_{2\pi\rho} \vec{B}\cdot\,d\vec{l} = \iint\limits_{\pi\rho^2}\rotor{B}\cdot\,d\vec{S} = \iint\limits_{\pi\rho^2}\vec{0}\cdot\,d\vec{S} = 0. \]
+	\end{enumerate}
+	\end{solution}
+	 
+	Ошибочным является второй результат, так как не выполнено условие теоремы Стокса: в одной точке поверхности, а именно в точке пересечения ее с осью \( z \), поле не имеет непрерывных производных да и само не определено.
+	
+	В этом случае говорят, что область определения поля \textit{неодносвязна}.
+	
+	\begin{definition}
+	Область определения поля является \textbf{односвязной}, если на любой контур в этой области можно натянуть поверхность, целиком лежащую в области определения, иначе область определения называется \textbf{неодносвязной}.
+	\end{definition}
+	
+	Примеры неодносвязных полей:
+	\begin{enumerate}
+	\item все пространство, кроме одной бесконечной линии;
+	\item открытая поверхность с одной дыркой;
+	\item замкнутая поверхность с двумя дырками;
+	\item тело с дыркой  (топологический аналог тора).
+	\end{enumerate}

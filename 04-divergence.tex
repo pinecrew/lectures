@@ -1,0 +1,518 @@
+\section{Поток и дивергенция векторного поля}
+
+\subsection{Поток}
+
+	Пусть в векторном поле \( \vec{a}(x, y, z) \)  находится двухсторонняя гладкая поверхность \( S \).
+	
+	Выделим на \( S \) малую площадку \( \Delta S \), на ней векторное поле имеет значение \( \vec{a} \). \( \vec{n} \) -- единичная нормаль к \( \Delta S \) на условно положительной стороне.
+	
+	\begin{definition}
+	Скалярная величина \( \Delta\Phi = a_n\Delta S = |\vec{a}|\cos\alpha\Delta S = (\vec{a}\cdot\vec{n})\Delta S \) называется \textbf{элементарным потоком} поля \( \vec{a}(x, y, z) \) через площадку \( \Delta S \).
+	\end{definition}
+	
+	\begin{definition}
+	Предельная сумма всех элементарных потоков через всю поверхность \( S \) называется \textbf{потоком} поля \( \vec{a}(x, y, z) \) через поверхность \( S \).
+	\begin{equation}
+		\Phi = \lim_{\Delta S_k \to 0 \\ N \to \infty} \sum\limits_{k=1}^N (\vec{a}\cdot\vec{n})\Delta S_k \equiv \iint\limits_S (\vec{a}\cdot\vec{n})dS \label{eq4:1}
+	\end{equation}
+	\end{definition}
+	
+	Далее удобно ввести элемент ориентированной площади \( d\vec{S} \equiv \vec{n}dS \), направленный вдоль нормали \( \vec{n} \) и по величине равный \( dS \).
+	
+	Тогда поток поля \( \vec{a} \) через поверхность \( S \):
+	\begin{equation}
+		\Phi = \iint\limits_S \vec{a}\cdot d\vec{S} \label{eq4:2}
+	\end{equation}
+	
+	\begin{remark}
+	Элементарный поток \( \Delta \Phi = |\vec{a}| |\vec{n}|\cos\alpha\Delta S \)  -- величина \textit{алгебраическая}, то есть он может быть и положительным, и отрицательным, и равным нулю, в зависимости о угла \( \alpha \):
+	\[ \left\{
+	\begin{array}{r l}
+		\alpha > \frac{\pi}{2}, & \Delta\Phi < 0 \\
+		\alpha = \frac{\pi}{2}, & \Delta\Phi = 0 \\
+		\alpha < \frac{\pi}{2}, & \Delta\Phi > 0
+	\end{array}
+	\right . \]
+	
+	Следовательно, и весь поток \( \Phi = \iint\limits_S \vec{a}\cdot d\vec{S} \) является алгебраической величиной.
+	\end{remark}
+	
+	\begin{remark}
+	Если поверхность \( S \) является замкнутой, то условно положительной стороной является внешняя, а положительной нормалью -- внешняя нормаль.
+	
+	В этом случае (\ref{eq4:2}) имеет вид:
+	\begin{equation}
+		\Phi = \oiint\limits_S \vec{a}\cdot d\vec{S}
+	\end{equation}
+	\end{remark}
+	
+\subsection{Свойства потока}
+
+	\begin{enumerate}
+	\item При смене стороны поток меняет знак.
+	
+	\begin{proof}
+	\[ \Phi_1 = \iint\limits_S (\vec{a}\cdot\vec{n}_1)dS \]
+	\[ \Phi_2 = \iint\limits_S (\vec{a}\cdot\vec{n}_2)dS \]
+	
+	А так как \( \vec{n}_1 = -\vec{n}_2 \), то \( \Phi_1 = -\Phi_2 \).
+	\end{proof}
+	
+	\item Линейность.
+	Если поле \( \vec{a} \) является суммой \( \vec{a} = \vec{a}_1 + \vec{a}_2 \), то поток \( \Phi_{\vec{a}}^S = \Phi_{\vec{a}_1}^S + \Phi_{\vec{a}_2}^S \), то есть
+	\[ \Phi_{\vec{a}}^S = \iint\limits_S \vec{a}_1\cdot d\vec{S} + \iint\limits_S \vec{a}_2\cdot d\vec{S} = \iint\limits_S \vec{a}\cdot d\vec{S} \]
+	
+	\item Аддитивность.
+	Если \( S \) -- это сумма гладких фрагментов \( S_k \), то
+	\[ \iint\limits_S \vec{a}\cdot d\vec{S} = \sum\limits_1^N \iint\limits_{S_k} \vec{a}_k\cdot d\vec{S} \]
+	
+	\end{enumerate}
+	
+\subsection{Физическое содержание явления потока}
+
+	Рассмотрим два физических процесса, в которых появляется поток \( \Phi \).
+	
+\subsubsection{Течение жидкости}
+
+	Пусть течение жидкости задано полем её скоростей \( \vec{v}(x, y, z) \).
+	
+	Вычислим поток поля \( \vec{v} \) через поверхность \( S \).
+	
+	Вырежем на поверхности \( S \) малый элемент \( dS \) и построим на нём косой цилиндр длиной \( dl \) с осью на векторе \( \vec{v} \).
+	
+	Его заполняет объем воды \( dV = dSdh \). По определению, за время \( dt \) через цилиндр пройдет весь \( dV = dSdl\cos\alpha = dSv\cos\alpha dt \).
+	
+	Тогда расход воды
+	\[ \frac{dV}{dt} = vdS\cos\alpha = \vec{v}\cdot d\vec{S} = d\Phi \].
+	
+	А расход воды через всю поверхность \( S \);
+	\[ \left. \frac{dV}{dt}\right|_S = \iint\limits_S \vec{v}\cdot d\vec{S} \frac{\text{м}^3}{\text{с}} \]
+	
+	Таким образом, поток поля \( \vec{v} \) через поверхность \( S \) -- это расход воды в \( \frac{\text{м}^3}{\text{с}} \) через \( S \).
+	
+\subsubsection{Распространение тепла}
+
+	В математической теории теплопередачи распространение тепла рассматривается как поток жидкости.
+	
+	Пусть направление распространения тепла задаётся единичным вектором \( \vec{n} \).
+	
+%	коммент к рисунку:
+%	\( dS_n \) -- элемент площади, перпендикулярный вектору направления распространения тепла
+
+	\begin{definition}
+	Векторная величина \( \vec{j} \), показывающая направление распространения тепла (теплопереноса) и численно равная перенесённому количеству тепла \( dQ \) за время \( dt \) через площадку \( dS_n \), перпендикулярную распространению тепла, называется \textbf{плотностью потока тепла} (тепловая мощность, перенесённая через единицу площади).
+	
+	\begin{equation}
+		\vec{j} \equiv \frac{dQ}{dtdS_n}\vec{n}
+	\end{equation}
+	\end{definition}
+	
+	\begin{definition}
+	Скалярная алгебраическая величина \( dq = jdS_n = jdS\cos\alpha \) называется \textbf{элементарным тепловым потоком}.
+	\end{definition}
+	
+	Тогда скалярная алгебраическая величина \( q = \iint\limits_S \vec{j}\cdot d\vec{S} \) -- это \textbf{поток тепла} через поверхность \( S \) (тепловая мощность, перенесённая через \( S \)).
+	
+\subsection{Примеры вычисления потока}
+
+	Задача вычисления потока сводится к технике вычисления поверхностного интеграла \( \Phi = \iint\limits_S \vec{a}\cdot d\vec{S} \), но для некоторых видов полей \( \vec{a} \) и поверхностей \( S \) удаётся свести интеграл к умножению.
+	
+	\begin{example}
+	Вычислить поток поля \( \vec{r} \) через плоскую поверхность \( S \), не проходящую через начало координат.
+	\end{example}
+	
+	\begin{solution}
+	\( h = r\cos\alpha \) -- расстояние от плоскости до точки \( O \).
+	
+	Элементарный поток поля \( \vec{r} \) через площадку \( dS \):
+	\[ d\Phi = \vec{r}\cdot d\vec{S} = rdS\cos\alpha = hdS \]
+	
+	Так как \( h = \const \) для всех \( S \), то весь поток:
+	\[ \Phi = \iint\limits_S hdS = h\iint\limits_S dS = hS \]
+	\end{solution}
+	
+	\begin{example}
+	Вычислить поток поля \( \vec{r} \) через замкнутую поверхность:
+	\[ S: x^2 + y^2 = R^2; \ z = 0, \ z = h \]
+	\end{example}
+	
+	\begin{solution}
+	В силу аддитивности потока:
+	\[ \Phi = \Phi^{\text{нижн}}_{\text{тор}} + \Phi^{\text{верх}}_{\text{тор}} + \Phi_{\text{бок}} \]
+	
+	Так как на нижнем торце линии поля \( \vec{r} \) всюду перпендикулярны \( d\vec{S}_{\text{нижн}} \), то поток через него равен нулю:
+	\[ \Phi^{\text{нижн}}_{\text{тор}} = 0 \]
+	
+	Поток поля через верхний торец равен \( hS_{\text{тор}} \), в силу предыдущего примера:
+	\[ \Phi^{\text{верх}}_{\text{тор}} = hS_{\text{тор}} = \pi R^2h\]
+	
+	Вычислим поток через боковую поверхность цилиндра:
+	\[ \Phi_{\text{бок}} = \iint\limits_{S_{\text{бок}}} r\cos\alpha dS_{\text{бок}} = R\iint\limits_{S_{\text{бок}}} dS_{\text{бок}} = R\cdot 2\pi Rh = 2\pi R^2 h \]
+	
+	Тогда весь поток:
+	\[ \Phi = \pi R^2h + 2\pi R^2h = 3\pi R^2h \]
+	\end{solution}
+	
+	\begin{example}
+	Вычислить поток поля \( \vec{r} \) через произвольную замнутую поверхность \( S \), ограничивающую объём \( V \).
+	\end{example}
+	
+	\begin{solution}
+	\begin{enumerate}
+	\item Пусть точка \( O \) лежит внутри \( S \).
+	
+	Разобъём поверхность \( S \) на мелкие кусочки \( dS \) и построим узкие пирамиды с общей вершиной в точке \( O \).
+	
+	\( \vec{n} \) -- единичная нормаль к \( dS \).
+	\( dS_n \) -- проекция \( dS \) на плоскость, перпендикулярную \( \vec{r} \).
+	\( dV = \frac{1}{3}S_nr = \frac{1}{3}rdS\cos\alpha \) -- объём узкой пирамиды.
+
+	Элементарный поток поля \( \vec{r} \) через площадку \( dS \):
+	\[ d\Phi = \vec{r}\cdot d\vec{S} = rdS\cos\alpha = 3dV \]
+	
+	Тогда весь поток через поверхность \( S \):
+	\[ \Phi = 3\oiint\limits_S dS = 3\iiint\limits_V dV = 3V \]
+	
+	\item Пусть точка \( O \) лежит вне \( S \).
+	
+	Тогда результат будет такой же:
+	\[ \Phi = \oiint\limits_S \vec{r}\cdot d\vec{S} = 3V \]
+	 Доказательство в пункте 4.9.
+	\end{enumerate}
+	\end{solution}
+	
+\subsection{Дивергенция векторного поля}
+
+	Рассмотрим замкнутую поверхность \( S \), погружённую в поле \( \vec{a} \).
+	
+	Поток поля \( \vec{a} \) через поверхность \( S \):
+	\[ \Phi = \oiint\limits_S \vec{a}\cdot d\vec{S} \]
+	-- это величина алгебраическая.
+	
+	Если \( \Phi > 0 \), то это означает, что из \( S \) выходит линий больше, чем входит в неё, то есть внутри \( S \) есть \textbf{источник} поля, то есть точки, где линии поля \( \vec{a} \) зарождаются.
+	
+	Если \( \Phi < 0 \), то это означает, что в \( S \) входит линий больше, чем выходит из неё, то есть внутри \( S \) есть отрицательный источник (\textbf{сток}) поля, то есть точки, где линии поля \( \vec{a} \) исчезают.
+
+	Если \( \Phi = 0 \), хотя \( \vec{a} \ne 0 \), то это означает, что из \( S \) выходит линий столько же, сколько входит в неё, то есть внутри \( S \) либо нет ни источников, ни стоков, либо их алгебраическая сумма равна нулю.
+	
+	Таким образом, поток является некоторой грубой характеристикой характера векторного поля. Более определённой, локальной, его характеристикой является алгебраическая величина, называемая \textit{дивергенцией}.
+	
+	Пусть задано векторное поле \( \vec{a}(x, y, z) \). Выделим в пространстве линейный объём \( \Delta V \), ограниченный поверхностью \( \Delta S \), в котором есть внутренняя точка \( M \).
+	
+	Поток поля через \( \Delta S \):
+	\[ \Delta\Phi = \oiint\limits_{\Delta S} \vec{a}\cdot d\vec{S} \]
+	
+	Составим отношение:
+	\begin{equation}
+		\frac{\Delta\Phi}{\Delta V} = \frac{1}{\Delta V} \oiint\limits_{\Delta S} \vec{a}\cdot d\vec{S} \label{eq4:n1}
+	\end{equation}
+	
+	При \( \Delta V \to 0 \) поток \( \Phi \to 0 \).
+	
+	\begin{definition}
+	Предел (\ref{eq4:n1}) при \( \Delta V \to 0_M \), если он существует, называется \textbf{дивергенцией} поля \( \vec{a} \) в точке \( M \):
+	
+	\begin{equation}
+		\divergence{a} \equiv \lim_{\Delta V \to 0_M} \frac{1}{\Delta V} \oiint\limits_{\Delta S} \vec{a}\cdot d\vec{S} \label{eq4:n2}
+	\end{equation}
+	\end{definition}
+	
+	\begin{comment}
+	\begin{enumerate}
+	\item Дивергенция \( \divergence{a} \) -- инвариант, то есть не зависит от выбора системы координат.
+	
+	\item Величина \( \divergence{a} \) -- сама образует скалярное поле \( f \), порождаемое векторным полем \( \vec{a} \):
+	\[ \divergence{a} = f(x, y, z) \]
+	
+	\item Если \( \divergence{a} \equiv 0 \) во всей области существования поля \( \vec{a} \), то поле \( \vec{a} \) называется \textbf{соленоидальным}.
+	
+	\item Если в точке \( M \) дивергенция \( \divergence{a} > 0 \), то в точке \( M \) есть источник, если \( \divergence{a} < 0 \) -- то сток.
+	
+	\item Если поле \( \vec{a} \) -- соленоидальное, то его линии не имеют начала и конца, они либо замкнуты, либо бесконечно вьются.
+	\end{enumerate}
+	\end{comment}
+	
+	Однако, формула (\ref{eq4:n2}) не удобна для вычисления дивергенции.
+	Получим формулу для вычисления в декартовых координатах, удобную для вычисления.
+	
+	Пусть поле \( \vec{a} \) имеет непрерывные частные производные \( \frac{\partial a_x}{\partial x} \), \( \frac{\partial a_y}{\partial y} \) и \( \frac{\partial a_z}{\partial z} \). Выберем в поле \( \vec{a} \) малый объём \( \Delta V = \Delta x\Delta y\Delta z\) в виде кубика с гранями, параллельными осям координат.
+	
+	% все подписи должны быть НА РИСУНКЕ!
+	
+	Вычислим поток поля \( \vec{a} \) через все шесть граней кубика.
+	
+	Поток поля \( \vec{a} \) через заднюю грань \( \Delta S_x^{-} \):
+	\[ \Delta\Phi_x^{-} = -a_x(x, y, z)\Delta y\Delta z \]
+	“\( -\)” стоит из-за того, что на задней грани \( u_x^{-} \uparrow\downarrow x \).
+	
+	Поток поля \( \vec{a} \) через переднюю грань \( \Delta S_x^{+} \):
+	\[ \Delta\Phi_x^{+} = a_x(x + \Delta x, y, z)\Delta y\Delta z = a_x(x, y, z)\Delta y\Delta z + \frac{\partial a_x}{\partial x}\Delta x\Delta y\Delta z \]
+	
+	Суммарный поток \( \Delta\Phi_x \) через пару граней:
+	\[ \Delta\Phi_x = \Delta\Phi_x^{+} + \Delta\Phi_x^{-} = \frac{\partial a_x}{\partial x}\Delta x\Delta y\Delta z = \frac{\partial a_x}{\partial x}\Delta V \]
+	
+	Аналогично, поток через две пары других граней:
+	\[ \Delta\Phi_y = \frac{\partial a_y}{\partial y}\Delta V \]
+	\[ \Delta\Phi_z = \frac{\partial a_z}{\partial z}\Delta V \]
+	
+	Тогда поток через все шесть граней:
+	\[ \Delta\Phi = \Delta\Phi_x + \Delta\Phi_y + \Delta\Phi_z = \left(\frac{\partial a_x}{\partial x} + \frac{\partial a_y}{\partial y} + \frac{\partial a_z}{\partial z}\right)\Delta V \]
+	
+	Устремляя \( \Delta V \to 0_M \) и учитывая определение (\ref{eq4:n2}), получим:
+	\begin{equation}
+		\divergence{a} = \lim_{\Delta V \to 0_M} \frac{\Delta\Phi}{\Delta V} = \frac{\partial a_x}{\partial x} + \frac{\partial a_y}{\partial y} + \frac{\partial a_z}{\partial z} \label{eq4:n3}
+	\end{equation}
+	
+	Выражение (\ref{eq4:n3}) удобно записывать в виде скалярного произведения:
+	\begin{equation}
+		\divergence{a} = \nabla\cdot\vec{a} \label{eq4:n4}
+	\end{equation}
+	
+\subsection{Свойства дивергенции}
+
+	\begin{enumerate}
+	\item Если \( \vec{a} \) и \( \vec{b} \) -- два векторных поля, то
+	\[ \divergence(\vec{a} + \vec{b}) = \divergence{a} + \divergence{b} \]
+	\begin{proof}
+
+	\[ \begin{array}{l}
+	\divergence(\vec{a} + \vec{b}) = \frac{\partial (a_x + b_x)}{\partial x} + \frac{\partial (a_y + b_y)}{\partial y} + \frac{\partial (a_z + b_z)}{\partial z} = \\
+	= \frac{\partial a_x}{\partial x} + \frac{\partial a_y}{\partial y} + \frac{\partial a_z}{\partial z} + \frac{\partial b_x}{\partial x} + \frac{\partial b_y}{\partial y} + \frac{\partial b_z}{\partial z} = \\
+	= \divergence{a} + \divergence{b}
+	\end{array} \]
+	\end{proof}
+	
+	\item Пусть \( \vec{a}(x, y, z) \) -- векторное поле, а \( u(x, y, z) \) -- скалярное, тогда
+	\begin{equation}
+	\divergence(u\vec{a})\, = u\nabla\cdot\vec{a} + \vec{a}\cdot\nabla u = u\divergence{a} + \vec{a}\cdot\gradient{u} \label{eq4:n5}
+	\end{equation}
+	\begin{proof}
+	\[ \begin{array}{l}
+	\divergence(u\vec{a})\, = \frac{\partial (ua_x)}{\partial x} + \frac{\partial (ua_y)}{\partial y} + \frac{\partial (ua_z)}{\partial z} = \\
+	= a_x\frac{\partial u}{\partial x} + u\frac{\partial a_x}{\partial x} + a_y\frac{\partial u}{\partial y} + u\frac{\partial a_y}{\partial y} + a_z\frac{\partial u}{\partial z} + u\frac{\partial a_z}{\partial z} = \\
+	= u\left(\frac{\partial a_x}{\partial x} + \frac{\partial a_y}{\partial y} + \frac{\partial a_z}{\partial z}\right) + a_x\frac{\partial u}{\partial x} + a_y\frac{\partial u}{\partial y} + a_z\frac{\partial u}{\partial z} = \\
+	= u\divergence{a} + \vec{a}\cdot\gradient{u}
+	\end{array} \]
+	\end{proof}
+	\end{enumerate}
+	
+\subsection{Примеры вычисления дивергенции}
+
+	\begin{example}
+	Вычислить \( \divergence{r} \).
+	\end{example}
+	\begin{solution}
+	\[ \divergence{r} = \frac{\partial x}{\partial x} + \frac{\partial y}{\partial y} + \frac{\partial z}{\partial z} = 3 \]
+	\end{solution}
+	
+	\begin{example}
+	Вычислить \( \divergence{a} \), где \( \vec{a} = r^n\vec{r} \).
+	\end{example}
+	\begin{solution}
+	В силу (\ref{eq4:n5}):
+	\[ \divergence(r^n\vec{r})\, = r^n\divergence{r} + \vec{r}\cdot\gradient{r^n} = 3r^n + x\frac{\partial r^n}{\partial x} + y\frac{\partial r^n}{\partial y} + z\frac{\partial r^n}{\partial z} \]
+	
+	Вычислим \( x\frac{\partial r^n}{\partial x} = x\frac{\partial r^n}{\partial r}\frac{\partial r}{\partial x} = x\cdot nr^{n-1}\cdot\frac{x}{r} = x^2nr^{n-2} \)
+	
+	Тогда дивергенция:
+	\[ \divergence(r^n\vec{r}) = 3r^n + nr^{n-2}(x^2 + y^2 + z^2) = 3r^n + nr^n = (3 + n)r^n \]
+	
+	Пусть \( n = 0 \). Тогда \( \divergence(r^0\vec{r})\, = 3 \).
+	
+	Пусть \( n = -1 \). Тогда \( \divergence(r^{-1}\vec{r})\, = \frac{2}{r} \).
+	
+	Пусть \( n = -2 \). Тогда \( \divergence(r^{-2}\vec{r})\, = \frac{1}{r^2} \).
+	
+	Пусть \( n = -3 \) -- Кулоновское поле. Тогда \( \divergence(r^{-3}\vec{r})\, = 0 \) -- соленоидальное поле, у него всюду, кроме точки \( O \), дивергенция равна нулю, но в точке \( O \) поле не определено.
+	\end{solution}
+	
+	\begin{example}
+	Вычислить дивергенцию поля \( \vec{v} \) скоростей точек твердого тела, вращающегося со скоростью \( \vec{\omega} = \{ 0, 0, \omega \} \).
+	\end{example}
+	\begin{solution}
+	\[ \vec{v} = \divergence(\vec{\omega}\times\vec{r})\, = \begin{bmatrix}
+	\vec{e}_x & \vec{e}_y & \vec{e}_z \\
+	0 & 0 & \omega \\
+	x & y & z
+	\end{bmatrix} = \omega\{ -y, x, 0 \} \]
+	
+	Тогда дивергенция поля \( \vec{v} \):
+	\[ \divergence{v} = \frac{\partial (-\omega y)}{\partial x} + \frac{\partial (\omega x)}{\partial y} + \frac{\partial 0}{\partial z} = 0 \]
+	
+	Это поле -- соленоидально.
+	\end{solution}
+%	\begin{example}
+%	Вычислить дивергенцию поля \( \vec{a} = \frac{\vec{v}\times\vec{r}}{r^3} \) и построить векторные линии этого поля.
+%	\end{example}
+%	\begin{solution}
+%	Распишем векторное произведение:
+%	\[ \vec{v}\times\vec{r} = (\vec{\omega}\times\vec{r})\times\vec{r} = -\vec{r}\times(\vec{\omega}\times\vec{r}) = -\vec{\omega}r^2 + \vec{r}(\vec{\omega}\cdot\vec{r}) = \omega z\vec{r} - r^2\vec{omega} \]
+%	
+%	Тогда дивергенция:
+%	\[ \divergence{a} = \divergence(\omega z\vec{r}\, - r^2\vec{omega}) = \divergence\left(\frac{\omega z}{r^3}\vec{r}\right) - \divergence\left(\frac{1}{r}\vec{\omega}\right) \]
+%	
+%	Посчитаем каждую дивергенцию по отдельности:
+%	\[ \begin{array}{l}
+%	 \divergence\left(\frac{\omega z}{r^3}\vec{r}\right) = \frac{\omega z}{r^3}\cdot3 + \vec{r}\cdot\{ \omega z\cdot\frac{-3}{r^4}\cdot\frac{x}{r}, \omega z\cdot\frac{-3}{r^4}\cdot\frac{y}{r}, \omega z\cdot\frac{-3}{r^4}\cdot\frac{z}{r} + \frac{\omega}{r^3} \} = \\
+%	= 3\frac{\omega z}{r^3} - 3\omega z\cdot\frac{x^2}{r^5} - 3\omega z\cdot\frac{y^2}{r^5} - 3\omega z\cdot\frac{z^2}{r^5} + \frac{\omega}{r^3}z = \frac{\omega}{r^3}z
+%	\end{array} \]
+%	\[ \begin{array}{c}
+%	\divergence\left(\frac{1}{r}\vec{\omega}\right) = \frac{1}{r}\cdot 0 + \vec{\omega}\cdot\{ \frac{-1}{r^2}\cdot\frac{x}{r}, \frac{-1}{r^2}\cdot\frac{y}{r}, \frac{-1}{r^2}\cdot\frac{z}{r} \} = -\frac{\omega}{r^3}z
+%	\end{array} \]
+%	
+%	Вся дивергенция:
+%	\[ \divergence{a} = \frac{\omega}{r^3}z + \frac{\omega}{r^3}z = 2\frac{\omega}{r^3}z \]
+%	\end{solution}
+	
+\subsection{Теорема Остроградского}
+
+	Теорема о преобразовании поверхностного интеграла в объёмный является одной из центральных теорем в векторном анализе.
+	
+	\begin{theorem}
+	Пусть поле \( \vec{a} \) имеет непрерывные частные производные \( \frac{\partial a_x}{\partial x} \), \( \frac{\partial a_y}{\partial y} \) и \( \frac{\partial a_z}{\partial z} \). Тогда поток поля \( \vec{a} \) через произвольную \textit{замкнутую} поверхность \( S \) равен объёмному интегралу по объёму \( V \), ограниченному \( S \), от дивергенции поля \( \vec{a} \):
+	\begin{equation}
+		\oiint\limits_S \vec{a}\cdot d\vec{S} = \iiint\limits_V \divergence{a} dV \label{eq4:nn1}
+	\end{equation}
+	\end{theorem}
+	
+	\begin{comment} Определение объёмного интеграла.
+	
+	Пусть в области \( V \) задано скалярное поле \( u(x, y, z) \). Разобъём объём \( V \) на малые объёмы \( \Delta V_k \), и пусть точка \( M_k(x_k, y_k, z_k) \) лежит в \( \Delta V_k \), а функция \( u(x, y, z) \) в этой точке принимает значение \( u(x, y, z) = u_k(x_k, y_k, z_k) \).
+	
+	\begin{definition}
+	Предельная сумма \( \lim_{N\to\infty \\ \Delta V_k\to 0} \sum\limits_{k = 1}^N u_k \Delta V_k \equiv \iiint\limits_V u(x, y, z)dV \) называется \textbf{объёмным интегралом} функции \( u \) по объёму \( V \).
+	\end{definition}
+	\end{comment}
+	
+	\textbf{Доказательство} теоремы Остроградского:
+	
+	Докажем, что равенство (\ref{eq4:nn1}) может выполнятся с любой степени точности.
+	
+	Разобьём область \( V \) на малые \( \Delta V_k \), настолько малые, что для них (\ref{eq4:n2}) выполняется с наперёд заданной точностью \( \varepsilon \):
+	\begin{equation}
+		\left|\frac{1}{V_k}\oiint\limits_S\vec{a}\cdot d\vec{S} - \divergence{a}\right| < \varepsilon \label{eq4:nn3}
+	\end{equation}
+	
+	Домножим (\ref{eq4:nn3}) на \( V_k \) и просуммируем по всем \( V_k \):
+	\begin{equation}
+		\left|\sum\limits_k \oiint\limits_{S_k} \vec{a}\cdot d\vec{S} - \sum\limits_k \divergence{a}V_k\right| < \varepsilon V \label{eq4:nn4}
+	\end{equation}
+	
+	Рассмотрим первую сумму в левой части (\ref{eq4:nn4}). Её можно разбить на две суммы:
+	\[ \sum\limits_k \oiint\limits_{S_k} \vec{a}\cdot d\vec{S} = \underbrace{\sum\limits_{k’}\iint\limits_{S_{k’}} \vec{a}\cdot d\vec{S}}_{\#I} + \underbrace{\sum\limits_{k”}\iint\limits_{S_{k”}} \vec{a}\cdot d\vec{S}}_{\#II} \]
+	
+	\( \#I \) ведется по внутренним смежным участкам замкнутых поверхностей \( V_k \), а \( \#II \) ведется по участкам, которые являются фрагментами внешней поверхности \( S \). 
+	
+	В сумме \( \#I \) все смежные участки встречаются попарно и попарно уничтожаются:
+	\[ \vec{a}\cdot d\vec{S}_{k’} = \vec{a}\cdot d\vec{S}_{k’ + 1} \]
+	
+	Следовательно, первая сумма равна нулю:
+	\[ \sum\limits_{k’}\iint\limits_{S_{k’}} \vec{a}\cdot d\vec{S} = 0 \]
+	
+	Вторая сумма дает \( \#II = \oiint_S \vec{a}\cdot d\vec{S} \).
+	
+	Таким образом:
+	\[ \left|\oiint\limits_S \vec{a}\cdot d\vec{S} - \sum\limits_{k = 1}^{N}\divergence{a}V_k\right| < \varepsilon V \]
+	
+	Но, так как при \( N \to \infty \): \( V_k \to 0 \), то \( \sum\limits_{k = 1}^{N}\divergence{a}V_k \), по определению, становится объемным интегралом \( \iiint\limits_V \divergence{a}dV \):
+	
+	\[ \left|\oiint\limits_S \vec{a}\cdot d\vec{S} - \iiint\limits_V \divergence{a}dV\right| < \varepsilon V \]
+	
+	А так как \( \varepsilon \) можно сделать сколь угодно малым, то в итоге получаем равентво (\ref{eq4:nn1}).
+	
+	\begin{corollary}
+	Если поле \( \vec{a} \) -- соленоидально, то есть \( \divergence{a} = 0 \), то из (\ref{eq4:nn1}) следует, что
+	\[ \oiint\limits_S \vec{a}\cdot d\vec{S} = \iiint\limits_V \divergence{a}dV = 0 \]
+	\end{corollary}
+	
+	\begin{corollary}
+	Пусть имеется изолированный источник поля \( \vec{a} \), то есть \( \divergence{a} = 0 \) во всем пространстве, кроме точки \( O \), в которой находится источник.
+	
+	Примером такого поля может служить поле \( \vec{a} = \frac{\vec{r}}{r^3} \) -- кулоновское поле.  Дивергенция этого поля всюду, кроме точки \( O \), равна нулю.
+	
+	Тогда поток поля \( \vec{a} \) через замкнутую поверхность \( S \) не зависит от ее формы.
+	
+	\begin{proof}
+	\begin{enumerate}
+	\item Пусть точка \( O \), где находится источник, лежит вне поверхности \( S \). Тогда поток для любой поверхности \( S \):
+	\[ \oiint\limits_S \vec{a}\cdot d\vec{S} = \iiint\limits_S \divergence{a} dV = 0 \]
+	
+	\item Пусть поверхность \( S_1 \) охватывает источник \( q \). Охватим его второй поверхностью \( S_2 \), отличной от \( S_1 \), и покажем, что потоки через эти поверхности являются равными: \( \Phi_1 = \Phi_2 \):
+	\[ \begin{array}{l}
+		\Phi_1 = \oiint_{S_1} \vec{a}\cdot\vec{n}_1dS \\
+		\Phi_1 = \oiint_{S_2} \vec{a}\cdot\vec{n}_2dS
+	\end{array} \]
+	
+	Пусть \( V \) -- это область между \( S_1 \) и \( S_2 \). Для нее \textit{внешними} нормалями являются \( \vec{n}_1’ \) и \( \vec{n}_2 \), где \( \vec{n}_1’ = -\vec{n}_1 \).
+	
+	Тогда, по теореме Остроградского:
+	\[ \oiint\limits_{S_1 + S_2} \vec{a}\cdot d\vec{S} = \iiint\limits_V \divergence{a}dV = 0, \]
+	так как в области \( V \): \( \divergence{a} = 0 \).
+	
+	В силу аддитивности потока получаем:
+	\[ \oiint\limits_{S_1 + S_2} \vec{a}\cdot d\vec{S} = \oiint\limits_{S_1} \vec{a}\cdot\vec{n}_1’dS + \oiint\limits_{S_2} \vec{a}\cdot\vec{n}_2dS \]
+	
+	А так как \( \vec{n}_1’ = -\vec{n}_1 \), то:
+	\[ \oiint\limits_{S_1} \vec{a}\cdot\vec{n}_1dS = \oiint\limits_{S_2} \vec{a}\cdot\vec{n}_2dS, \]
+	независимо от формы \( S_1 \) и \( S_2 \), что и требовалось доказать.
+	\end{enumerate}
+	\end{proof}
+	\end{corollary}
+	
+\subsection{Применение теоремы Остроградского}
+
+	Теорема Остроградского является удобным инструментом для вычисления потоков, когда поверхностный интеграл преобразуется в более легкий объемный. Формально, теорема Остроградского применима только к замкнутым поверхностям. Однако, если нужно вычислить интеграл по незамкнутой поверхности, то ее удобно замкнуть нужным фрагментом, вычислить поток через замкнутую поверхность, а затем, в силу аддитивности потока, вычесть поток через замыкающий фрагмент.
+	
+	\begin{example}
+	Вычислить поток поля \( \vec{a} = \vec{r} \) через замкнутую поверхность \( S \), ограничивающую область \( V \).
+	\end{example}
+	\begin{solution}
+	
+	По теореме Остроградского:
+	\[ \oiint\limits_S \vec{r}\cdot d\vec{S} = \iiint\limits_V \divergence{r}dV = 3V \]
+	и не зависит от того, лежит ли источник внутри или вне поверхности \( S \) (см. пункт 4.4.).
+	\end{solution}
+	
+	\begin{example}
+	Вычислить поток кулоновского поля \( \vec{a} = \vec{E} = k\frac{\vec{r}}{r^3} \) через замкнутую поверхность \( S \).
+	\end{example}
+	\begin{solution}
+	
+	Это поле имеет изолированный источник в точке \( O \), то есть \( \divergence{a} \equiv 0 \) всюду, кроме точки \( O \).
+	
+	\begin{enumerate}
+	\item Пусть поверхность \( S \) не охватывает точку \( O \).
+	Тогда, по теореме Остроградского: \( \Phi = \oiint\limits_S \vec{a}\cdot d\vec{S} = \iiint\limits_V \divergence{a}dV = 0 \).
+
+	\item Пусть поверхность \( S \) охватывает точку \( O \).
+	
+	Охватим точку \( O \) сферой поверхностью \( 4\pi R^2 \), где \( R \) -- радиус сферы.
+	
+	Тогда, в силу следствия 2 из теоремы Остроградского:
+	\[ \oiint\limits_S \vec{E}\cdot d\vec{S} = \oiint\limits_{4\pi R^2}\vec{E}\cdot d\vec{S} \]
+	
+	 А так как \( \vec{E} = k\frac{\vec{r}}{r^3} \), то:
+	 \[ \oiint\limits \vec{E}\cdot d\vec{S} = k\oiint\limits_{4\pi R^2}\frac{\vec{r}\cdot d\vec{S}}{r^3} \]
+	 
+	 На сфере \( \vec{r} \uparrow\uparrow d\vec{S} \) и \( r = R \), то поток:
+	 \[ \Phi = k\oiint\limits_{4\pi R^2} \frac{R}{R^3}dS = k\frac{1}{R^2}\oiint\limits_{4\pi R^2} dS = 4\pi k \]
+	 
+	 Таким образом, для любой поверхности \( S \):
+	 \[ \Phi = 4\pi k = 4\pi \frac{q}{4\pi\varepsilon_0} = \frac{q}{\varepsilon_0} \]
+	\end{enumerate}
+	\end{solution}
+	
+	\begin{example}
+	Вычислить поток поля \( \vec{a} = \{ xy, 2y, -z \} \) через сферу \( S \): \( x^2 + y^2 + z^2 = R^2 \).
+	\end{example}
+	\begin{solution}
+	
+	По теореме Остроградского:
+	\[ \oiint\limits_S \vec{a}\cdot d\vec{S} = \iiint\limits_V \divergence{a}dV \]
+	
+	Дивергенция поля \( \vec{a} \) равна:
+	\[ \divergence{a} = \frac{\partial a_x}{\partial x} + \frac{\partial a_y}{\partial y} + \frac{\partial a_z}{\partial z} = y + z - 1 \]
+	
+	Тогда поток:
+	\[ \Phi = \iiint\limits_{\frac{4}{3}\pi R^3} = \iiint\limits_{\frac{4}{3}\pi R^3} ydV + \iiint\limits_{\frac{4}{3}\pi R^3} dV = \frac{4}{3}\pi R^3 + \iiint\limits_{\frac{4}{3}\pi R^3} ydV = \frac{4}{3}\pi R^3 \]
+	\end{solution}
