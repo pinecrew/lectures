@@ -1,0 +1,61 @@
+\section{Определение и основные свойства характеристической функции}
+
+Характеристической функцией называется Фурье-образ плотности вероятности:
+\[
+    \theta(u) = \average{e^{iux}} = \int_{-\infty}^{+\infty} w(x) e^{iux} dx.
+\]
+\[
+    w(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} \theta(u) e^{-iux} du.
+\]
+
+Основные свойства характеристической функции
+\begin{enumerate}
+    \item (внезапно!) комплексная;
+    \item ограниченная: \( \abs{\theta(u)} \le \theta(0) = 1 \);
+    \item \( \theta{u} = \theta^*(-u) \);
+    \item если \( w(x) \) чётная, то \( \theta(u) \) вещественная;
+    \item если известен Фурье-образ \( \phi(u) \) функции \( F(x) \), то
+        \[
+            \average{F(x)} = \int_{-\infty}^{+\infty} \phi(u)\theta(u) du.
+        \]
+    \item \( \theta(u) \) -- производящая функция моментов:
+        \[
+            \theta(u) = \average{e^{iux}} =
+            \sum_{n=0}^\infty \frac{(iu)^n}{n!}\average{x^n} =
+            \sum_{n=0}^\infty \frac{i^n m_n}{n!}u^n,\quad
+            m_n = \frac{1}{i^n}\left.\frac{d^n\theta}{du^n}\right|_{u=0}.
+        \]
+        Проделав обратное преобразование, получим представление \( w(x) \) через
+        моменты:
+        \[
+            w(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} e^{-iux}
+            \sum_{n=0}^\infty \frac{i^n m_n}{n!}u^n du =
+            \frac{1}{2\pi} \sum_{n=0}^\infty \frac{m_n}{n!}
+            \int_{-\infty}^{+\infty}(iu)^n e^{-iux} du.
+        \]
+        Значение интегралов найдём при помощи функции Дирака:
+        \[
+            \int_{-\infty}^{+\infty} \delta(x) e^{iux} dx =
+            \left.e^{iux}\right|_{x=0} = 1 \Rightarrow
+            \frac{1}{2\pi}\int_{-\infty}^{+\infty} e^{-iux} du = \delta(x).
+        \]
+        Возьмём производную \( n \)-го порядка по \( x \) от обеих частей:
+        \[
+             \frac{1}{2\pi}\int_{-\infty}^{+\infty} (-iu)^n e^{-iux} du =
+             \frac{d^n}{dx^n}\delta(x).
+        \]
+        Теперь подставим этот интеграл в выражение для \( w(x) \) и
+        окончательно
+        \[
+            w(x) =  \sum_{n=0}^\infty \frac{(-1)^n m_n}{n!}
+                \frac{d^n}{dx^n}\delta(x).
+        \]
+\end{enumerate}
+В случае совместного распределения нескольких величин для определения
+характеристической функции производится \( n \)-мерное преобразование Фурье:
+\[
+    \theta_n(\textbf{u}) = \average{e^{i\textbf{u}\cdot\textbf{x}}} =
+    \int_{-\infty}^{+\infty} w(\textbf{x}) e^{i \textbf{u}\cdot\textbf{x}}
+    d^n \textbf{x},
+\]
+где \( \textbf{x} \) и \( \textbf{u} \) -- \( n \)-компонентные вектора.
