@@ -155,6 +155,38 @@
 \( \mu_2 = \sigma^2 \) называется дисперсией, а \( \sigma \) --
 среднеквадратичным отклонением.
 
+\subsection{Неравенство Чебышёва}
+    Рассмотрим определение дисперсии
+    \[
+        \sigma^2 = \int_{-\infty}^{+\infty} (x - \average{x})^2w(x)dx.
+    \]
+    Разобьём этот интеграл на три:
+    \[
+        \sigma^2 = \int_{-\infty}^{\average{x}-n\sigma}(x-\average{x})^2w(x)dx +
+        \int_{\average{x}-n\sigma}^{\average{x}+n\sigma}(x-\average{x})^2w(x)dx+
+        \int_{\average{x}+n\sigma}^{+\infty}(x-\average{x})^2w(x)dx.
+    \]
+    Второй интеграл в сумме -- это вероятность того, что
+    \( X \in [\average{x} - n\sigma, \average{x} + n\sigma] \). По смыслу он
+    больше нуля, поэтому имеет место неравенство:
+    \[
+        \sigma^2 \ge \int_{-\infty}^{\average{x}-n\sigma}(x-\average{x})^2w(x)dx +
+        \int_{\average{x}+n\sigma}^{+\infty}(x-\average{x})^2w(x)dx.
+    \]
+    В этих областях интегрирования \( \abs{x-\average{x}} \ge n\sigma \),
+    поэтому
+    \[
+        \sigma^2 \ge n^2\sigma^2 \left[
+            \int_{-\infty}^{\average{x}-n\sigma}w(x)dx +
+            \int_{\average{x}+n\sigma}^{+\infty}w(x)dx
+        \right] = n^2\sigma^2P(\abs{x-\average{x}} \ge n\sigma),
+    \]
+    \[
+        P(\abs{x-\average{x}} \ge n\sigma) \le \frac{1}{n^2}.
+    \]
+    Последнее неравенство называется неравенством Чебышёва. Оно показывает, что
+    вероятность того, что флуктуация будет больше \( n\sigma \) стремительно
+    падает с ростом \( n \).
 \subsection{Совместное распределение}
 Для двух случайных величин \( X \) и \( Y \) можно ввести двухмерную функцию
 распределения \( F(x,y) = P(X \le x, Y \le y) \). Эта функция обладает всеми
