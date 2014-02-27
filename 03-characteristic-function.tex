@@ -161,9 +161,34 @@
 \begin{enumerate}
     \item Случайная величина равномерно распределена на отрезке
         \( [-\beta/2, \beta/2] \). Определить её характеристическую функцию.
+
+        \[
+            \theta(u) = \int_{-\frac{\beta}{2}}^\frac{\beta}{2} \frac{1}{\beta}
+            e^{iux}dx = \left.\frac{1}{iu\beta}
+            e^{iux}\right|_{-\frac{\beta}{2}}^\frac{\beta}{2} \frac{1}{\beta} =
+            \frac{2}{\beta u}\sin\frac{\beta u}{2}.
+        \]
     \item Найти плотность вероятности, если
         \( \ds \theta(u) = \frac{1}{1+u^2} \).
+
+        \[
+            w(x) = \frac{1}{2\pi}\int_{-\infty}^\infty
+            \frac{1}{1+u^2} e^{-iux} du = \frac{1}{2}e^{-\abs{x}}.
+        \]
     \item Определить характеристическую функцию нормального распределения.
+        \begin{gather*}
+            \theta(u) = \int_{-\infty}^\infty \frac{1}{\sqrt{2\pi}\sigma}
+            e^{-\frac{(x-\average{x})^2}{2\sigma^2}} e^{iux} dx
+            =\\=
+            \frac{1}{\sqrt{2\pi}\sigma} \int_{-\infty}^\infty
+            e^{-\frac{(x-\average{x})^2}{2\sigma^2} + iu(x-\average{x}) +
+            \frac{\sigma^2u^2}{2}} e^{iu\average{x} - \frac{\sigma^2u^2}{2}} dx
+            =\\=
+            e^{iu\average{x} - \frac{\sigma^2u^2}{2}}
+            \frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^\infty
+            e^{-\frac{1}{2}\left(\frac{x-\average{x}}{\sigma} + i\sigma
+            u\right)^2} dx = e^{iu\average{x} - \frac{\sigma^2u^2}{2}}.
+        \end{gather*}
     \item Случайная величина \( X \) подчинена \( \psi^2 \) - распределению:
         \[
             w(x) = \frac{x^{\frac{n}{2}-1}e^{-\frac{x}{2}}}
