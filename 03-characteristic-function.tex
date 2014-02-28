@@ -195,6 +195,24 @@
             {2^\frac{n}{2}\Gamma\left(\frac{n}{2}\right)}.
         \]
         Вычислить характеристическую функцию и начальные моменты.
+
+        \[
+            \theta(u) = \int_{-\infty}^{+\infty}
+                \frac{x^{\frac{n}{2}-1}e^{-\frac{x}{2}}}
+                {2^\frac{n}{2}\Gamma\left(\frac{n}{2}\right)} e^{iux} dx =
+                \int_{-\infty}^{+\infty}
+                \frac{x^{\frac{n}{2}-1}e^{-\frac{1 - 2iu}{2}x}}
+                {2^\frac{n}{2}\Gamma\left(\frac{n}{2}\right)} dx =
+                \frac{1}{(1-2iu)^\frac{n}{2}}.
+        \]
+        Начальные моменты -- это производные характеристической функции в нуле:
+        \[
+            m_n = \left.\frac{d^n\theta}{d(iu)^n}\right|_{u=0}.
+        \]
+        \[
+            m_1 = n,\quad m_2 = n\cdot(n+2),\quad
+            m_k = n\cdot(n+2)\cdot\ldots\cdot(n+2k-2).
+        \]
     \item Показать, что плотности вероятности
         \[
             w(x) = \frac{1}{2}\cos x,\quad
@@ -202,9 +220,39 @@
         \]
         соответствует характеристическая функция
         \[
-            \theta(u) = \frac{2\cos\frac{\pi u}{2}}{1-u^2}.
+            \theta(u) = \frac{\cos\frac{\pi u}{2}}{1-u^2}.
         \]
+
+        \begin{gather*}
+            \int_{-\frac{\pi}{2}}^\frac{\pi}{2} \frac{1}{2}\cos x e^{iux} dx =
+            \int_{-\frac{\pi}{2}}^\frac{\pi}{2}
+                \frac{1}{2}\frac{e^{ix}+e^{-ix}}{2} e^{iux} dx =
+            \int_{-\frac{\pi}{2}}^\frac{\pi}{2}
+                \frac{e^{i(u+1)x} + e^{i(u-1)x}}{4} dx = \\ =
+            \frac{1}{4}\left(\frac{1}{i(u+1)}
+            \left.e^{i(u+1)x}\right|_{-\frac{\pi}{2}}^\frac{\pi}{2} +
+            \frac{1}{i(u-1)}
+            \left.e^{i(u-1)x}\right|_{-\frac{\pi}{2}}^\frac{\pi}{2}\right) =\\=
+            \frac{1}{2}\left(\frac{\sin\frac{(u+1)\pi}{2}}{u+1} +
+            \frac{\sin\frac{(u-1)\pi}{2}}{u-1} \right) =
+            \frac{1}{2}\frac{(u-1)\sin\frac{(u+1)\pi}{2} +
+            (u+1)\sin\frac{(u-1)\pi}{2}}{u^2-1} =\\=
+            \frac{1}{2}
+            \frac{u\left[\sin\frac{(u+1)\pi}{2} + \sin\frac{(u-1)\pi}{2}\right]-
+            \left[\sin\frac{(u+1)\pi}{2} - \sin\frac{(u-1)\pi}{2}\right]}{u^2-1} =
+            \frac{\cos\frac{u\pi}{2}}{1-u^2}.
+        \end{gather*}
     \item \( \Phi \) равномерно распределена на \( [0, 2\pi] \). Определить
         математическое ожидание и дисперсию величины
         \( A\cos^2(\omega t + \Phi) \).
+
+        \[
+            m = \frac{A}{2\pi}\int_0^{2\pi}\cos^2(\omega t + \Phi) d\Phi =
+            \frac{A}{2}.
+        \]
+        \[
+            \sigma^2 =
+                \frac{A^2}{2\pi}\int_0^{2\pi}\cos^4(\omega t + \Phi) d\Phi - m^2
+                = \frac{3A^2}{8} - \frac{A^2}{4} = \frac{A^2}{8}.
+        \]
 \end{enumerate}
