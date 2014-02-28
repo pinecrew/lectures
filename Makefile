@@ -1,10 +1,14 @@
+SOURCE := $(shell ls *.tex)
+OUTPUT := statradiophys.pdf
+
+
 all: share
 
-pdf:
-	latexmk -pdf statradiophys.tex
+share: $(OUTPUT)
+	cp $< ~/Dropbox/Public/lectures
 
-share: pdf
-	cp *.pdf ~/Dropbox/Public/lectures
+%.pdf: %.tex $(SOURCE)
+	latexmk -pdf $<
 
 clean:
 	latexmk -C
