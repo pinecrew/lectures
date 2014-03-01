@@ -1,0 +1,84 @@
+\section{Математический маятник}
+Рассмотрим колебания математического маятника:
+\[
+    \ddot{\phi} + \omega^2\sin\phi = 0.
+\]
+Перейдём к безразмерному времени \( \tau = \omega t \):
+\[
+    \phi'' + \sin\phi = 0 \quad | \quad \cdot \phi' d\tau
+\]
+\[
+    \phi'\phi'' d\tau + \sin\phi\phi' d\tau = 0.
+\]
+Проинтегрируем полученное выражение
+\[
+    \frac{\phi'^2}{2} - \cos\phi = \const = -\cos\phi_0.
+\]
+Выразим отсюда \( \phi' \):
+\[
+    \phi' = \pm\sqrt{2(\cos\phi - \cos\phi_0)}.
+\]
+Пусть начальная фаза отрицательна \( (-\phi_0) \). Тогда первую половину периода
+\( \phi'~>~0 \), откуда
+\[
+    \der{\phi}{\tau} = \sqrt{2(\cos\phi - \cos\phi_0)} \to
+    d\tau = \frac{d\phi}{\sqrt{2(\cos\phi - \cos\phi_0)}}
+\]
+\[
+    \tau = \int_{-\phi_0}^\phi \frac{d\psi}{\sqrt{2(\cos\psi - \cos\phi_0)}}.
+\]
+Воспользуемся тождеством \( \cos\phi = 1 - 2\sin^2\frac{\phi}{2} \) и получим
+\[
+    \tau = \int_{-\phi_0}^\phi
+        \frac{d\psi}{2\sqrt{\sin^2\frac{\phi_0}{2} - \sin^2\frac{\psi}{2}}} =
+        \int_{-\phi_0}^\phi\frac{1}{2\sin\frac{\phi_0}{2}}\frac{d\psi}
+        {\sqrt{1 - \frac{\sin^2\frac{\psi}{2}}{\sin^2\frac{\phi_0}{2}}}}.
+\]
+Обозначим \( \sin\frac{\psi}{2} / \sin\frac{\phi_0}{2} = \sin u \). Тогда
+\[
+    \frac{\cos\frac{\psi}{2}}{\sin\frac{\phi_0}{2}}\frac{d\psi}{2} = \cos u du
+    \to \frac{d\psi}{2\sin\frac{\phi_0}{2}} =
+    \frac{\cos u du}{\cos\frac{\psi}{2}} =
+    \frac{\cos u du}{\sqrt{1 - \sin^2\frac{\phi_0}{2}\sin^2u}},
+\]
+\[
+    \tau =
+\int_{-\frac{\pi}{2}}^{\arcsin\frac{\sin\frac{\phi}{2}}{\sin\frac{\phi_0}{2}}}
+    \frac{\cos u du}{\cos u \sqrt{1 - \sin^2\frac{\phi_0}{2}\sin^2u}}
+\]
+Разобъём промежуток интегрирования на два:
+\[
+    \tau =
+    \int_{-\frac{\pi}{2}}^0 \frac{du}{\sqrt{1 - \sin^2\frac{\phi_0}{2}\sin^2u}}+
+    \int_0^{\arcsin\frac{\sin\frac{\phi}{2}}{\sin\frac{\phi_0}{2}}}
+    \frac{du}{\sqrt{1 - \sin^2\frac{\phi_0}{2}\sin^2u}}.
+\]
+Обозначим \( \sin\frac{\phi_0}{2} = k\ (\abs{k} \le 1) \). Также, учтём в первом
+интеграле чётность подынтегральной функции и поменяем пределы:
+\[
+    \tau =
+    \underbrace{\int_0^\frac{\pi}{2} \frac{du}{\sqrt{1 -k^2\sin^2u}}}_\text{
+        \parbox{5cm}{\center
+            полный нормальный эллиптический интеграл Лежандра I рода \( K(k) \)
+        }
+    } + \int_0^{\arcsin\frac{\sin\frac{\phi}{2}}{k}}
+    \frac{du}{\sqrt{1 - k^2\sin^2u}}.
+\]
+Очевидно, что половина периода равна \( 2K(k) \), а период -- \( 4K(k) \). Если
+принять \( \tau = 0 \) в момент времени, когда маятник проходит положение
+равновесия, то первые полпериода
+\[
+    \tau =  \int_0^{\arcsin\frac{\sin\frac{\phi}{2}}{k}}
+    \frac{du}{\sqrt{1 - k^2\sin^2u}}.
+\]
+Верхний предел \( \arcsin\frac{1}{k}\sin\frac{\phi}{2} \) называется амплитудой
+и обозначается \( \mathrm{am\,}\tau \).
+
+Пусть теперь \( \sin u = x \), тогда интеграл примет вид
+\[
+    \tau = \int_0^{\frac{\sin\frac{\phi}{2}}{k}}
+    \frac{dx}{\sqrt{1-x^2}\sqrt{1 - k^2x^2}}.
+\]
+В этом случае верхний предел \( \frac{1}{k}\sin\frac{\phi}{2} =
+\sin(\mathrm{am\,}\tau) \) называется синусом амплитуды или синусом Якоби и
+обозначается \( \mathrm{sn\,}\tau \).
