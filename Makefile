@@ -1,8 +1,9 @@
+SOURCE := $(shell ls *.tex)
 OUTPUT := nonlinear-oscillations.pdf
 
 all: share
 
-%.pdf: %.tex
+%.pdf: %.tex $(SOURCE)
 	latexmk -pdf $<
 
 share: $(OUTPUT)
