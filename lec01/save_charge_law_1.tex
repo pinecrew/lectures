@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+	\usetikzlibrary{decorations.pathmorphing}
+    \path (-3,0) node[draw,circle,inner sep=25pt] (n1) {\( Z \)};
+    \path (3,-1) node[draw,circle,inner sep=25pt] (n2) {\( Z+1 \)};
+    \path (3,2) node[draw,circle] (e) {};
+    \node[above left] at (e) {\( e^- \)};
+    \draw[dashed] (0, -3) -- (0,3);
+    \draw[->, decorate, decoration={snake}]
+    	(-6.5, 0) -- (-6, 0) node[above] {\( h\nu \)} -- (-5.5, 0);
+	\draw[->, thick] (e) -- (5, 3);
+    \draw[->, thick] (n2) -- (4.5, -2.5);
+\end{tikzpicture}
