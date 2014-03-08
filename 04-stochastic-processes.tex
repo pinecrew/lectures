@@ -160,3 +160,55 @@
 
 Корреляционные функции процессов являются предметом исследования корреляционной
 теории процессов.
+
+\subsection{Спектральная плотность интенсивности случайных процессов}
+Рассмотрим случайный процесс с нулевым математическим ожиданием. Для него можно
+ввести спектральную плотность интенсивности следующим образом:
+\[
+    G(\omega) = \int_{-\infty}^{+\infty} B(\tau)e^{-i\omega\tau}d\tau.
+\]
+Обратным преобразованием Фурье получаем автокорреляционную функцию:
+\[
+    B(\tau) =
+        \frac{1}{2\pi}\int_{-\infty}^{+\infty} G(\omega)e^{i\omega\tau}d\omega.
+\]
+Отсюда
+\[
+    \sigma^2 = B(0) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} G(\omega)d\omega.
+\]
+
+Для вещественных процессов \( G(\omega): \mathbb{R}\to\mathbb{R} \) обладает
+свойством чётности \( G(\omega) = G(-\omega) \). Так как она чисто вещественная,
+то можно смело применять косинус-преобразование Фурье:
+\[
+    G(\omega) = 2\int_0^{+\infty} B(\tau)\cos\omega\tau d\tau,\quad
+    B(\tau) =
+        \frac{1}{\pi}\int_{-\infty}^{+\infty} G(\omega) \cos\omega\tau d\omega,
+\]
+а так как она чётная, то можно определить функцию неорицательных частот
+\( G^+(\omega) = G(\omega) + G(-\omega) \),  для которой
+\[
+    G^+(\omega) = 4\int_0^{+\infty} B(\tau)\cos\omega\tau d\tau,\quad
+    B(\tau) =
+        \frac{1}{\pi}\int_0^{+\infty} G^+(\omega) \cos\omega\tau d\omega.
+\]
+Ширина спектра определяется выражением
+\[
+    \Delta\omega =
+        \frac{\int_{-\infty}^{+\infty}G(\omega)d\omega}{\max(G(\omega))}.
+\]
+
+Свойства:
+\begin{enumerate}
+    \item неотрицательная чётная функция;
+    \item убывает в бесконечность быстрее \( 1/\omega \);
+    \item \( \ds \tau\Delta\omega = \frac{\pi G(0)}{2\max(G(\omega))} \).
+\end{enumerate}
+
+Если все процессы ансамбля Гиббса финитны, то
+\[
+    x(t) = \int_{-\infty}^{+\infty}S(\omega)e^{i\omega t}d\omega,\quad
+    S(\omega) = \frac{1}{2\pi}\int_{-\infty}^{+\infty}x(t)e^{-i\omega t}dt,
+\]
+где \( S(\omega) \) -- спектр ансамбля Гиббса.
+
