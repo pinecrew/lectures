@@ -21,11 +21,13 @@
 \]
 Или, если вспомнить второй закон Ньютона и определение скорости
 \[
-    \pder{f}{t} + \pder{f}{\vec{p}}\vec{F} + \pder{f}{\vec{r}}\vec{v} = 0.
+    \pder{f}{t} + \vec{F}\cdot\pder{f}{\vec{p}} + \vec{v}\cdot\pder{f}{\vec{r}}
+    = 0.
 \]
 В случае нерегулярной в пространстве системы в правой части нуля не будет:
 \[
-    \pder{f}{t} + \pder{f}{\vec{p}}\vec{F} + \pder{f}{\vec{r}}\vec{v} = I(f).
+    \pder{f}{t} + \vec{F}\cdot\pder{f}{\vec{p}} + \vec{v}\cdot\pder{f}{\vec{r}}
+    = I(f).
 \]
 Это уравнение называется кинетическим уравнением Больцмана. Для того, чтобы его
 решить, нужно определиться с конкретным видом функции \( I(f) \).
@@ -45,3 +47,125 @@
     I(f) = -\frac{f - f_0}{\tau},\text{ где } f_0
     \text{ -- равновесная функция распределения.}
 \]
+
+При описании закона Ома, эффекта Холла и циклотронного резонанса будем считать
+ситсему достаточно однородной в пространстве, поэтому пренебрежём слагаемым с
+градиентом функции распределения и немного упростим уравнение:
+\[
+    \pder{f}{t} + \vec{F}\cdot\pder{f}{\vec{p}} = -\frac{f-f_0}{\tau}.
+\]
+Его решение имеет вид
+\[
+    f = \frac{1}{\tau}\int_{-\infty}^t dt' e^\frac{t'-t}{\tau} f(\vec{p}'),
+\]
+где \( \vec{p}'(t) \) -- решение уравнения
+\[
+    \der{p'}{t'} = F, \quad \vec{p}'(t) = \vec{p}.
+\]
+
+\subsection{Закон Ома}
+\subsection{Эффект Холла}
+\subsection{Циклотронный резонанс}
+\subsection{Нетрудно заметить, что\ldots}
+\ldots все три результата были получены ранее, в одноэлектронной теории. Быть
+может, это можно заметить из самого уравнения
+\[
+    \pder{f}{t} + \vec{F}\cdot\pder{f}{\vec{p}} = -\frac{f-f_0}{\tau}?
+\]
+Попробуем получить уравнение движения <<средней>> частицы:
+\[
+    \average{\der{\vec{p}}{t}} = \der{\average{\vec{p}}}{t} =
+    \der{}{t}\int\vec{p} f d^3p.
+\]
+Теперь втащим дифференцирование под интеграл и учтём, что импульс явно от
+времени не зависит:
+\[
+    \der{}{t}\int\vec{p} f d^3p = \int\pder{(\vec{p} f)}{t} d^3p =
+    \int\vec{p}\pder{f}{t} d^3p.
+\]
+Теперь вытащим из уравнения частную производную по времени и подставим в
+интеграл:
+\begin{gather*}
+    \int\vec{p}\pder{f}{t} d^3p = -\int\vec{p}
+    \left(\vec{F}\cdot\pder{f}{\vec{p}} + \frac{f-f_0}{\tau}\right)d^3p = \\ =
+    -\int\vec{p}\left(\vec{F}\cdot\pder{f}{\vec{p}}\right)d^3p
+    -\frac{1}{\tau}\int\vec{p}fd^3p + \frac{1}{\tau}\int\vec{p}f_0d^3p.
+\end{gather*}
+Остановимся на двух последних слагаемых. Первое из них равно
+\( -\average{\vec{p}}/\tau \), второе же равно нулю, так как в равновесии
+движения нет. Уравнение <<средней>> частицы принимает вид:
+\[
+    \der{\average{\vec{p}}}{t} =
+    -\int\vec{p}\left(\vec{F}\cdot\pder{f}{\vec{p}}\right)d^3p
+    -\frac{\average{\vec{p}}}{\tau}.
+\]
+Попробуем преобразовать интеграл. Дальше будем рассматривать только такие силу
+\( \vec{F} \), для которой
+\[
+    \pder{F_x}{p_x} + \pder{F_y}{p_y} + \pder{F_z}{p_z} = 0.
+\]
+Для такой <<хорошей>> силы\footnote{между прочим, сила Лоренца -- <<хорошая>>
+сила} интеграл можно преобразовать к виду
+\[
+    \int\vec{p}\left(\vec{F}\cdot\pder{f}{\vec{p}}\right)d^3p =
+    \int\vec{p}\sum_{\alpha\in\{x,y,z\}}\pder{fF_\alpha}{p_\alpha}d^3p.
+\]
+В свою очередь,
+\[
+    \vec{p} = \sum_{\beta\in\{x,y,z\}}\vec{e}_\beta p_\beta,
+\]
+поэтому интеграл примет вид
+\[
+    \int\sum_{\beta\in\{x,y,z\}}\vec{e}_\beta p_\beta
+    \sum_{\alpha\in\{x,y,z\}}\pder{fF_\alpha}{p_\alpha}d^3p.
+\]
+Меняя суммы и интеграл местами, получаем
+\[
+    \sum_{\alpha,\beta}\vec{e}_\beta \int p_\beta \pder{fF_\alpha}{p_\alpha}
+    dp_xdp_ydp_z.
+\]
+Теперь рассмотрим 2 интеграла:
+\begin{enumerate}
+    \item
+            \[
+                \int p_x \pder{fF_x}{p_x} dp_xdp_ydp_z =
+                \int_{-\infty}^{+\infty} dp_y
+                \int_{-\infty}^{+\infty} dp_z
+                \int_{-\infty}^{+\infty} p_x \pder{fF_x}{p_x} dp_x.
+            \]
+            Берём интеграл по \( p_x \) по частям, учитываем, что на
+            бесконечности функция распределения обращается в ноль и получаем
+            \[
+                \int p_x \pder{fF_x}{p_x} dp_xdp_ydp_z = -\average{F_x}.
+            \]
+    \item
+            \[
+                \int p_y \pder{fF_x}{p_x} dp_xdp_ydp_z =
+                \int_{-\infty}^{+\infty} p_y dp_y
+                \int_{-\infty}^{+\infty} dp_z
+                \int_{-\infty}^{+\infty} \pder{fF_x}{p_x} dp_x.
+            \]
+            Интеграл по \( p_x \) равен нулю, из-за того, что на
+            бесконечности функция распределения обращается в ноль:
+            \[
+                \int p_x \pder{fF_x}{p_x} dp_xdp_ydp_z = 0.
+            \]
+\end{enumerate}
+Этих двух интегралов достаточно, чтобы показать, что
+\[
+    \int p_\beta \pder{fF_\alpha}{p_\alpha} dp_xdp_ydp_z =
+    -\average{F_\alpha} \delta_{\alpha\beta}.
+\]
+Тогда сумма сильно упрощается
+\[
+    \sum_{\alpha,\beta}\vec{e}_\beta \int p_\beta \pder{fF_\alpha}{p_\alpha}
+    dp_xdp_ydp_z =
+    - \sum_{\alpha,\beta}\vec{e}_\beta \average{F_\alpha} \delta_{\alpha\beta} =
+    - \sum_{\alpha}\vec{e}_\alpha \average{F_\alpha} = -\average{\vec{F}}.
+\]
+Возвращаясь к уравнению движения, получаем:
+\[
+    \der{\average{\vec{p}}}{t} = \average{\vec{F}}
+    -\frac{\average{\vec{p}}}{\tau}.
+\]
+Знакомое уравнение?
