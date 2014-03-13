@@ -121,6 +121,90 @@
     \vec{j} = \frac{nq^2\tau}{m}\vec{E}.
 \]
 \subsection{Эффект Холла}
+
+Начнём сразу с решения уравнений для штрихованного импульса:
+\[
+    \left\{
+    \begin{array}{l}
+        \dot{p}'_x = \omega_c p'_y, \\
+        \dot{p}'_y = qE - \omega_c p'_x, \\
+        \dot{p}'_z = 0.
+    \end{array}
+    \right.
+\]
+Очевидно, \( p'_z = p_z \). Для решения первых двух уравнений введём величину
+\( \zeta = p'_x + ip'_y \) и сгруппируем 2 этих уравнения в одно:
+\[
+    \dot{\zeta} + i\omega_c\zeta = iqE,
+\]
+откуда
+\[
+    \zeta = \frac{qE}{\omega_c} + Ae^{i\xi},
+\]
+где постоянная \( A \) определяется из начальных условий:
+\[
+    \zeta(0) = p_x + ip_y = \frac{qE}{\omega_c} + A,
+\]
+\[
+    \Re A = p_x - \frac{qE}{\omega_c},\quad
+    \Im A = p_y.
+\]
+Возвращаясь от комплексов к реальным величинам:
+\[
+    p'_x = \frac{qE}{\omega_c} +
+        \left(p_x - \frac{qE}{\omega_c}\right)\cos\omega_c\xi +
+        p_y\sin\omega_c\xi,\quad
+    p'_y = p_y\cos\omega_c\xi -
+        \left(p_x - \frac{qE}{\omega_c}\right)\cos\omega_c\xi.
+\]
+Теперь нам нужна величина \( p'^2 \) для подстановки в экспоненту:
+\begin{align*}
+    p'^2 & = {p'_x}^2 + {p'_y}^2 + {p'_z}^2 =\\
+         & = \frac{q^2E^2}{\omega_c^2} +
+        \left(p_x - \frac{qE}{\omega_c}\right)^2 + p_y^2 + p_z^2 +
+        2\frac{qE}{\omega_c}\left[
+            \left(p_x - \frac{qE}{\omega_c}\right)\cos\omega_c\xi +
+            p_y\sin\omega_c\xi
+        \right]=\\
+        & = \frac{q^2E^2}{\omega_c^2}\cos^2\omega_c\xi
+        + 2\frac{qE}{\omega_c}\left(p_x - \frac{qE}{\omega_c}\right)
+        \cos\omega_c\xi +
+        \left(p_x - \frac{qE}{\omega_c}\right)^2 +\\
+        & + \frac{q^2E^2}{\omega_c^2}\sin^2\omega_c\xi
+        + 2\frac{qE}{\omega_c}p_y\sin\omega_c\xi
+        p_y^2 + p_z^2 =\\
+        & = \left[p_x - \frac{qE}{\omega_c}(1-\cos\omega_c\xi)\right]^2 +
+        \left(p_y + \frac{qE}{\omega_c}\sin\omega_c\xi\right)^2 + p_z^2.
+\end{align*}
+А теперь самое время искать проекции плотности тока:
+\begin{gather*}
+    j_x = \frac{qn}{m\tau} \int_{-\infty}^0 d\xi\, e^\frac{\xi}{\tau}
+    \frac{1}{(2mkT)^\frac{3}{2}} \cdot \\
+    \cdot \int d^3p\, p_x
+    \exp\left(-\frac{1}{2mkT}\left\{
+        \left[p_x - \frac{qE}{\omega_c}(1-\cos\omega_c\xi)\right]^2 +
+        \left(p_y + \frac{qE}{\omega_c}\sin\omega_c\xi\right)^2 + p_z^2
+    \right\}\right).
+\end{gather*}
+Второй интеграл -- это математическое ожидание \( p_x \) в трёхмерном
+распределении Гаусса, поэтому
+\[
+    j_x = \frac{qn}{m\tau} \int_{-\infty}^0 d\xi\, e^\frac{\xi}{\tau}
+    \frac{qE}{\omega_c}(1-\cos\omega_c\xi) =
+    \frac{nq^2E}{m\tau}
+    \int_{-\infty}^0e^\frac{\xi}{\tau}(1-\cos\omega_c\xi)d\xi.
+\]
+Взяв этот интеграл, получим
+\[
+    j_x = \frac{\omega_c\tau}{1+\omega_c^2\tau^2}\frac{nq^2\tau}{m}E.
+\]
+Совершенно аналогично можно придти к
+\[
+    j_y = -\frac{nq^2E}{m\tau}
+    \int_{-\infty}^0e^\frac{\xi}{\tau}\sin\omega_c\xi d\xi =
+    \frac{1}{1+\omega_c^2\tau^2}\frac{nq^2\tau}{m}E.
+\]
+
 \subsection{Циклотронный резонанс}
 \subsection{Нетрудно заметить, что\ldots}
 \ldots все три результата были получены ранее, в одноэлектронной теории. Быть
