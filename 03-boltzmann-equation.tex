@@ -206,6 +206,93 @@
 \]
 
 \section{Циклотронный резонанс}
+В завершение рассмотрим циклотронный резонанс. Записываем уравнение в проекциях:
+\[
+    \left\{
+        \begin{array}{l}
+            \dot{p}'_x = \omega_c p'_y, \\
+            \dot{p}'_y = qE\cos\omega t' - \omega_c p'_x, \\
+            \dot{p}'_z = 0.
+        \end{array}
+    \right.
+\]
+Снова, очевидно, \( p'_z = p_z \). Вводя комплексную величину
+\( \zeta = p'_x + ip'_y \), получаем уравнение
+\[
+    \dot\zeta + i\omega_c\zeta = iqE\cos\omega t'.
+\]
+Его частное решение имеет вид \( Ce^{i\omega t'} + De^{-i\omega t'} \), где
+\[
+    (\omega + \omega_c)Ce^{i\omega t'} + (-\omega + \omega_c)De^{-i\omega t'}=
+    \frac{qE}{2}(e^{i\omega t'} + e^{-i\omega t'}),
+    \quad C = \frac{qE}{2(\omega + \omega_c)},
+    \quad D = \frac{qE}{2(\omega_c - \omega)}.
+\]
+Решение имеет вид 
+\[
+    \zeta = Ae^{-i\omega_c \xi} +
+    \frac{qE}{\omega_c^2 - \omega^2}[\omega_c\cos\omega(\xi+t) -
+    i\omega\sin\omega(\xi+t)],
+\]
+где постоянная \( A \) определяется из начальных условий:
+\[
+    \zeta(0) = p_x + ip_y = A + 
+    \frac{qE}{\omega_c^2 - \omega^2}[\omega_c\cos\omega t -
+    i\omega\sin\omega t], \quad
+    A =\left(p_x - \frac{qE}{\omega_c^2 - \omega^2}\omega_c\cos\omega t\right) +
+    i\left(p_y + \frac{qE}{\omega_c^2 - \omega^2}\omega\sin\omega t\right).
+\]
+Теперь можно выписать зависимости проекций штрихованного импульса от \( xi \):
+\begin{align*}
+    & p'_x =
+        \left(p_x - \frac{qE}{\omega_c^2 - \omega^2}\omega_c\cos\omega t\right)
+        \cos\omega_c\xi
+        +
+        \left(p_y + \frac{qE}{\omega_c^2 - \omega^2}\omega\sin\omega t\right)
+        \sin\omega_c\xi
+        +
+        \frac{qE}{\omega_c^2 - \omega^2}\omega_c\cos\omega(\xi+t), \\
+    & p'_y =
+        -\left(p_x - \frac{qE}{\omega_c^2 - \omega^2}\omega_c\cos\omega t\right)
+        \sin\omega_c\xi
+        +
+        \left(p_y + \frac{qE}{\omega_c^2 - \omega^2}\omega\sin\omega t\right)
+        \cos\omega_c\xi
+        -
+        \frac{qE}{\omega_c^2 - \omega^2}\omega\sin\omega(\xi+t),\\
+    & p'_z = p_z.
+\end{align*}
+Для упрощения дальнейших выкладок обозначим
+\[
+    a = \frac{qE}{\omega_c^2 - \omega^2}\omega_c,\quad
+    b = \frac{qE}{\omega_c^2 - \omega^2}\omega.
+\]
+Теперь выразим величину \( {p'}^2 \):
+\begin{align*}
+    {p'}^2 & = \left[(p_x - a\cos\omega t)\cos\omega_c\xi +
+               (p_y + b\sin\omega t)\sin\omega_c\xi +
+               a\cos\omega(\xi+t)\right]^2 + \\
+           & + \left[-(p_x - a\cos\omega t)\sin\omega_c\xi +
+               (p_y + b\sin\omega t)\cos\omega_c\xi -
+               b\sin\omega(\xi+t)\right]^2 + p_z^2 =\\
+           & = (p_x - a\cos\omega t)^2 + (p_y + b\sin\omega t)^2 + p_z^2 +
+                a^2\cos^2\omega(\xi+t) + b^2\sin^2\omega(\xi+t) +\\
+           & + 2a\cos\omega(\xi+t)\cdot[(p_x - a\cos\omega t)\cos\omega_c\xi +
+               (p_y + b\sin\omega t)\sin\omega_c\xi] -\\
+           & - 2b\sin\omega(\xi+t)\cdot[-(p_x - a\cos\omega t)\sin\omega_c\xi +
+               (p_y + b\sin\omega t)\cos\omega_c\xi]
+\end{align*}
+Обратим пока внимание только на две последние строки и перегруппируем их:
+\begin{align*}
+    & 2a\cos\omega(\xi+t)\cdot[(p_x - a\cos\omega t)\cos\omega_c\xi +
+       (p_y + b\sin\omega t)\sin\omega_c\xi] -\\
+    & - 2b\sin\omega(\xi+t)\cdot[-(p_x - a\cos\omega t)\sin\omega_c\xi +
+       (p_y + b\sin\omega t)\cos\omega_c\xi] = \\
+    & = 2[a\cos\omega(\xi+t)\cos\omega_c\xi + b\sin\omega(\xi+t)\sin\omega_c\xi]
+       (p_x - a\cos\omega t) + \\
+    & + 2[a\cos\omega(\xi+t)\sin\omega_c\xi - b\sin\omega(\xi+t)\cos\omega_c\xi]
+       (p_y + b\sin\omega t).
+\end{align*}
 \section{Нетрудно заметить, что\ldots}
 \ldots все три результата были получены ранее, в одноэлектронной теории. Быть
 может, это можно заметить из самого уравнения
