@@ -293,6 +293,49 @@
     & + 2[a\cos\omega(\xi+t)\sin\omega_c\xi - b\sin\omega(\xi+t)\cos\omega_c\xi]
        (p_y + b\sin\omega t).
 \end{align*}
+Для выделения полных квадратов упростим выражение
+\begin{gather*}
+    [a\cos\omega(\xi+t)\cos\omega_c\xi + b\sin\omega(\xi+t)\sin\omega_c\xi]^2 +
+    [a\cos\omega(\xi+t)\sin\omega_c\xi - b\sin\omega(\xi+t)\cos\omega_c\xi]^2=\\
+    =a^2\cos^2\omega(\xi+t)\cos^2\omega_c\xi +
+    b^2\sin^2\omega(\xi+t)\sin^2\omega_c\xi + \\ +
+    a^2\cos^2\omega(\xi+t)\sin^2\omega_c\xi +
+    b^2\sin^2\omega(\xi+t)\cos^2\omega_c\xi =\\=
+    a^2\cos^2\omega(\xi+t) + b^2\sin^2\omega(\xi+t).
+\end{gather*}
+Оно совпадает со слагаемым в выражении \( {p'}^2 \), поэтому
+\begin{align*}
+    {p'}^2 = & (p_x - a\cos\omega t + a\cos\omega(\xi+t)\cos\omega_c\xi
+    + b\sin\omega(\xi+t)\sin\omega_c\xi)^2 + \\
+    & + (p_y + b\sin\omega t + a\cos\omega(\xi+t)\sin\omega_c\xi
+    - b\sin\omega(\xi+t)\cos\omega_c\xi)^2 + p_z^2.
+\end{align*}
+Наша задача -- определить среднюю поглощаемую мощность:
+\[
+    P = \average{\vec{j}\cdot\vec{E}} =
+    \int_0^\frac{2\pi}{\omega} j_x E_0 \cos\omega t dt.
+\]
+При этом \( j_x \) определяется выражением
+\begin{gather*}
+    j_x = \frac{qn}{m\tau} \int_{-\infty}^0 d\xi\, e^\frac{\xi}{\tau}
+    \frac{1}{(2mkT)^\frac{3}{2}} \cdot \\
+    \cdot \int d^3p\, p_x
+    \exp\left(-\frac{(p_x - \average{p_x})^2 + (p_y - \average{p_y})^2
+    + p_z^2}{2mkT}\right),
+\end{gather*}
+где
+\begin{align*}
+    & \average{p_x} = a\cos\omega t - a\cos\omega(\xi+t)\cos\omega_c\xi
+    - b\sin\omega(\xi+t)\sin\omega_c\xi, \\
+    & \average{p_y} = -b\sin\omega t - a\cos\omega(\xi+t)\sin\omega_c\xi
+    + b\sin\omega(\xi+t)\cos\omega_c\xi.
+\end{align*}
+Взяв последний интеграл, получаем
+\[
+    j_x = \frac{qn}{m\tau} \int_{-\infty}^0 d\xi\,
+    e^\frac{\xi}{\tau}\average{p_x}.
+\]
+
 \section{Нетрудно заметить, что\ldots}
 \ldots все три результата были получены ранее, в одноэлектронной теории. Быть
 может, это можно заметить из самого уравнения
