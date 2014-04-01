@@ -335,7 +335,104 @@
     j_x = \frac{qn}{m\tau} \int_{-\infty}^0 d\xi\,
     e^\frac{\xi}{\tau}\average{p_x}.
 \]
-
+Не будем интегрировать сразу, а подставим это выражение в интеграл мощности и
+поменяем порядок интегрирования
+\[
+    P = \frac{qnE_0}{m\tau} \int_{-\infty}^0 d\xi\,
+    e^\frac{\xi}{\tau}\int_0^\frac{2\pi}{\omega} \average{p_x}\cos\omega t dt.
+\]
+Берём последний интеграл:
+\begin{gather*}
+    \int_0^\frac{2\pi}{\omega} \average{p_x}\cos\omega t dt = \\ =
+    \int_0^\frac{2\pi}{\omega} [a\cos^2\omega t -
+    a\cos\omega_c\xi\cos\omega(\xi+t)\cos\omega t
+    - b\sin\omega_c\xi\sin\omega(\xi+t)\cos\omega t] dt
+\end{gather*}
+Для краткости, проинтегрируем слагаемые по отдельности:
+\begin{align*}
+    & \int_0^\frac{2\pi}{\omega}\cos^2\omega t = \frac{1}{2}, \quad
+     \int_0^\frac{2\pi}{\omega}\cos\omega(\xi+t)\cos\omega t dt =
+        \int_0^\frac{2\pi}{\omega}\cos\omega\xi\cos^2\omega t dt -
+        \int_0^\frac{2\pi}{\omega}\sin\omega\xi\sin\omega t\cos\omega t dt =
+        \frac{1}{2}\cos\omega\xi,\\
+    & \int_0^\frac{2\pi}{\omega}\sin\omega(\xi+t)\cos\omega t dt =
+        \int_0^\frac{2\pi}{\omega}\sin\omega\xi\cos^2\omega t dt +
+        \int_0^\frac{2\pi}{\omega}\cos\omega\xi\sin\omega t\cos\omega t dt =
+        \frac{1}{2}\sin\omega\xi.
+\end{align*}
+Подставляя полученные значения, получаем
+\[
+    P = \frac{qnE_0}{2m\tau} \int_{-\infty}^0 d\xi\,
+    e^\frac{\xi}{\tau}\left( a - a\cos\omega_c\xi\cos\omega\xi -
+    b\sin\omega_c\xi\sin\omega\xi \right).
+\]
+Теперь преобразуем произведения тригонометрических функций:
+\[
+    \cos\omega_c\xi\cos\omega\xi =
+    \frac{\cos(\omega_c + \omega)\xi + \cos(\omega_c - \omega)\xi}{2},\quad
+    \sin\omega_c\xi\sin\omega\xi =
+    \frac{\cos(\omega_c - \omega)\xi - \cos(\omega_c + \omega)\xi}{2}.
+\]
+\[
+    P = \frac{qnE_0}{2m\tau} \int_{-\infty}^0 d\xi\,
+    e^\frac{\xi}{\tau}\left[ a - \frac{a - b}{2}\cos(\omega_c + \omega)\xi -
+    \frac{a + b}{2}\cos(\omega_c - \omega)\xi \right].
+\]
+Теперь нужно взять интегралы вида
+\[
+    \int_{-\infty}^0 e^\frac{\xi}{\tau}\cos\alpha\xi d\xi = 
+    \Re\int_{-\infty}^0 e^\frac{\xi}{\tau}e^{i\alpha\xi} d\xi =
+    \Re\frac{1}{\frac{1}{\tau} + i\alpha} =
+    \Re\frac{\tau(1-i\alpha\tau)}{1+\alpha^2\tau^2}=
+    \frac{\tau}{1+\alpha^2\tau^2}.
+\]
+\[
+    P = \frac{qnE_0}{2m\tau} \left[ a\tau -
+        \frac{a - b}{2}\frac{\tau}{1+(\omega_c+\omega)^2\tau^2}-
+        \frac{a + b}{2}\frac{\tau}{1+(\omega_c-\omega)^2\tau^2}\right].
+\]
+Теперь подставим \(a\) и \(b\) и попробуем упростить полученное выражение:
+\[
+    P = \frac{nq^2E_0^2}{4m(\omega_c^2 - \omega^2)} \left[ 2\omega_c -
+        \frac{\omega_c - \omega}{1+(\omega_c+\omega)^2\tau^2}-
+        \frac{\omega_c + \omega}{1+(\omega_c-\omega)^2\tau^2}\right].
+\]
+Приводим выражение в скобках к общему знаменателю:
+\[
+    P = \frac{nq^2E_0^2}{4m(\omega_c^2 - \omega^2)}
+        \frac{
+        2\omega_c[1+(\omega_c+\omega)^2\tau^2][1+(\omega_c-\omega)^2\tau^2] -
+        (\omega_c - \omega)[1 + (\omega_c - \omega)^2\tau^2] -
+        (\omega_c + \omega)[1 + (\omega_c + \omega)^2\tau^2]}
+        {[1+(\omega_c+\omega)^2\tau^2][1+(\omega_c-\omega)^2\tau^2]}.
+\]
+Теперь раскрываем скобки в числителе и избавляемся от всего лишнего:
+\[
+    P = \frac{nq^2E_0^2}{4m(\omega_c^2 - \omega^2)}
+        \frac{
+        2\omega_c(\omega_c^2-\omega^2)^2\tau^4 +
+         (\omega_c + \omega)(\omega_c - \omega)^2\tau^2 +
+         (\omega_c - \omega)(\omega_c + \omega)^2\tau^2}
+        {[1+(\omega_c+\omega)^2\tau^2][1+(\omega_c-\omega)^2\tau^2]}.
+\]
+Сокращаем числитель второй дроби и знаменатель первой на разность квадратов
+частот:
+\[
+    P = \frac{nq^2E_0^2\tau^2}{4m}
+        \frac{
+        2\omega_c(\omega_c^2-\omega^2)\tau^2 +
+         (\omega_c - \omega) +
+         (\omega_c + \omega)}
+        {[1+(\omega_c+\omega)^2\tau^2][1+(\omega_c-\omega)^2\tau^2]}.
+\]
+Доупростив числитель и немного преобразовав знаменатель, получаем окончательный
+ответ:
+\[
+    P = \frac{n\omega_c\tau^2q^2E^2}{2m}
+    \frac{1 + (\omega_c^2 - \omega^2)\tau^2}
+    {\left[1 + (\omega^2 - \omega_c^2)\tau^2\right]^2 +
+    4\omega_c^2\tau^2}.
+\]
 \section{Нетрудно заметить, что\ldots}
 \ldots все три результата были получены ранее, в одноэлектронной теории. Быть
 может, это можно заметить из самого уравнения
