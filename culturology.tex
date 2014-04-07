@@ -1,10 +1,10 @@
-\documentclass[12pt,chapters,notitlepage,pscyr]{hedwork}
+\documentclass[12pt,notitlepage,pscyr]{hedlectures}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{fourier-orns}
 
 \makeatletter
-  \renewcommand{\@chapapp}{Лекция}
+  \renewcommand{\@lecapp}{Лекция}
   \newcommand{\charskip}[1]{\vspace{-\p@}\begin{center}#1\ #1\
     #1\end{center}\vspace{-\p@}}
 \makeatother
@@ -13,8 +13,8 @@
 \let\labelitemii\textbullet
 \renewcommand{\labelenumi}{\arabic{enumi})}
 
-\usepackage[usenames,dvipsnames]{color}
-\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=Blue]{hyperref}
+\usepackage{color}
+\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
 
 \begin{document}
   \begin{titlepage}
@@ -31,6 +31,6 @@
     \vspace*{\fill}
   \end{titlepage}
   
-  \input{01} \newpage
-  \input{02}
+  \input{01-Greece} \newpage
+  \input{02-Rome}
 \end{document}
