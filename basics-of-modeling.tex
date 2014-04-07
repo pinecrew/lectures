@@ -1,18 +1,14 @@
-\documentclass[12pt,chapters,notitlepage,pscyr]{hedwork}
+\documentclass[12pt,notitlepage,pscyr]{hedlectures}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{fourier-orns}
 \usepackage[root,derivative]{hedmaths}
 
-\makeatletter
-  \renewcommand{\@chapapp}{Лекция}
-\makeatother
-
 \let\labelitemi\labelitemii
 \let\labelitemii\textbullet
 
-\usepackage[usenames,dvipsnames]{color}
-\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=Blue]{hyperref}
+\usepackage{color}
+\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
 
 \begin{document}
   \begin{titlepage}
@@ -29,5 +25,5 @@
     \vspace*{\fill}
   \end{titlepage}
   
-  \input{01}
+  \input{01-atomic-potential}
 \end{document}
